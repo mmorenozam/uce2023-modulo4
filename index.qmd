@@ -1,11 +1,1197 @@
 ---
-title: "uce2023-modulo4"
+title: "Estadística aplicada con R"
+subtitle: "Módulo 4: Principios de Estadística"
+title-slide-attributes:
+  data-background-image: images/logo.jpeg
+  data-background-size: contain
+  data-background-opacity: "0.2"
+author: 
+  - name: Mauricio Moreno, PhD
+    affiliations:
+      - Científico Bioestadístico en Bayer AG
+logo: images/logo.jpeg
+format: 
+  revealjs:
+    slide-number: true
+    width: 1366
+    preview-links: auto
+    touch: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: false
+    revealjs-plugins:
+      - pointer
+editor: visual
 ---
 
-This is a Quarto website.
+# Definiciones básicas
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Antes de comenzar
 
-```{r}
-1 + 1
+::: incremental
+-   Uno de los objetivos de este curso es el evitar en la medida de lo posible el adentrarnos en teoría estadística. Entre los temas que dejaremos de lado están:
+
+    -   Teoría de la probabilidad básica
+
+    -   Descripción a detalle de la distribución normal
+
+    -   Descripción a detalle de otras distribuciones
+
+-   Sin embargo, es preciso el comenzar por algunas definiciones que inevitablemente serán necesarias para entender de mejor manera el resto del mismo.
+:::
+
+::: footer
+Para quién esté interesado en un recurso para ver estos temas a profundidad, recomiendo el libro de [Danielle Navarro: *Learning Statistics with R*](https://learningstatisticswithr.com/){target="_blank"}
+:::
+
+## Muestras, poblaciones y muestreos
+
+::: incremental
+-   **Muestra**: Es un conjunto de observaciones que provienen de una población de interés. Idealmente, esta debería ser lo suficientemente grande para hacer inferencias de esa población.
+
+-   **Población**: Es el conjunto de todas las posibles observaciones de las que tengamos interés en realizar inferencias. Es vital el definir adecuadamente sus características.
+
+-   **Muestreo**: Es el proceso por el cual obtendremos nuestra muestra para un estudio. En estudios experimentales, el muestreo se entiende también como el proceso de aleatorización/randomización de unidades experimentales.
+:::
+
+## Muestreo simple sin reemplazo
+
+![Tomado de [*Learning Statistics with R*](https://learningstatisticswithr.com/){target="_blank"}](images/simple1.png){fig-align="center" width="900"}
+
+## Muestreo simple con reemplazo
+
+![Tomado de [*Learning Statistics with R*](https://learningstatisticswithr.com/){target="_blank"}](images/simple2.png){fig-align="center" width="1020"}
+
+## Otros tipos de muestreo
+
+::: incremental
+-   **Muestreo sistemático**: consiste en tomar un determinado elemento de la población siguiendo un patrón. Por ejemplo, escoger los múltiplos de cuatro enumerados en una lista de posibles individuos de estudio (solía ser una práctica común en ensayos clínicos).
+
+-   **Muestreo a conveniencia**: consiste en incluir en el estudio a todos los elementos disponibles de la población de interés. Esto sucede sobre todo con poblaciones escasas o de dificil acceso (ejemplo, realizar estudios en comunidades LGBTIQ+).
+
+-   **Muestreo estratificado**: es una combinación del muestreo simple con los sujetos agrupados por alguna característica en común, por ejemplo sexo, edad, hábitat (suele ser usado en exit polls y conteos rápidos).
+:::
+
+## Parámetros poblacionales y estadísticos muestrales
+
+::: incremental
+-   Los parámetros poblacionales son características de toda una población (ejemplo, supongamos que el IQ de toda una población puede estar caracterizado por una media aritmética, $\mu$, igual a 100, con una desviación estándar, $\sigma$, igual a 15).
+
+-   Si tomo una muestra de 100 individuos de dicha población, podría tener una media aritmética de esta muestra, $\overline{X}$, igual a 101.4 y una desviación estándar de la muestra, $s$, igual a 13.7.
+
+-   En otras palabras, la $\overline{X}$ y $s$ son aproximaciones a los valores verdareros de $\mu$ y $\sigma$ de esa población.
+:::
+
+## Ley de los números grandes
+
+::: incremental
+-   La ley de los números grandes establece que a medida que aumenta el tamaño de una muestra, $\overline{X}$ y $s$ estarán más y más cerca de los valores verdaderos $\mu$ y $\sigma$.
+
+-   Esta es una de las razones por las cuales en la conducción de experimentos siempre se aconseja el intentar recabar tantas observaciones sea posible.
+:::
+
+::: columns
+::: {.column .fragment width="50%"}
+```{r echo=T, eval=T, error=T}
+set.seed(123)
+IQ1 <- rnorm(100, mean = 100, sd = 15)
+mean(IQ1)
+sd(IQ1)
 ```
+:::
+
+::: {.column .fragment width="50%"}
+```{r echo=T, eval=T, error=T}
+set.seed(123)
+IQ2 <- rnorm(100000, mean = 100, sd = 15)
+mean(IQ2)
+sd(IQ2)
+```
+:::
+:::
+
+## Distribución de muestreo {.smaller}
+
+::: incremental
+-   La idea de poder medir enormes números de individuos es irreal.
+
+-   Sin embargo, consideremos el siguiente escenario: si en lugar de medir el IQ de 100000 personas, repito el experimento una y otra vez pero en grupos de 5, puedo observar que la *distribución de las medias aritméticas* de todos estos experimentos adopta la forma de una distribución normal
+:::
+
+. . .
+
+![](images/sampling_hist.gif){fig-align="center" width="400"}
+
+## Distribución de muestreo {visibility="uncounted"}
+
+::: incremental
+-   Esta distribución toma el nombre **distribución de muestreo de la media aritmética**.
+
+-   Lo que nos demuestra es que, incluso ante reducidos números de observaciones en una muestra, la media aritmética de esta muestra ($\overline{X}$) estará próxima a la media aritmética verdadera de la población ($\mu$).
+:::
+
+. . .
+
+![Tomado de [*Learning Statistics with R*](https://learningstatisticswithr.com/){target="_blank"}](images/table1.png){fig-align="center" width="550"}
+
+## Teorema del límite central {.smaller}
+
+::: incremental
+-   El teorema del límite central establece que siempre que el número de observaciones sea lo suficientemente grande, la distribución de muestreo de la media aritmética tenderá a ser normal independientemente de si la distribución de las observaciones es normal o no.
+
+-   Ejemplo: supongamos que el ancho del caparazón de una especie de tortugas está comprendido entre 4 y 10 centímetros. En otras palabras, si observamos al azar una tortuga de esta población, sabemos que el ancho del caparazón estará en este rango. En términos de una distribución, podemos decir que el ancho del caparazón en una población de 1000 tortugas podría verse de esta manera:
+:::
+
+. . .
+
+```{r echo=F, eval=T, error=T, fig.align = 'center', fig.height=3.2, fig.width=5}
+set.seed(123)
+data <- runif(n=1000, min=4, max=10)
+hist(data, col='steelblue', main='Histograma del ancho de caparazones')
+```
+
+## Teorema del límite central {visibility="uncounted"}
+
+![](images/sampling_hist1.gif){fig-align="center" width="600"}
+
+## Teorema del límite central {visibility="uncounted"}
+
+::: incremental
+-   Es gracias al teorema del límite central que la mayor parte de métodos estadísticos giran alrededor de la normalidad.
+
+-   Sin embargo, cómo ya hemos mencionado, requiere a veces de un considerable número de observaciones para que se cumpla y no todas las veces esto es posible en la práctica.
+
+-   Por ello, en el desarrollo del curso iremos mostrando ejemplos de cuando esto no ocurre y que medidas podemos tomar en tales casos.
+:::
+
+## Estimación de parámetros de población
+
+**Media aritmética**
+
+| Símbolo     | ¿Qué es?                                        | ¿Sabemos qué es?         |
+|----------|-------------------------------------|----------------------|
+| $\overline{X}$   | Media aritmética de la muestra                  | Calculada de los datos   |
+| $\mu$       | Verdadera media aritmética de la población      | Casi nunca es conocida   |
+| $\hat{\mu}$ | Estimado de la media aritmética de la población | Sí, identica a $\overline{X}$ |
+
+$$
+\overline{X} = \frac{1}{n}\sum^{n}_{i=1}\left(X_i\right)
+$$
+
+## Estimación de parámetros de población {visibility="uncounted"}
+
+**Desviación estándar**
+
+| Símbolo        | ¿Qué es?                                          | ¿Sabemos qué es?           |
+|----------|------------------------------------|----------------------|
+| $s$            | Desviación estándar de la muestra                 | Calculada de los datos     |
+| $\sigma$       | Verdadera desviación estándar de la población     | Casi nunca es conocida     |
+| $\hat{\sigma}$ | Estimado de la deviación estándar de la población | Sí, pero no es igual a $s$ |
+
+::: columns
+::: {.column width="50%"}
+$$
+s = \sqrt{\frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2} 
+$$
+:::
+
+::: {.column width="50%"}
+$$
+\sigma = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2} 
+$$
+:::
+:::
+
+
+## Estimación de parámetros de población {visibility="uncounted"}
+
+**Varianza**
+
+| Símbolo        | ¿Qué es?                                          | ¿Sabemos qué es?           |
+|----------|------------------------------------|----------------------|
+| $s^2$            | Varianza de la muestra                 | Calculada de los datos     |
+| $\sigma^2$       | Verdadera varianza de la población     | Casi nunca es conocida     |
+| $\hat{\sigma}^2$ | Estimado de la varianza de la población | Sí, pero no es igual a $s^2$ |
+
+::: columns
+::: {.column width="50%"}
+$$
+s^2 = \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2
+$$
+:::
+
+::: {.column width="50%"}
+$$
+\sigma^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2 
+$$
+:::
+:::
+
+
+## Intervalos de confianza {.smaller}
+
+::: incremental
+
+-   Cómo hemos visto, los estimados de las verdaderas $\mu$ y $\sigma$ ($\hat{\mu}$ y $\hat{\sigma}$) provienen de distribuciones de muestreo, y como tales, inherentemente poseen cierto grado de incertidumbre.
+
+-   Los intervalos de confianza son medidas que nos permiten tener una idea de esa incertidumbre.
+
+-   En el estudio de la distribución normal estándar tenemos el conocimiento que existe un 95% de chances que una cantidad normalmente distribuida colectada al azar, estará distante de la media aritmética entre $\pm$ 1.96 desviaciones estándar.
+
+:::
+
+. . .
+
+$$
+\overline{X} - \left(1.96\times\frac{\sigma}{\sqrt{n}}\right) \leq \mu \leq \overline{X} + \left(1.96\times\frac{\sigma}{\sqrt{n}}\right)
+$$
+
+::: incremental
+
+-   Y se interpreta como: **con un 95\% de confianza, podemos esperar que la media aritmética verdadera de la población de interés se encuentra contenida entre...**
+
+:::
+
+. . .
+
+$$
+\text{IC}_{95}=\overline{X} \pm \left(1.96\times\frac{\sigma}{\sqrt{n}}\right) 
+$$
+
+## Intervalos de confianza {.smaller visibility="uncounted"}
+
+::: incremental
+
+-   Sin embargo, como mencionamos $\sigma$ es casi nunca conocido, y es necesario hacer una corrección a la fórmula anterior. La distribución normal trabaja bien baja la presunción de un numero grande de observaciones.
+
+-   En su lugar, en 1908 el estadístico [Gosset](https://en.wikipedia.org/wiki/Student%27s_t-distribution){target="_blank"} parametrizó una distribución para muestras pequeñas que asemeja a la normal. Con el tiempo, esta distribución adoptó el nombre de *Student*.
+
+-   Y es precisamente que la fórmula anterior es corregida con la distribución de Student y así poder calcular intervalos de confianza para muestras pequeñas usando $s$ en lugar de $\sigma$:
+
+:::
+
+. . .
+
+$$
+\text{IC}_{95}=\overline{X} \pm \left(t_{n-1,\alpha/2}\times\frac{s}{\sqrt{n}}\right) 
+$$
+
+::: incremental
+
+-   Donde el valor $t_{n-1,\alpha/2}$ refiere a:
+
+    -   $n-1$: los grados de libertad, igual al número de observaciones $n$ de la muestra, menos 1
+    
+    -   $\alpha$: es el nivel de significancia (probabilidad de obtener un resultado erróneo por azar).
+    
+    -   Estos valores en el pasado se encontraban tabulados en libros de texto, hoy contamos con R!
+
+:::
+
+## Intervalos de confianza {visibility="uncounted" autoanimate="true"}
+
+::: incremental
+
+-   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$ 
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+#| code-line-numbers: "1|2|3|4|5|6|7"
+IQ_muestra <- c(101, 98, 116, 96, 129)   # muestra
+n <- 5                                   # número de observaciones
+t95 <- qt(p = 0.975, df = n -1)          # valor de Student para 4 grados de libertad al 5%
+x <- mean(IQ_muestra)                    # media aritmética de la muestra
+s <- sd(IQ_muestra)                      # desviación estándar de la muestra
+ls <- x + (t95*s/(n-1))                  # límite superior del IC95
+li <- x - (t95*s/(n-1))                  # límite inferior del IC95
+```
+
+## Intervalos de confianza {autoanimate="true" visibility="uncounted"}
+
+
+-   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$ 
+
+
+
+```{r echo=T, eval=T, error=T}
+#| code-line-numbers: "8"
+IQ_muestra <- c(101, 98, 116, 96, 129)   # muestra
+n <- 5                                   # número de observaciones
+t95 <- qt(p = 0.975, df = n -1)          # valor de Student para 4 grados de libertad al 5%
+x <- mean(IQ_muestra)                    # media aritmética de la muestra
+s <- sd(IQ_muestra)                      # desviación estándar de la muestra
+ls <- x + (t95*s/(n-1))                  # límite superior del IC95
+li <- x - (t95*s/(n-1))                  # límite inferior del IC95
+print(paste0("Con un 95% de confianza podemos esperar que la verdadera media aritmética de IQ de esta población se encuentre entre [",round(li,0),", ",round(ls,0),"]"))
+```
+
+## Ejercicios 4.1
+
+La concentración media de glucosa en ratones sanos se ha estimado en un rango entre 80 y 100 mg/dL. En un experimento, se han medido las siguientes concentraciones de glucosa en 10 ratones de una línea genética se presume tendría potencial de ser modelo de hiperglucemia después de unas cuantas más generaciones de cruce selectivo:
+
+. . .
+
+```{r echo=T, eval=F, error=T}
+glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
+```
+
+. . .
+
+-   Calcula la media aritmética $\overline{X}$, la desviación de estándar $s$ y el intervalo de confianza al 95\% de la concentración de glucosa en estos ratones. Sin recurrir a pruebas estadísticas formales, ¿dirías que sus niveles de glucosa están dentro de lo normal o hay razón para desconfiar que son hiperglucémicos?
+
+-   Calcula el $\text{IC}_{95}$ sin usar la distribución de Student y nota la diferencia.
+
+# Pruebas de hipótesis
+
+## Hipótesis de investigación vs. hipótesis estadísticas {.smaller}
+
+::: incremental 
+
+-   Una hipótesis de investigación gira alrededor del desarrollar una conclusión científica acerca de un tema de interés del investigador. Ejemplos: *el fumar causa cáncer*, *las vacunas causan/previenen enfermedades*.
+
+    -   Es decir, pueden tener una naturaleza subjetiva, que expresan la pregunta del investigador de una manera general sin mayor descripción del ¿cómo? voy a probar o descartarla, ni ¿en qué extensión?.
+
+-   Hipótesis estadísticas, por el contrario, deben ser matemáticamente precisas y basadas en las características de los datos que recolectemos con el fin de probar o descartar la hipótesis de investigación. 
+
+    -   Cómo es de esperar, el probar o descartar una hipótesis estadística será únicamente válida para la población sobre la cual una muestra fue tomada. 
+
+    -   Es ahí donde radica la importancia en definir la población sujeto de estudio de manera planificada con el objetivo de que cumpla tantos detalles sean necesarios de la hipótesis de investigación. Ejemplo, el modelo animal más usado es el ratón. Si bien es cierto constituye uno de los primeros pasos en el desarrollo de muchas investigaciones, los hallazgos en ratones NO pueden ser inmediatamente atribuibles a suceder en seres humanos.
+
+:::
+    
+## Hipótesis nula y alternativa {.smaller}
+
+::: incremental
+
+-   La formulación de hipótesis estadísticas puede reducirse a establer preguntas de investigación en forma de las hipótesis nula y alternativa.
+
+-   La más sencilla manera de formular esta dupla, es la siguiente. Supongamos que tenemos dos grupos experimentales para probar la eficiencia de un nuevo procedimiento quirúrgico. Un grupo de pacientes será sometido a la intervención tradicional (control), y el otro grupo al nuevo procedimiento (experimental).
+
+    -   La hipótesis nula ($H_0$) establece que: no existe diferencia entre el grupo control y el grupo experimental,
+    
+    -   Mientras que la hipótesis alternativa ($H_a$) establece que: sí existe differencia entre ambos.
+    
+:::
+
+. . .
+
+```{=tex}
+\begin{align}
+H_0& : \mu_c = \mu_e& H_0& : \mu_c- \mu_e =0 \\
+H_a& : \mu_c \neq \mu_e& H_a& : \mu_c- \mu_e \neq 0
+\end{align}
+```
+
+
+## Tipos de errores
+
+::: incremental
+
+-   Al llevar a cabo pruebas de hipótesis pueden ocurrir errores
+
+:::
+
+. . .
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(xtable)
+```
+
+```{r, results='asis'}
+dat <- data.frame(
+  " " = c("H_{0}\\text{ es verdadera}", "H_{0}\\text{ es falsa}"),
+  "\\text{Acepta }H_{0}" = c("\\text{Desición correcta}", "\\text{Error tipo II}"),
+  "\\text{Rechaza }H_{0}" = c("\\text{Error tipo I}", "\\text{Desición correcta}"),
+  check.names = FALSE
+)
+
+M <- print(xtable(dat, align=rep("|c|", ncol(dat)+1)), 
+           floating = FALSE, tabular.environment="array", 
+           comment=FALSE, print.results=FALSE, 
+           include.rownames = FALSE,
+           sanitize.text.function = function(x) x)
+cat(M)
+```
+
+. . .
+
+-   ¿De qué depende que aceptemos correctamente o no la hipótesis nula?
+
+. . .
+
+Las pruebas estadísticas dependen de la cantidad de variación y la diferencia entre tratamientos a detectar (**tamaño del efecto**). La solución: aumentar el número de observaciones
+
+## Poder de una prueba estadística
+
+::: incremental
+
+-   El poder de una prueba estadística es la probabilidad de rechazar la hipótesis nula cuando esta es de hecho falsa.
+
+-   Se puede derivar de la tabla anterior
+
+:::
+
+. . .
+
+
+```{r, results='asis'}
+dat <- data.frame(
+  " " = c("H_{0}\\text{ es verdadera}", "H_{0}\\text{ es falsa}"),
+  "\\text{Acepta }H_{0}" = c("1-\\alpha\\text{ (Prob. decisión correcta)}", "\\beta\\text{ (Taza Error tipo II)}"),
+  "\\text{Rechaza }H_{0}" = c("\\alpha\\text{ (Taza Error tipo I)}", "1-\\beta\\text{ (Poder)}"),
+  check.names = FALSE
+)
+
+M <- print(xtable(dat, align=rep("|c|", ncol(dat)+1)), 
+           floating = FALSE, tabular.environment="array", 
+           comment=FALSE, print.results=FALSE, 
+           include.rownames = FALSE,
+           sanitize.text.function = function(x) x)
+cat(M)
+```
+
+. . .
+
+-   En la práctica, existen fórmulas cerradas para la determinación del número mínimo de observaciones para alcanzar un poder adecuado ($\ge$ 80\%).
+
+
+## Tamaño del efecto {.smaller}
+
+::: incremental
+
+-   El tamaño del efecto ($\theta$) es un valor que por lo general es determinado por el investigador y que puede ser la diferencia de interés a detectar en una prueba estadística.
+
+-   Por simplicidad, vamos a enfocarnos en el ejercicio de los ratones. Supongamos que el investigador está interesado en saber cual sería el número de ratones que necesitaría para con un 80\% de poder, encontrar una diferencia entre la media aritmética de su muestra y un valor que considera razonable chequear igual a 100 mg/dL. Este último valor viene a ser el $\theta$.
+
+-   Las hipótesis de esta prueba se verían así
+
+:::
+
+. . .
+
+
+```{=tex}
+\begin{align}
+H_0& : \mu_c- \mu_r = \theta \\
+H_a& : \mu_c- \mu_r \neq \theta
+\end{align}
+```
+
+::: incremental
+
+-   Sin embargo, la pregunta del investigador aún está incompleta. [**A tu criterio, ¿qué falta?**]{.fragment}
+
+-   Al formular hipótesis, hemos considerado el caso más simple hasta el momento. Pero recordando la idea inicial del experimento de los ratones, la opción lógica sería preguntarnos ¿cuántos ratones necesitamos para estar seguros que la población sea hiperglucémica? (cuyo valor de glucosa en sangre esté por encima del de un ratón sano)
+
+:::
+
+## Pruebas de dos colas
+
+
+```{=tex}
+\begin{align}
+H_0& : \mu_c- \mu_r = \theta \\
+H_a& : \mu_c- \mu_r \neq \theta
+\end{align}
+```
+
+![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/dcolas.gif){fig-align="center" width="400"}
+
+
+## Pruebas de una cola
+
+
+```{=tex}
+\begin{align}
+H_0& : \mu_c- \mu_r \le \theta \\
+H_a& : \mu_c- \mu_r > \theta
+\end{align}
+```
+
+![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/ucolagreat.gif){fig-align="center" width="400"}
+
+## Pruebas de una cola {visibility="uncounted"}
+
+
+```{=tex}
+\begin{align}
+H_0& : \mu_c- \mu_r \ge \theta \\
+H_a& : \mu_c- \mu_r < \theta
+\end{align}
+```
+
+![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/ucolaless.gif){fig-align="center" width="400"}
+
+
+## Un ejemplo de análisis de poder
+
+::: incremental
+
+-   Retomando el poder de una prueba estadística (aunque no es un objetivo de este curso), culminaremos esta sección ejemplificando un análisis de poder con nuestro ejemplo del IQ de una muestra de participantes de una determinada población.
+
+-   Sin entrar en mayor detalle, esto puede lograrse mediante el uso de la librería `pwr`
+
+-   El tamaño del efecto para análisis de poder tiene que ser estandarizado
+
+:::
+
+. . .
+
+$$
+\theta = \frac{\hat{\mu}_r-\hat{\mu}_c}{s}
+$$
+
+::: footer
+Para mayor detalle del uso de `pwr` en análisis de poder, puedes acceder a [este recurso](https://med.und.edu/research/daccota/_files/pdfs/berdc_resource_pdfs/sample_size_r_module.pdf){target="_blank"}
+
+:::
+
+## Un ejemplo de análisis de poder{.smaller visibility="uncounted"}
+
+::: incremental
+
+-   Acerca del IQ de la muestra de una población, supongamos que el investigador está interesado en saber el número de participantes necesarios para conducir un estudio donde se pueda demostrar que un valor de 100 en IQ esta dentro de la media aritmética del IQ de la población de donde se tomó la muestra.
+
+:::
+
+. . .
+
+```{r echo=T, eval=F, error=T}
+#| code-line-numbers: "3|4|5|6|8|10|11|12|13|14"
+library(pwr)
+
+IQ_muestra <- c(101, 98, 116, 96, 129)
+s <- sd(IQ_muestra)
+uc <- mean(IQ_muestra)
+ur <- 100
+
+theta <- (ur-uc)/s
+
+pwr.t.test(d = theta, 
+           sig.level = 0.05,
+           power = 0.80,
+           type = "one.sample",
+           alternative = "two.sided")
+```
+
+## Un ejemplo de análisis de poder{visibility="uncounted"}
+
+```{r echo=T, eval=T, error=T}
+library(pwr)
+
+IQ_muestra <- c(101, 98, 116, 96, 129)
+s <- sd(IQ_muestra)
+uc <- mean(IQ_muestra)
+ur <- 100
+
+theta <- (ur-uc)/s
+
+pwr.t.test(d = theta, 
+           sig.level = 0.05,
+           power = 0.80,
+           type = "one.sample",
+           alternative = "two.sided")
+```
+
+
+## Ejercicio 4.2
+
+A partir de los estadísticos de muestreo de la muestra de ratones del ejemplo anterior, ¿cuál sería el número de los mismos para en un futuro experimento llevar a cabo una prueba estadística con al menos 80\% de poder si el objetivo es demostrar que de hecho la media aritmética de esta línea de ratones está por encima del límite superior de 100 mg/dL de glucosa en sangre que se sabe poseen ratones saludables? 
+
+```{r echo=T, eval=F, error=T}
+glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
+```
+
+## Valores críticos y el valor p
+
+::: incremental
+
+-   Pero ¿cómo sabemos si una hipótesis es aceptada o rechazada?
+
+-   Regresando al concepto de los intervalos de confianza, los cuartiles de la distribución de Student calculados a un nivel de significancia $\alpha$ son valores críticos sobre los cuales se determina el rechazo o aceptación de la hipótesis nula.
+
+-   El valor p, describe que tan probable sería observar resultados de la prueba asumiendo que la hipótesis nula no hubiese sido rechazada. Por ello, a menores valores p, mayor la diferencia estadística con respecto a la hipótesis alternativa.
+
+:::
+
+# Pruebas estadísticas paramétricas
+
+## Antes de continuar
+
+::: incremental
+
+-   Para esta sección del curso usaremos algunas de las tablas de datos del libro [*Using R for Introductory Statistics*](https://www.routledge.com/Using-R-for-Introductory-Statistics/Verzani/p/book/9781466590731#:~:text=Resources%20Support%20Material-,Book%20Description,small%2C%20task%2Doriented%20steps.){target="_blank"}, como también de la librería `datarium`.
+
+-   Para ello, instalaremos las librerías de R: `UsingR` y `datarium`.
+
+:::
+
+. . .
+
+
+```{r echo=T, eval=T, error=T}
+library(UsingR)
+library(datarium)
+```
+
+::: incremental
+
+-   En esta sección iniciaremos directamente con la conducción de las pruebas sin una formal evaluación de la normalidad de los datos. Más tarde veremos que algunas de las tablas de datos no están normalmente distribuidas 😉
+
+:::
+
+## Pruebas t {.smaller}
+
+::: incremental
+
+-   Las pruebas t son usadas para encontrar la diferencia entre dos medias aritméticas.
+
+-   La $H_0$ en estas pruebas es que las medias aritméticas son las mismas.
+
+-   Se rechaza la $H_0$ cuando el valor p resultante es $<$ 0.05
+
+-   Existen tres tipos de pruebas t
+
+    -   Pruebas t de una muestra
+    
+    -   Pruebas t de muestras independientes
+    
+    -   Pruebas t de muestras emparejadas
+    
+-   Estas pruebas fueron desarrolladas bajo la suposición de la normalidad y de homogeneidad de las varianzas.
+
+-   De acuerdo a lo que hemos visto acerca del teorema del límite central, muestras grandes casi aseguran la normalidad.
+
+-   Cuando el número de observaciones en una muestra es pequeño, es recomendable llevar a cabo un test de normalidad para decidir si es posible llevar a cabo una prueba t o una de sus alternativas.
+
+:::
+
+
+## Prueba t de una muestra
+
+::: incremental
+
+-   Es usada para comparar la media aritmética de una muestra con un valor conocido (un estándar por ejemplo).
+
+-   Por lo general la el valor al que se va a comparar proviene de referencias bibliográficas, pre-experimentos o supociones fundamentadas.
+
+-   Regresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables.
+
+:::
+
+## Prueba t de una muestra {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=F, error=T}
+#| code-line-numbers: "1|2|3|4"
+glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
+t.test(glc_rat,
+       mu = 100,
+       alternative = "greater")
+```
+
+## Prueba t de una muestra {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=T, error=T}
+glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
+t.test(glc_rat,
+       mu = 100,
+       alternative = "greater")
+```
+
+## Ejercicio 4.3 {.smaller}
+
+La tabla de datos `blood` de la librería `UsingR` tiene las medidas de presión sistólica de sangre correspondientes a 15 pacientes (columna "machine"). De acuerdo al Centro de Prevención y Control de Enfermedades de los Estados Unidos (CDC), una presión sistólica saludable está por debajo de 120 mm Hg. Determina si la media de la muestra contenida en esta tabla de datos está por debajo de este valor sugerido por el CDC.
+
+Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre `blood` aparecerá disponible en la ventana del ambiente de RStudio
+
+```{r echo=T, eval=F, error=T}
+data(blood)
+blood
+```
+
+**Tip: para acceder a la columna con las presiones sistólicas, usa la siguiente sintaxis: `blood$machine`**
+
+## Prueba t de muestras independientes
+
+::: incremental
+
+-   Es usado para comparar las medias aritméticas de dos grupos independientes.
+
+-   Por ejemplo, si deseas comparar las medias aritméticas de individuos agrupados por sexo.
+
+-   Para ilustrar esta prueba, vamos a hacer uso de la tabla de datos de `genderweight` de la librería `datarium`.
+
+    -   Veamos si existe una diferencia significativa en la media del peso entre hombres y mujeres
+
+:::
+
+. . . 
+
+```{r echo=T, eval=T, error=T}
+data(genderweight)
+```
+
+## Prueba t de muestras independientes {visibility="uncounted"}
+
+```{r echo=T, eval=T, error=T}
+t.test(genderweight$weight ~ genderweight$group)
+```
+
+## Ejercicio 4.4 {.smaller}
+
+La tabla de datos `normtemp` de la librería `UsingR` tiene las medidas en grados Fahrenheit de temperatura corporal (columna "temperature" ) correspodientes a 65 mujeres y 65 hombres (columna "gender"). Determina si existe una diferencia entre las temperaturas corporales de hombres y mujeres.
+
+Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre `normtemp` aparecerá disponible en la ventana del ambiente de RStudio
+
+```{r echo=T, eval=F, error=T}
+data(normtemp)
+normtemp
+```
+
+**Tip: para acceder a las columnas con las temperaturas corporales y sexo, usa la siguiente sintaxis: `normtemp$temperature` y `normtemp$gender` respectivamente**
+
+
+## Prueba t para muestras emparejadas
+
+::: incremental
+
+-   Es usado para comparar las medias de dos grupos que guardan una relación.
+
+-   Esto solo ocurre cuando las medidas se han realizado a partir de los mismos grupos. Por ejemplo, al inicio y al final de un experimento.
+
+-   Para esta prueba, vamos a usar la tabla de datos `crime` de la librería `UsingR`
+
+    -   Veamos si existe una diferencia en las tasas de crimen (# de reportes/100000 habitantes) en 50 estados de los Estados unidos entre 1983 y 1993
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+data(crime)
+```
+
+## Prueba t para muestras emparejadas {visibility="uncounted"}
+
+```{r echo=T, eval=T, error=T}
+t.test(x = crime$y1983, y = crime$y1993, paired = TRUE)
+mean(crime$y1983)
+mean(crime$y1993)
+```
+
+## Ejercicio 4.5
+
+La tabla de datos `mice2` de la librería `datarium` tiene las medidas del peso de 10 ratones antes y después de haber sido sometidos a una determinada dieta. Encuentra si existe una diferencia significativa en el peso de estos ratones antes y después del régimen de dieta al que fueron expuestos. ¿Ganaron o perdieron peso?
+
+Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre `normtemp` aparecerá disponible en la ventana del ambiente de RStudio
+
+```{r echo=T, eval=F, error=T}
+data(mice2)
+mice2
+```
+
+**Tip: usa el mismo tips de los ejemplos anteriores**
+
+## Normalidad de una muestra
+
+::: incremental
+
+-   Hasta este momento, hemos asumido que todos los datos analizados son normalmente distribuidos.
+
+-   Por esta razón, no he introducido las pruebas que en la práctica deberías realizar en orden de determinar que prueba estadística es la más adecuada para realizar inferencias estadísticas.
+
+-   Existen dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no
+
+    -   Indirectamente: gráfico Q-Q
+    
+    -   Prueba formal de normalidad Shapiro-Wilk
+
+:::
+
+## Gráfico Q-Q
+
+::: incremental
+
+-   El gráfico Q-Q es una prueba visual indirecta de la normalidad.
+
+-   Consiste en crear un gráfico de dispersión entre los valores observados de una muestra vs. los valores que deberían estos tener si siguieran una distribución normal.
+
+-   Mientras el gráfico de dispersión más concentra sus puntos a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.
+
+-   Es muy subjetivo.
+
+:::
+
+
+## Gráfico Q-Q {visibility="uncounted"} 
+
+```{r echo=T, eval=T, error=T}
+y <- rnorm(n = 100, mean = 0, sd = 1) # simulamos 100 observaciones de una normal estandar
+qqnorm(y)                             # producimos el gráfico Q-Q
+
+```
+
+## Prueba de normalidad Shapiro-Wilk
+
+::: incremental
+
+-   La $H_0$ de esta prueba es que un set de $n$ observaciones es normalmente distribuido.
+
+-   Otro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.
+
+-   Probemos entonces si los datos de crimen en los Estados Unidos son normalmente distribuidos:
+
+    -   Como en este caso tenemos dos muestras, debemos chequear la normalidad de cada grupo sujeto de comparación por separado.
+
+:::
+
+## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
+
+::: columns
+::: {.column .fragment width="50%"}
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1983)     
+```
+
+
+:::
+
+::: {.column .fragment width="50%"}
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1993)     
+```
+
+:::
+:::
+
+::: incremental
+
+-   **¡Los datos no son normalmente distribuidos!** 😱
+
+-   Antes de recurrir a pruebas para datos no normales, podemos recurrir a probar transformaciones de los datos. Las transformaciones más usadas son:
+
+    -   La raíz cuadrada (si los datos no contienen números negativos)
+    
+    -   Elevar al cuadrado 
+    
+    -   Logaritmo (si los datos solo incluyen números reales positivos, cero excluido)
+
+:::
+
+
+## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
+
+::: columns
+::: {.column .fragment width="50%"}
+
+Raíz cuadrada
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(sqrt(crime$y1983))     
+```
+
+
+:::
+
+::: {.column .fragment width="50%"}
+
+Elevar al cuadrado
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1983^2)     
+```
+
+:::
+:::
+
+::: columns
+::: {.column .fragment width="50%"}
+
+Logaritmo
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(log(crime$y1983))     
+```
+
+
+:::
+
+::: {.column .fragment width="50%"}
+
+Chequeemos con el otro grupo
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(log(crime$y1993))     
+```
+
+:::
+:::
+
+## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
+
+. . .
+
+**Ojo con las transformaciones**
+
+::: incremental
+
+-   Existe un método más sofisticado para "normalizar" una muestra. [[La transformación de Box-Cox.](https://www.r-bloggers.com/2022/10/box-cox-transformation-in-r/)]{.fragment}
+
+-   Cuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.
+
+-   En otras palabras, una misma transformación **debe** aplicarse a todos los grupos a ser comparados. **NO** tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.
+
+-   Si el número de observaciones es muy reducido, no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas.
+
+:::
+
+## Ejercicios 4.6 {.smaller}
+
+-   Chequea si los datos que usamos en el ejercicio 4.5 de la tabla de datos `mice2` son normalmente distribuidos.
+
+-   En la librería `UsingR` tenemos disponible una lista con 5 objetos bajo el nombre `cancer`. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cancer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?
+
+**Tip: usa el siguiente código para extraer en un vector los datos de pacientes con cáncer de colon:**
+
+```{r echo=T, eval=T, error=T}
+data(cancer)
+colon <- cancer$colon
+```
+
+# Pruebas estadísticas no paramétricas
+
+## Pruebas de Wilcoxon para datos no normales
+
+::: incremental
+
+-   Las pruebas de Wilcoxon usan la mediana como criterio para evaluar la $H_0$.
+
+-   Lastimosamente, estas pruebas son usualmente menos poderosas (mayor tasa de errores tipo II).
+
+-   Tiene dos formas:
+
+    -   Pruebas para una muestra (análoga a la prueba t para una muestra)
+    
+    -   Pruebas para dos muestras (análoga a las pruebas t para dos muestras independientes y emparejadas)
+
+:::
+
+
+## Prueba de Wilcoxon para una muestra 
+
+::: incremental
+
+-   [Prof. Danielle Navarro](https://learningstatisticswithr.com/){target="_blank"} midió el nivel de felicidad de sus estudiantes antes y después de su clase de Estadística. Ella estaba interesada en saber si el tomar una clase de Estadística tiene algún efecto en la felicidad de sus estudiantes. Los datos que obtuvo no están normalmente distribuidos. Por ello, se vio en la necesidad de llevar a cabo una prueba de Wilcoxon.
+
+-   En este caso, la $H_0$, es que la diferencia de la mediana de la felicidad de sus estudiantes antes y después de la clase debería ser igual a cero para clamar que no existe tal efecto.
+
+:::
+
+
+## Prueba de Wilcoxon para una muestra {visibility="uncounted"}
+
+```{r echo=T, eval=T, error=T}
+# Primero recreo la tabla de Prof. Navarro
+felicidad <- data.frame(before = c(30,43,21,24,23,40,29,56,38,16),
+                        after = c(6,29,11,31,17,2,31,21,8,21))
+felicidad$change <- felicidad$after - felicidad$before
+
+wilcox.test(felicidad$change, mu = 0)
+```
+
+## Prueba de Wilcoxon para dos muestras
+
+::: incremental
+
+-   Regresando al ejemplo de la tabla de datos `genderweight`, sus datos no están normalmente distribuidos 😮
+
+-   Suponiendo que no encontramos una transformación adecuada para normalizarlos, usaremos la prueba de Wilcoxon para muestras independientes.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+wilcox.test(genderweight$weight ~ genderweight$group, paired = F)
+```
+
+## Ejercicios 4.7
+
+-   Con el vector de nombre `colon` que creaste en el ejercicio 4.6, aplica una prueba de Wilcoxon para una muestra bajo la hipótesis de que la mediana de los días de superviviencia de un paciente con cáncer de colon es de 370 días.
+
+-   A partir de la tabla de datos de felicidad de la Prof. Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba que de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?.
+
+# Pruebas básicas para datos discretos
+
+## Tablas de contingencia
+
+::: incremental
+-   Una tabla de contigencia nos sirve para ver si los valores de una variable categórica dependen de los valores de otra variable categórica.
+
+-   El análisis de contingencia nos permite probar formalmente la asociación entre dos o más variables categóricas.
+
+    -   ¿Qué tan probable es que beban más alcohol personas que fuman con respecto a aquellas que no?
+
+    -   ¿Las personas que toman una aspirina diaria tienen menos probabilidad de sufrir un ataque cardíaco con respecto a las que no?
+:::
+
+## Tabla de contingencia $n \times n$
+
+![](images/cont1.png){fig-align="center" width="649" height="260"}
+
+::: footer
+[Modificado de Miloš Gejdoš, *et al.* (2019) *Int. J. Environ. Res. Public Health* **16**(1)](https://www.mdpi.com/1660-4601/16/1/141){target="_blank"}
+:::
+
+## Tabla de contingencia $n \times n$ {visibility="uncounted"}
+
+![](images/cont2.png){fig-align="center" width="649" height="260"}
+
+::: incremental
+-   La variable B (o respuesta) contendrá como posibles resultados "éxito" o "fracaso".
+
+-   La variable A (o explanatoria) posee las clases que identifican los grupos cuya probabilidad es sujeto de comparación.
+:::
+
+::: footer
+[Modificado de Miloš Gejdoš, *et al.* (2019) *Int. J. Environ. Res. Public Health* **16**(1)](https://www.mdpi.com/1660-4601/16/1/141){target="_blank"}
+:::
+
+## Cociente de probabilidad para tablas de contingencia $2 \times 2$
+
+::: incremental
+-   El cociente de probabilidad mide la magnitud de asociación entre dos variables categóricas cuando estas tienen dos clases.
+
+-   En una tabla de contingencia $2 \times 2$, el cociente de probabilidad (OR) se define como:
+:::
+
+. . .
+
+$$ OR=\frac{n_{11}/n_{12}}{n_{21}/n_{22}} $$
+
+## Cociente de probabilidad para tablas de contingencia $2 \times 2$ {visibility="uncounted"}
+
+::: incremental
+-   La interpretación del OR depende de la magnitud del mismo:
+
+    -   Igual a 1, los eventos (clase de la variable explanatoria) son independientes de la variable de respuesta.
+
+    -   Mayor o menor a 1, existe una relación positiva o negativa de la variable explanatoria con la variable de respuesta.
+
+    -   La magnitud de OR depende de la clase tomada como base en el análisis.
+:::
+
+## Cociente de probabilidad en R {auto-animate="true"}
+
+. . .
+
+Usaremos para este ejemplo los datos del Titanic. La pregunta de investigación es: ¿tuvieron las mujeres mayores probabilidades de salvarse durante el hundimiento del Titanic?
+
+. . .
+
+1.  Cargamos en nuestro ambiente la tabla de datos (librería `datarium`)
+
+
+```{r echo=T, eval=T, error=T}
+data(titanic.raw)
+```
+
+
+. . .
+
+2.  Definimos las clases de referencia
+
+
+```{r echo=F, eval=F, error=T}
+head(titanic.raw, 4)
+```
+
+
+```{r echo=T, eval=T, error=T}
+titanic.raw$Survived <- relevel(titanic.raw$Survived, ref = "Yes")
+titanic.raw$Sex <- relevel(titanic.raw$Sex, ref = "Female")
+```
+
+
+## Cociente de probabilidad en R {.smaller visibility="uncounted"}
+
+::: columns
+::: {.column .fragment width="55%"}
+3.  Creamos la tabla de contingencia
+
+```{r echo=T, eval=T, error=T}
+tabla_cont <- table(titanic.raw$Sex, titanic.raw$Survived)
+```
+:::
+
+::: {.column .fragment width="45%"}
+<br>
+
+```{r echo=T, eval=T, error=T}
+tabla_cont
+```
+:::
+::: 
+
+. . .
+
+::: columns
+::: {.column .fragment width="55%"}
+4.  Calculamos el OR
+
+```{r echo=T, eval=T, error=T}
+oddratio <- fisher.test(tabla_cont)
+```
+:::
+
+::: {.column .fragment width="45%"}
+
+<br>
+```{r echo=T, eval=T, error=T}
+oddratio 
+```
+
+:::
+:::
+
+
+## ¿Cómo interpretamos estos resultados? {.smaller}
+
+::: columns
+::: {.column width="45%"}
+<br>
+
+```{r echo=T, eval=T, error=T}
+oddratio
+```
+:::
+
+::: {.column width="55%"}
+::: incremental
+-   Vemos que el cociente de probabilidad (OR) es 10. La interpretación es: durante el hundimiento del Titanic fue 10 veces más probable que un pasajero se salve si este era mujer.
+
+-   Adicionalmente, del valor p de la prueba estadística exacta de Fisher menor al 0.05, se puede concluir que este cociente de probabilidad es significativo. En otras palabras, existe evidencia estadística significativa para afirmar que las probabilidades de sobrevivir durante el hundimiento del Titanic fueron 10 veces más para pasajeras mujeres en comparación a los hombres.
+:::
+:::
+::: 
+
+# Análisis de Varianza (ANOVA)
+
+## Introducción
+
+::: incremental
+
+-   Hasta el momento nos hemos enfocado a los casos donde comparamos las medias entre dos grupos.
+
+-   El Análisis de Varianza, desarrollado por Fisher a inicios del siglo 20
+
+:::
+
+
+# ¡Gracias!
