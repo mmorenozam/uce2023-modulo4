@@ -5,9 +5,10 @@
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.335">
+  <meta name="generator" content="quarto-1.3.280">
 
   <meta name="author" content="Mauricio Moreno, PhD">
   <title>uce2023-modulo4 - Estadística aplicada con R</title>
@@ -25,9 +26,10 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,44 +141,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -208,7 +210,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -221,16 +223,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -245,7 +247,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -257,7 +259,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -269,7 +271,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -281,7 +283,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -293,7 +295,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -385,6 +387,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+  <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -392,17 +396,14 @@
 
 <section id="title-slide" data-background-image="images/logo.jpeg" data-background-opacity="0.2" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">Estadística aplicada con R</h1>
-  <p class="subtitle">Módulo 4: Principios de Estadística</p>
+  <p class="subtitle">Módulo 4: Herramientas Estadísticas</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
 Mauricio Moreno, PhD 
 </div>
-        <p class="quarto-title-affiliation">
-            Científico Bioestadístico en Bayer AG
-          </p>
-    </div>
+</div>
 </div>
 
 </section>
@@ -441,7 +442,7 @@ Mauricio Moreno, PhD
 <section id="muestreo-simple-sin-reemplazo" class="slide level2">
 <h2>Muestreo simple sin reemplazo</h2>
 
-<img data-src="images/simple1.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Tomado de <a href="https://learningstatisticswithr.com/" target="_blank"><em>Learning Statistics with R</em></a></p></section>
+<img data-src="images/simple1.png" class="quarto-discovered-preview-image r-stretch quarto-figure-center" width="900"><p class="caption">Tomado de <a href="https://learningstatisticswithr.com/" target="_blank"><em>Learning Statistics with R</em></a></p></section>
 <section id="muestreo-simple-con-reemplazo" class="slide level2">
 <h2>Muestreo simple con reemplazo</h2>
 
@@ -576,9 +577,9 @@ Mauricio Moreno, PhD
 <p><strong>Media aritmética</strong></p>
 <table>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 53%">
-<col style="width: 31%">
+<col style="width: 13%">
+<col style="width: 52%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -614,9 +615,9 @@ Mauricio Moreno, PhD
 <p><strong>Desviación estándar</strong></p>
 <table>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 52%">
-<col style="width: 32%">
+<col style="width: 13%">
+<col style="width: 55%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -661,8 +662,8 @@ s = \sqrt{\frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2}
 <table>
 <colgroup>
 <col style="width: 14%">
-<col style="width: 52%">
-<col style="width: 32%">
+<col style="width: 48%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1029,14 +1030,45 @@ H_a&amp; : \mu_c- \mu_r &lt; \theta
 <li class="fragment"><p>El valor p, describe que tan probable sería observar resultados de la prueba asumiendo que la hipótesis nula no hubiese sido rechazada. Por ello, a menores valores p, mayor la diferencia estadística con respecto a la hipótesis alternativa.</p></li>
 </ul>
 </div>
+</section>
+<section id="antes-de-continuar" class="slide level2">
+<h2>Antes de continuar</h2>
+
+<img data-src="images/cena.png" class="r-stretch quarto-figure-center"><div class="footer">
+<p>Imagen tomada de <a href="https://arbor-analytics.com/post/2022-10-10-p-ing-in-the-woods-p-values-in-forest-science/" target="_blank">aquí</a></p>
+</div>
+</section>
+<section id="antes-de-continuar-1" class="slide level2 smaller" data-visibility="uncounted">
+<h2>Antes de continuar</h2>
+<div>
+<ul>
+<li class="fragment"><p>El umbral de 0.05 es una convención arbitraria <a href="https://www.bmj.com/rapid-response/2011/11/03/origin-5-p-value-threshold#:~:text=statistician%20RA%20Fisher%20in%201926%20%5B1%5D." target="_blank">creada por Fischer</a> en los inicios de la estadística moderna.</p></li>
+<li class="fragment"><p>Lastimosamente, se ha generalizado la idea de que por más mínima sea la diferencia con respecto a 0.05, esta representa la diferencia entre publicar o no (en el campo académico), entre lanzar o no un nuevo fármaco/producto al mercado (en la industria).</p></li>
+<li class="fragment"><p>En 2014, debido a un fallo de la <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5017929/#:~:text=A%20statistically%20significant%20test%20result,that%20no%20effect%20was%20observed." target="_blank">corte suprema de justicia de los Estados Unidos</a> que le dio la potestad a los inversionistas de farmaceúticas a demandarlas por fallar en reportar efectos secundarios de sus productos a pesar de haber sido hallados estadísticamente no significativos, la Asociación Americana de Estadística (ASA) se vio en la necesidad de definir más exhaustivamente el concepto del valor p.</p></li>
+<li class="fragment"><p>Entre las recomendaciones de la ASA, se enfatizó el dar mayor prioridad a la estimación de otros estadísticos complementarios al valor p, tales como intervalos de confianza u otros provenientes de la estadística Bayesiana (intervalos de credibilidad, factores de Bayes).</p></li>
+<li class="fragment"><p>Esta última (estadística Bayesiana), ofrece una interpretación más natural de la estadística al basarse en métricas de incertidumbre puras y no en números arbirtrarios como el valor p.</p></li>
+<li class="fragment"><p>En resumen, una investigación no es inútil si el valor p sobrepasa o está por debajo de 0.05 por cantidades pequeñas.</p></li>
+</ul>
+</div>
+</section>
+<section id="antes-de-continuar-2" class="slide level2 smaller" data-visibility="uncounted">
+<h2>Antes de continuar</h2>
+<div>
+<ul>
+<li class="fragment"><p>En su lugar, en escenarios en que el valor p está alejado por una décima o varias centésimas de 0.05, los resultados deberían interpretarse como indeterminados para generalizar sobre la población objeto de estudio y específicos a las condiciones experimentales (análisis estadísticos, instrumentos de medición, etc) bajo las cuales fueron tomadas y modeladas las mediciones.</p></li>
+<li class="fragment"><p>En el contexto de los modelos estadísticos que veremos más adelante, esto ha derivado en un “temor” del investigador cuando los resultados no pasan los chequeos de los supuestos sobre los que estos modelos se cimentan. Sobre todo cuando el valor p dista de 0.05 por ínfimas cantidades.</p></li>
+<li class="fragment"><p>Esto puede llevar a malas prácticas científicas tales como: no reportar el resultado de los chequeos, blindar los datos, escoger “outliers” y removerlos y en el peor de los casos, manipular los datos para tratar de acomodar nuestros datos a estos chequeos.</p></li>
+<li class="fragment"><p>Todo lo que he mencionado, no solamente constituyen casos de mala conducta científica, sino lo que hoy en día se le conoce como <em>p hacking</em> (que se puede resumir a torturar los datos hasta que nos confiesen una verdad agradable a nuestros propósitos).</p></li>
+</ul>
+</div>
 </section></section>
 <section>
 <section id="pruebas-estadísticas-paramétricas" class="title-slide slide level1 center">
 <h1>Pruebas estadísticas paramétricas</h1>
 
 </section>
-<section id="antes-de-continuar" class="slide level2">
-<h2>Antes de continuar</h2>
+<section id="datos-para-esta-sección" class="slide level2">
+<h2>Datos para esta sección</h2>
 <div>
 <ul>
 <li class="fragment"><p>Para esta sección del curso usaremos algunas de las tablas de datos del libro <a href="https://www.routledge.com/Using-R-for-Introductory-Statistics/Verzani/p/book/9781466590731#:~:text=Resources%20Support%20Material-,Book%20Description,small%2C%20task%2Doriented%20steps." target="_blank"><em>Using R for Introductory Statistics</em></a>, como también de la librería <code>datarium</code>.</p></li>
@@ -1047,11 +1079,6 @@ H_a&amp; : \mu_c- \mu_r &lt; \theta
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(UsingR)</span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(datarium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div>
-<ul>
-<li class="fragment">En esta sección iniciaremos directamente con la conducción de las pruebas sin una formal evaluación de la normalidad de los datos. Más tarde veremos que algunas de las tablas de datos no están normalmente distribuidas 😉</li>
-</ul>
 </div>
 </div>
 </section>
@@ -1068,10 +1095,276 @@ H_a&amp; : \mu_c- \mu_r &lt; \theta
 <li class="fragment"><p>Pruebas t de muestras independientes</p></li>
 <li class="fragment"><p>Pruebas t de muestras emparejadas</p></li>
 </ul></li>
-<li class="fragment"><p>Estas pruebas fueron desarrolladas bajo la suposición de la normalidad y de homogeneidad de las varianzas.</p></li>
+<li class="fragment"><p>Estas pruebas fueron desarrolladas bajo la suposición de la <strong>normalidad</strong> y de <strong>homogeneidad de las varianzas</strong>.</p></li>
 <li class="fragment"><p>De acuerdo a lo que hemos visto acerca del teorema del límite central, muestras grandes casi aseguran la normalidad.</p></li>
 <li class="fragment"><p>Cuando el número de observaciones en una muestra es pequeño, es recomendable llevar a cabo un test de normalidad para decidir si es posible llevar a cabo una prueba t o una de sus alternativas.</p></li>
 </ul>
+</div>
+</section>
+<section id="normalidad-de-una-muestra" class="slide level2">
+<h2>Normalidad de una muestra</h2>
+<div>
+<ul>
+<li class="fragment"><p>Antes de llevar a cabo las pruebas t, hemos mencionado sus supuestos. Por ello, es aconsejable el siempre realizar estas pruebas antes de usarlas.</p></li>
+<li class="fragment"><p>Existen dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no</p>
+<ul>
+<li class="fragment"><p>Indirectamente: gráfico Q-Q</p></li>
+<li class="fragment"><p>Prueba formal de normalidad (ejemplo: Shapiro-Wilk)</p></li>
+</ul></li>
+<li class="fragment"><p><strong>En el caso del ANOVA</strong>, es importante enfatizar que estas pruebas no necesariamente tienen que hacerse antes de la prueba, como ya veremos más adelante.</p></li>
+</ul>
+</div>
+</section>
+<section id="gráfico-q-q" class="slide level2">
+<h2>Gráfico Q-Q</h2>
+<div>
+<ul>
+<li class="fragment"><p>El gráfico Q-Q es una prueba visual indirecta de la normalidad.</p></li>
+<li class="fragment"><p>Consiste en crear un gráfico de dispersión entre los valores observados de una muestra vs.&nbsp;los valores que deberían estos tener si siguieran una distribución normal.</p></li>
+<li class="fragment"><p>Mientras en el gráfico de dispersión los puntos más se distribuyan a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.</p></li>
+<li class="fragment"><p>Su desventaja es que es muy subjetivo, y a menudo requiere una prueba formal para poder confirmarlo.</p></li>
+</ul>
+</div>
+</section>
+<section id="gráfico-q-q-1" class="slide level2" data-visibility="uncounted">
+<h2>Gráfico Q-Q</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># simulamos 30 observaciones de una normal estandar</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">qqnorm</span>(y)                             <span class="co"># producimos el gráfico Q-Q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gráfico-q-q-2" class="slide level2" data-visibility="uncounted">
+<h2>Gráfico Q-Q</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># simulamos 30 observaciones de una normal estandar</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">qqnorm</span>(y)                             <span class="co"># producimos el gráfico Q-Q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="576" class="r-stretch quarto-figure-center"></section>
+<section id="prueba-de-normalidad-shapiro-wilk" class="slide level2">
+<h2>Prueba de normalidad Shapiro-Wilk</h2>
+<div>
+<ul>
+<li class="fragment"><p>La <span class="math inline">\(H_0\)</span> de esta prueba (y del resto de pruebas formales de normalidad) es que un set de <span class="math inline">\(n\)</span> observaciones es normalmente distribuido.</p></li>
+<li class="fragment"><p>Otro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.</p></li>
+<li class="fragment"><p>Para ilustrar su uso, chequeemos la normalidad de los datos que simulamos anteriormente</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">shapiro.test</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  y
+W = 0.97894, p-value = 0.7966</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="prueba-de-homogeneidad-de-las-varianzas" class="slide level2 smaller">
+<h2>Prueba de homogeneidad de las varianzas</h2>
+<div>
+<ul>
+<li class="fragment"><p>En el caso de comparaciones entre las medias de dos grupos, la homogeneidad de varianzas puede chequearse usando la prueba F.</p></li>
+<li class="fragment"><p>La prueba t de una muestra no requiere chequear este supuesto.</p></li>
+<li class="fragment"><p>Para ilustrar su uso, creemos otro vector con datos simulados. En este caso, un igual número de observaciones con la misma desviación estándar pero diferente media:</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">var.test</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    F test to compare two variances
+
+data:  x and y
+F = 1, num df = 29, denom df = 29, p-value = 1
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.4759648 2.1009958
+sample estimates:
+ratio of variances 
+                 1 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="supuestos-en-la-práctica" class="slide level2 scrollable">
+<h2>Supuestos en la práctica</h2>
+<div>
+<ul>
+<li class="fragment"><p>Usemos las pruebas con datos reales, esta vez con la tabla de datos <code>crime</code> de la librería <code>Using R</code>.</p></li>
+<li class="fragment"><p>Esta tabla de datos contiene registros de las tasas de crimen (# de reportes/100000 habitantes) en 50 estados en los Estados Unidos correspondiente a los años 1983 y 1993.</p></li>
+<li class="fragment"><p>Sin enfocarnos por el momento en que prueba t específica usaremos, limitémonos a chequear la normalidad y la homogeneidad de varianzas entre las tasas de crimen registradas en 1983 y 1993.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">data</span>(crime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p>Normalidad 1983</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1983)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  crime$y1983
+W = 0.77333, p-value = 1.827e-07</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<p>Normalidad 1993</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1993)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  crime$y1993
+W = 0.77348, p-value = 1.841e-07</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Homogeneidad de las varianzas</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">var.test</span>(crime<span class="sc">$</span>y1983, crime<span class="sc">$</span>y1993)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    F test to compare two variances
+
+data:  crime$y1983 and crime$y1993
+F = 0.49163, num df = 50, denom df = 50, p-value = 0.01342
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.2806163 0.8613069
+sample estimates:
+ratio of variances 
+         0.4916266 </code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/calmarno.jpg"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="transformación-de-variables" class="slide level2">
+<h2>Transformación de variables</h2>
+<div>
+<ul>
+<li class="fragment"><p>A menudo nos encontraremos con conjuntos de observaciones que no cumplen uno o ninguno de los supuestos.</p></li>
+<li class="fragment"><p>Antes de considerar pruebas no paramétricas, podemos intentar transformaciones de variables para regresar al mundo de las pruebas paramétricas. Las transformaciones más usadas son:</p>
+<ul>
+<li class="fragment"><p>La raíz cuadrada (si los datos no contienen números negativos)</p></li>
+<li class="fragment"><p>Elevar al cuadrado</p></li>
+<li class="fragment"><p>Logaritmo (si los datos solo incluyen números reales positivos, cero excluido)</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="transformación-de-variables-1" class="slide level2" data-visibility="&quot;uncounted">
+<h2>Transformación de variables</h2>
+<div>
+<ul>
+<li class="fragment"><p>Existe un método más sofisticado para “normalizar” una muestra. <span class="fragment"><a href="https://www.r-bloggers.com/2022/10/box-cox-transformation-in-r/">La transformación de Box-Cox.</a></span></p></li>
+<li class="fragment"><p>Cuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.</p></li>
+<li class="fragment"><p>En otras palabras, una misma transformación <strong>debe</strong> aplicarse a todos los grupos a ser comparados. <strong>NO</strong> tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.</p></li>
+<li class="fragment"><p>Si el número de observaciones es muy reducido, usualmente no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas.</p></li>
+</ul>
+</div>
+</section>
+<section id="transformación-de-variables-2" class="slide level2 scrollable" data-visibility="&quot;uncounted">
+<h2>Transformación de variables</h2>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p>Raíz cuadrada</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">shapiro.test</span>(<span class="fu">sqrt</span>(crime<span class="sc">$</span>y1983))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  sqrt(crime$y1983)
+W = 0.9411, p-value = 0.01359</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<p>Elevar al cuadrado</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1983<span class="sc">^</span><span class="dv">2</span>)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  crime$y1983^2
+W = 0.38921, p-value = 2.954e-13</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p>Logaritmo</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">shapiro.test</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1983))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  log(crime$y1983)
+W = 0.98076, p-value = 0.5713</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<p>Chequeemos con el otro grupo</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">shapiro.test</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1993))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  log(crime$y1993)
+W = 0.96191, p-value = 0.1006</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Homogeneidad de las varianzas con transformación logarítmica</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">var.test</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1983), <span class="fu">log</span>(crime<span class="sc">$</span>y1993))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    F test to compare two variances
+
+data:  log(crime$y1983) and log(crime$y1993)
+F = 0.84048, num df = 50, denom df = 50, p-value = 0.5412
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.4797393 1.4724831
+sample estimates:
+ratio of variances 
+         0.8404808 </code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/kid.jpg"></p>
+</figure>
+</div>
 </div>
 </section>
 <section id="prueba-t-de-una-muestra" class="slide level2">
@@ -1080,6 +1373,7 @@ H_a&amp; : \mu_c- \mu_r &lt; \theta
 <ul>
 <li class="fragment"><p>Es usada para comparar la media aritmética de una muestra con un valor conocido (un estándar por ejemplo).</p></li>
 <li class="fragment"><p>Por lo general la el valor al que se va a comparar proviene de referencias bibliográficas, pre-experimentos o supociones fundamentadas.</p></li>
+<li class="fragment"><p>En este caso, el supuesto que debe cumplirse es el de la normalidad de los datos</p></li>
 <li class="fragment"><p>Regresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables.</p></li>
 </ul>
 </div>
@@ -1087,19 +1381,19 @@ H_a&amp; : \mu_c- \mu_r &lt; \theta
 <section id="prueba-t-de-una-muestra-1" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
 <h2>Prueba t de una muestra</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>glc_rat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">108.7</span>, <span class="fl">93.7</span>, <span class="fl">52.7</span>, <span class="fl">79.0</span>, <span class="fl">74.7</span>, <span class="fl">131.9</span>, <span class="fl">99.5</span>, <span class="fl">63.3</span>, <span class="fl">98.6</span>, <span class="fl">92.7</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">t.test</span>(glc_rat,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>       <span class="at">mu =</span> <span class="dv">100</span>,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>       <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>glc_rat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">108.7</span>, <span class="fl">93.7</span>, <span class="fl">52.7</span>, <span class="fl">79.0</span>, <span class="fl">74.7</span>, <span class="fl">131.9</span>, <span class="fl">99.5</span>, <span class="fl">63.3</span>, <span class="fl">98.6</span>, <span class="fl">92.7</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">t.test</span>(glc_rat,</span>
+<span id="cb41-3"><a href="#cb41-3"></a>       <span class="at">mu =</span> <span class="dv">100</span>,</span>
+<span id="cb41-4"><a href="#cb41-4"></a>       <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="prueba-t-de-una-muestra-2" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
 <h2>Prueba t de una muestra</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>glc_rat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">108.7</span>, <span class="fl">93.7</span>, <span class="fl">52.7</span>, <span class="fl">79.0</span>, <span class="fl">74.7</span>, <span class="fl">131.9</span>, <span class="fl">99.5</span>, <span class="fl">63.3</span>, <span class="fl">98.6</span>, <span class="fl">92.7</span>)</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">t.test</span>(glc_rat,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>       <span class="at">mu =</span> <span class="dv">100</span>,</span>
-<span id="cb19-4"><a href="#cb19-4"></a>       <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>glc_rat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">108.7</span>, <span class="fl">93.7</span>, <span class="fl">52.7</span>, <span class="fl">79.0</span>, <span class="fl">74.7</span>, <span class="fl">131.9</span>, <span class="fl">99.5</span>, <span class="fl">63.3</span>, <span class="fl">98.6</span>, <span class="fl">92.7</span>)</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">t.test</span>(glc_rat,</span>
+<span id="cb42-3"><a href="#cb42-3"></a>       <span class="at">mu =</span> <span class="dv">100</span>,</span>
+<span id="cb42-4"><a href="#cb42-4"></a>       <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1120,8 +1414,8 @@ mean of x
 <p>La tabla de datos <code>blood</code> de la librería <code>UsingR</code> tiene las medidas de presión sistólica de sangre correspondientes a 15 pacientes (columna “machine”). De acuerdo al Centro de Prevención y Control de Enfermedades de los Estados Unidos (CDC), una presión sistólica saludable está por debajo de 120 mm Hg. Determina si la media de la muestra contenida en esta tabla de datos está por debajo de este valor sugerido por el CDC.</p>
 <p>Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre <code>blood</code> aparecerá disponible en la ventana del ambiente de RStudio</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">data</span>(blood)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>blood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">data</span>(blood)</span>
+<span id="cb44-2"><a href="#cb44-2"></a>blood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Tip: para acceder a la columna con las presiones sistólicas, usa la siguiente sintaxis: <code>blood$machine</code></strong></p>
 </section>
@@ -1139,14 +1433,72 @@ mean of x
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">data</span>(genderweight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">data</span>(genderweight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="prueba-t-de-muestras-independientes-1" class="slide level2" data-visibility="uncounted">
+<section id="prueba-t-de-muestras-independientes-1" class="slide level2 scrollable smaller" data-visibility="uncounted">
+<h2>Prueba t de muestras independientes</h2>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p>Chequeamos normalidad: Group M</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">shapiro.test</span>(<span class="fu">subset</span>(genderweight, group <span class="sc">==</span> <span class="st">"M"</span>)<span class="sc">$</span>weight)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  subset(genderweight, group == "M")$weight
+W = 0.98634, p-value = 0.9886</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<p>Chequeamos normalidad: Group F</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">shapiro.test</span>(<span class="fu">subset</span>(genderweight, group <span class="sc">==</span> <span class="st">"F"</span>)<span class="sc">$</span>weight)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  subset(genderweight, group == "F")$weight
+W = 0.93847, p-value = 0.2243</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Chequeamos la homogeneidad de las varianzas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">var.test</span>(genderweight<span class="sc">$</span>weight <span class="sc">~</span> genderweight<span class="sc">$</span>group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    F test to compare two variances
+
+data:  genderweight$weight by genderweight$group
+F = 0.21692, num df = 19, denom df = 19, p-value = 0.001648
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.08585766 0.54802553
+sample estimates:
+ratio of variances 
+         0.2169152 </code></pre>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment"><p><strong>¡La homogeneidad de las varianzas no se cumple!</strong> 😱</p></li>
+<li class="fragment"><p>¿Debemos transformar? <span class="fragment">No necesariamente</span></p></li>
+<li class="fragment"><p><strong>Únicamente en el caso de las pruebas t</strong>, el no cumplir con el supuesto de la homogeneidad de varianzas no es un gran problema.</p></li>
+<li class="fragment"><p>La función base de R <code>t.test</code> cuenta con el argumento <code>var.equal = F</code> como default.</p></li>
+<li class="fragment"><p>Bajo este argumento, no se asumen varianzas iguales entre los grupos y en su lugar R lleva a cabo la aproximación de Welch para lidiar con este problema.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="prueba-t-de-muestras-independientes-2" class="slide level2" data-visibility="uncounted">
 <h2>Prueba t de muestras independientes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">t.test</span>(genderweight<span class="sc">$</span>weight <span class="sc">~</span> genderweight<span class="sc">$</span>group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">t.test</span>(genderweight<span class="sc">$</span>weight <span class="sc">~</span> genderweight<span class="sc">$</span>group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1167,8 +1519,8 @@ mean in group F mean in group M
 <p>La tabla de datos <code>normtemp</code> de la librería <code>UsingR</code> tiene las medidas en grados Fahrenheit de temperatura corporal (columna “temperature” ) correspodientes a 65 mujeres y 65 hombres (columna “gender”). Determina si existe una diferencia entre las temperaturas corporales de hombres y mujeres.</p>
 <p>Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre <code>normtemp</code> aparecerá disponible en la ventana del ambiente de RStudio</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">data</span>(normtemp)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>normtemp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">data</span>(normtemp)</span>
+<span id="cb54-2"><a href="#cb54-2"></a>normtemp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Tip: para acceder a las columnas con las temperaturas corporales y sexo, usa la siguiente sintaxis: <code>normtemp$temperature</code> y <code>normtemp$gender</code> respectivamente</strong></p>
 </section>
@@ -1186,213 +1538,64 @@ mean in group F mean in group M
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">data</span>(crime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">data</span>(crime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="prueba-t-para-muestras-emparejadas-1" class="slide level2" data-visibility="uncounted">
+<section id="prueba-t-para-muestras-emparejadas-1" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
 <h2>Prueba t para muestras emparejadas</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> crime<span class="sc">$</span>y1983, <span class="at">y =</span> crime<span class="sc">$</span>y1993, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> <span class="fu">log</span>(crime<span class="sc">$</span>y1983), <span class="at">y =</span> <span class="fu">log</span>(crime<span class="sc">$</span>y1993), <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1983)))</span>
+<span id="cb56-3"><a href="#cb56-3"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1993)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="prueba-t-para-muestras-emparejadas-2" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
+<h2>Prueba t para muestras emparejadas</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> <span class="fu">log</span>(crime<span class="sc">$</span>y1983), <span class="at">y =</span> <span class="fu">log</span>(crime<span class="sc">$</span>y1993), <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
-data:  crime$y1983 and crime$y1993
-t = -7.6839, df = 50, p-value = 5.141e-10
+data:  log(crime$y1983) and log(crime$y1993)
+t = -10.027, df = 50, p-value = 1.469e-13
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -213.5671 -125.0525
+ -0.3628437 -0.2417349
 sample estimates:
 mean difference 
-      -169.3098 </code></pre>
+     -0.3022893 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">mean</span>(crime<span class="sc">$</span>y1983)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1983)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 437.5196</code></pre>
+<pre><code>[1] 362.8298</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">mean</span>(crime<span class="sc">$</span>y1993)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1993)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 606.8294</code></pre>
+<pre><code>[1] 490.8915</code></pre>
 </div>
 </div>
 </section>
 <section id="ejercicio-4.5" class="slide level2">
 <h2>Ejercicio 4.5</h2>
 <p>La tabla de datos <code>mice2</code> de la librería <code>datarium</code> tiene las medidas del peso de 10 ratones antes y después de haber sido sometidos a una determinada dieta. Encuentra si existe una diferencia significativa en el peso de estos ratones antes y después del régimen de dieta al que fueron expuestos. ¿Ganaron o perdieron peso?</p>
-<p>Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre <code>normtemp</code> aparecerá disponible en la ventana del ambiente de RStudio</p>
+<p>Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre <code>mice2</code> aparecerá disponible en la ventana del ambiente de RStudio</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">data</span>(mice2)</span>
-<span id="cb33-2"><a href="#cb33-2"></a>mice2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">data</span>(mice2)</span>
+<span id="cb63-2"><a href="#cb63-2"></a>mice2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Tip: usa el mismo tips de los ejemplos anteriores</strong></p>
-</section>
-<section id="normalidad-de-una-muestra" class="slide level2">
-<h2>Normalidad de una muestra</h2>
-<div>
-<ul>
-<li class="fragment"><p>Hasta este momento, hemos asumido que todos los datos analizados son normalmente distribuidos.</p></li>
-<li class="fragment"><p>Por esta razón, no he introducido las pruebas que en la práctica deberías realizar en orden de determinar que prueba estadística es la más adecuada para realizar inferencias estadísticas.</p></li>
-<li class="fragment"><p>Existen dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no</p>
-<ul>
-<li class="fragment"><p>Indirectamente: gráfico Q-Q</p></li>
-<li class="fragment"><p>Prueba formal de normalidad Shapiro-Wilk</p></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="gráfico-q-q" class="slide level2">
-<h2>Gráfico Q-Q</h2>
-<div>
-<ul>
-<li class="fragment"><p>El gráfico Q-Q es una prueba visual indirecta de la normalidad.</p></li>
-<li class="fragment"><p>Consiste en crear un gráfico de dispersión entre los valores observados de una muestra vs.&nbsp;los valores que deberían estos tener si siguieran una distribución normal.</p></li>
-<li class="fragment"><p>Mientras el gráfico de dispersión más concentra sus puntos a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.</p></li>
-<li class="fragment"><p>Es muy subjetivo.</p></li>
-</ul>
-</div>
-</section>
-<section id="gráfico-q-q-1" class="slide level2" data-visibility="uncounted">
-<h2>Gráfico Q-Q</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># simulamos 100 observaciones de una normal estandar</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">qqnorm</span>(y)                             <span class="co"># producimos el gráfico Q-Q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
-<section id="prueba-de-normalidad-shapiro-wilk" class="slide level2">
-<h2>Prueba de normalidad Shapiro-Wilk</h2>
-<div>
-<ul>
-<li class="fragment"><p>La <span class="math inline">\(H_0\)</span> de esta prueba es que un set de <span class="math inline">\(n\)</span> observaciones es normalmente distribuido.</p></li>
-<li class="fragment"><p>Otro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.</p></li>
-<li class="fragment"><p>Probemos entonces si los datos de crimen en los Estados Unidos son normalmente distribuidos:</p>
-<ul>
-<li class="fragment">Como en este caso tenemos dos muestras, debemos chequear la normalidad de cada grupo sujeto de comparación por separado.</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="prueba-de-normalidad-shapiro-wilk-1" class="slide level2" data-visibility="&quot;uncounted">
-<h2>Prueba de normalidad Shapiro-Wilk</h2>
-<div class="columns">
-<div class="column fragment" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1983)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  crime$y1983
-W = 0.77333, p-value = 1.827e-07</code></pre>
-</div>
-</div>
-</div><div class="column fragment" style="width:50%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1993)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  crime$y1993
-W = 0.77348, p-value = 1.841e-07</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div>
-<ul>
-<li class="fragment"><p><strong>¡Los datos no son normalmente distribuidos!</strong> 😱</p></li>
-<li class="fragment"><p>Antes de recurrir a pruebas para datos no normales, podemos recurrir a probar transformaciones de los datos. Las transformaciones más usadas son:</p>
-<ul>
-<li class="fragment"><p>La raíz cuadrada (si los datos no contienen números negativos)</p></li>
-<li class="fragment"><p>Elevar al cuadrado</p></li>
-<li class="fragment"><p>Logaritmo (si los datos solo incluyen números reales positivos, cero excluido)</p></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="prueba-de-normalidad-shapiro-wilk-2" class="slide level2" data-visibility="&quot;uncounted">
-<h2>Prueba de normalidad Shapiro-Wilk</h2>
-<div class="columns">
-<div class="column fragment" style="width:50%;">
-<p>Raíz cuadrada</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">shapiro.test</span>(<span class="fu">sqrt</span>(crime<span class="sc">$</span>y1983))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  sqrt(crime$y1983)
-W = 0.9411, p-value = 0.01359</code></pre>
-</div>
-</div>
-</div><div class="column fragment" style="width:50%;">
-<p>Elevar al cuadrado</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">shapiro.test</span>(crime<span class="sc">$</span>y1983<span class="sc">^</span><span class="dv">2</span>)     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  crime$y1983^2
-W = 0.38921, p-value = 2.954e-13</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column fragment" style="width:50%;">
-<p>Logaritmo</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">shapiro.test</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1983))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  log(crime$y1983)
-W = 0.98076, p-value = 0.5713</code></pre>
-</div>
-</div>
-</div><div class="column fragment" style="width:50%;">
-<p>Chequeemos con el otro grupo</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">shapiro.test</span>(<span class="fu">log</span>(crime<span class="sc">$</span>y1993))     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  log(crime$y1993)
-W = 0.96191, p-value = 0.1006</code></pre>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="prueba-de-normalidad-shapiro-wilk-3" class="slide level2" data-visibility="&quot;uncounted">
-<h2>Prueba de normalidad Shapiro-Wilk</h2>
-<div class="fragment">
-<p><strong>Ojo con las transformaciones</strong></p>
-<div>
-<ul>
-<li class="fragment"><p>Existe un método más sofisticado para “normalizar” una muestra. <span class="fragment"><a href="https://www.r-bloggers.com/2022/10/box-cox-transformation-in-r/">La transformación de Box-Cox.</a></span></p></li>
-<li class="fragment"><p>Cuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.</p></li>
-<li class="fragment"><p>En otras palabras, una misma transformación <strong>debe</strong> aplicarse a todos los grupos a ser comparados. <strong>NO</strong> tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.</p></li>
-<li class="fragment"><p>Si el número de observaciones es muy reducido, no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas.</p></li>
-</ul>
-</div>
-</div>
 </section>
 <section id="ejercicios-4.6" class="slide level2 smaller">
 <h2>Ejercicios 4.6</h2>
 <ul>
-<li><p>Chequea si los datos que usamos en el ejercicio 4.5 de la tabla de datos <code>mice2</code> son normalmente distribuidos.</p></li>
-<li><p>En la librería <code>UsingR</code> tenemos disponible una lista con 5 objetos bajo el nombre <code>cancer</code>. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cancer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?</p></li>
+<li>En la librería <code>UsingR</code> tenemos disponible una lista con 5 objetos bajo el nombre <code>cancer</code>. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cancer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?</li>
 </ul>
 <p><strong>Tip: usa el siguiente código para extraer en un vector los datos de pacientes con cáncer de colon:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">data</span>(cancer)</span>
-<span id="cb47-2"><a href="#cb47-2"></a>colon <span class="ot">&lt;-</span> cancer<span class="sc">$</span>colon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">data</span>(cancer)</span>
+<span id="cb64-2"><a href="#cb64-2"></a>colon <span class="ot">&lt;-</span> cancer<span class="sc">$</span>colon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1426,12 +1629,12 @@ W = 0.96191, p-value = 0.1006</code></pre>
 <section id="prueba-de-wilcoxon-para-una-muestra-1" class="slide level2" data-visibility="uncounted">
 <h2>Prueba de Wilcoxon para una muestra</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Primero recreo la tabla de Prof. Navarro</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a>felicidad <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">before =</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">43</span>,<span class="dv">21</span>,<span class="dv">24</span>,<span class="dv">23</span>,<span class="dv">40</span>,<span class="dv">29</span>,<span class="dv">56</span>,<span class="dv">38</span>,<span class="dv">16</span>),</span>
-<span id="cb48-3"><a href="#cb48-3"></a>                        <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">29</span>,<span class="dv">11</span>,<span class="dv">31</span>,<span class="dv">17</span>,<span class="dv">2</span>,<span class="dv">31</span>,<span class="dv">21</span>,<span class="dv">8</span>,<span class="dv">21</span>))</span>
-<span id="cb48-4"><a href="#cb48-4"></a>felicidad<span class="sc">$</span>change <span class="ot">&lt;-</span> felicidad<span class="sc">$</span>after <span class="sc">-</span> felicidad<span class="sc">$</span>before</span>
-<span id="cb48-5"><a href="#cb48-5"></a></span>
-<span id="cb48-6"><a href="#cb48-6"></a><span class="fu">wilcox.test</span>(felicidad<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Primero recreo la tabla de Prof. Navarro</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>felicidad <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">before =</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">43</span>,<span class="dv">21</span>,<span class="dv">24</span>,<span class="dv">23</span>,<span class="dv">40</span>,<span class="dv">29</span>,<span class="dv">56</span>,<span class="dv">38</span>,<span class="dv">16</span>),</span>
+<span id="cb65-3"><a href="#cb65-3"></a>                        <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">29</span>,<span class="dv">11</span>,<span class="dv">31</span>,<span class="dv">17</span>,<span class="dv">2</span>,<span class="dv">31</span>,<span class="dv">21</span>,<span class="dv">8</span>,<span class="dv">21</span>))</span>
+<span id="cb65-4"><a href="#cb65-4"></a>felicidad<span class="sc">$</span>change <span class="ot">&lt;-</span> felicidad<span class="sc">$</span>after <span class="sc">-</span> felicidad<span class="sc">$</span>before</span>
+<span id="cb65-5"><a href="#cb65-5"></a></span>
+<span id="cb65-6"><a href="#cb65-6"></a><span class="fu">wilcox.test</span>(felicidad<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank exact test
@@ -1446,13 +1649,13 @@ alternative hypothesis: true location is not equal to 0</code></pre>
 <h2>Prueba de Wilcoxon para dos muestras</h2>
 <div>
 <ul>
-<li class="fragment"><p>Regresando al ejemplo de la tabla de datos <code>genderweight</code>, sus datos no están normalmente distribuidos 😮</p></li>
-<li class="fragment"><p>Suponiendo que no encontramos una transformación adecuada para normalizarlos, usaremos la prueba de Wilcoxon para muestras independientes.</p></li>
+<li class="fragment"><p>Regresando al ejemplo de la tabla de datos <code>genderweight</code>, supongamos que estos no están normalmente distribuidos.</p></li>
+<li class="fragment"><p>Usaremos la prueba de Wilcoxon para muestras independientes para ver si existe diferencia entre los pesos de hombres y mujeres.</p></li>
 </ul>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">wilcox.test</span>(genderweight<span class="sc">$</span>weight <span class="sc">~</span> genderweight<span class="sc">$</span>group, <span class="at">paired =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">wilcox.test</span>(genderweight<span class="sc">$</span>weight <span class="sc">~</span> genderweight<span class="sc">$</span>group, <span class="at">paired =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum exact test
@@ -1468,7 +1671,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2>Ejercicios 4.7</h2>
 <ul>
 <li><p>Con el vector de nombre <code>colon</code> que creaste en el ejercicio 4.6, aplica una prueba de Wilcoxon para una muestra bajo la hipótesis de que la mediana de los días de superviviencia de un paciente con cáncer de colon es de 370 días.</p></li>
-<li><p>A partir de la tabla de datos de felicidad de la Prof.&nbsp;Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba que de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?.</p></li>
+<li><p>A partir de la tabla de datos de felicidad de la Prof.&nbsp;Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?.</p></li>
 </ul>
 </section></section>
 <section>
@@ -1552,7 +1755,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li>Cargamos en nuestro ambiente la tabla de datos (librería <code>datarium</code>)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">data</span>(titanic.raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">data</span>(titanic.raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -1560,11 +1763,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li>Definimos las clases de referencia</li>
 </ol>
 <div class="cell">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>titanic.raw<span class="sc">$</span>Survived <span class="ot">&lt;-</span> <span class="fu">relevel</span>(titanic.raw<span class="sc">$</span>Survived, <span class="at">ref =</span> <span class="st">"Yes"</span>)</span>
-<span id="cb53-2"><a href="#cb53-2"></a>titanic.raw<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(titanic.raw<span class="sc">$</span>Sex, <span class="at">ref =</span> <span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>titanic.raw<span class="sc">$</span>Survived <span class="ot">&lt;-</span> <span class="fu">relevel</span>(titanic.raw<span class="sc">$</span>Survived, <span class="at">ref =</span> <span class="st">"Yes"</span>)</span>
+<span id="cb70-2"><a href="#cb70-2"></a>titanic.raw<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(titanic.raw<span class="sc">$</span>Sex, <span class="at">ref =</span> <span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1576,12 +1776,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li>Creamos la tabla de contingencia</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>tabla_cont <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic.raw<span class="sc">$</span>Sex, titanic.raw<span class="sc">$</span>Survived)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>tabla_cont <span class="ot">&lt;-</span> <span class="fu">table</span>(titanic.raw<span class="sc">$</span>Sex, titanic.raw<span class="sc">$</span>Survived)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column fragment" style="width:45%;">
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>tabla_cont</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>tabla_cont</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
           Yes   No
@@ -1598,12 +1798,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li>Calculamos el OR</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>oddratio <span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(tabla_cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>oddratio <span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(tabla_cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column fragment" style="width:45%;">
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>oddratio </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>oddratio </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1628,7 +1828,7 @@ odds ratio
 <div class="column" style="width:45%;">
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>oddratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>oddratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1663,7 +1863,1066 @@ odds ratio
 <div>
 <ul>
 <li class="fragment"><p>Hasta el momento nos hemos enfocado a los casos donde comparamos las medias entre dos grupos.</p></li>
-<li class="fragment"><p>El Análisis de Varianza, desarrollado por Fisher a inicios del siglo 20</p></li>
+<li class="fragment"><p>Pero es más común el evaluar distintos tratamientos al mismo tiempo, como ya vimos en el módulo 2 del curso.</p></li>
+<li class="fragment"><p>Para ello, contamos con el ANOVA, desarrollado por el estadístico Ronald Fisher a inicios del siglo 20, y que sin duda es el método estadístico más usado hoy en día.</p></li>
+<li class="fragment"><p>Su nombre puede ser confuso. <span class="fragment">El objetivo de un ANOVA es el de determinar la existencia de diferencias entre las medias aritméticas de las muestras representativas de <span class="math inline">\(n\)</span> poblaciones (o en términos más precisos, tratamientos).</span></p></li>
+</ul>
+</div>
+</section>
+<section id="supuestos-del-anova" class="slide level2 smaller">
+<h2>Supuestos del ANOVA</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p>Independencia de los datos: conseguida mediante una correcta randomización y definición del experimento.</p></li>
+<li class="fragment"><p>Homogeneidad de las varianzas: la varianza entre los tratamientos es la misma.</p></li>
+<li class="fragment"><p><strong>Normalidad</strong>: <span class="fragment">pero, ¿de qué exactamente?</span></p></li>
+</ol>
+<ul>
+<li class="fragment"><p>Siempre ha existido una confusión de este supuesto. Cómo vimos antes, la normalidad es un requisito para conducir pruebas t, y lo es también para el ANOVA.</p></li>
+<li class="fragment"><p>Muchos libros de texto y otros recursos, mencionan que los datos de cada tratamiento deben ser normalmente distribuidos para llevar a cabo un ANOVA. <span class="fragment">Esto es cierto e impráctico a la vez.</span></p></li>
+<li class="fragment"><p>Mencionamos que como mínimo deberíamos contar con 3 repeticiones por tratamiento. <span class="fragment">Pero, ¿son 3 repeticiones suficientes para alcanzar la normalidad?</span></p></li>
+<li class="fragment"><p>Es común el sugerir el llevar a cabo una prueba de normalidad antes de llevar a cabo un ANOVA, pero esto tiene varios problemas que supongo no te han dicho antes:</p>
+<ul>
+<li class="fragment"><p>Cada tratamiento tiene su propia media, en caso de medias muy distantes entre sí, la prueba puede fallar.</p></li>
+<li class="fragment"><p>En su lugar, podrías correr una prueba por cada tratamiento. Esto solo funciona con un considerable número de observaciones/tratamiento (3 no son suficientes).</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="supuestos-del-anova-1" class="slide level2 smaller" data-visibility="uncounted">
+<h2>Supuestos del ANOVA</h2>
+<div>
+<ul>
+<li class="fragment"><p>Esta confusión nos puede llevar a soluciones erróneas como transformar datos, borrar outliers o utilizar pruebas no paramétricas innecesariamente.</p></li>
+<li class="fragment"><p>Entonces, ¿<strong>normalidad</strong> de qué?</p></li>
+<li class="fragment"><p>De los residuales estandarizados!… <span class="fragment">¿Qué es un residual?</span></p>
+<ul>
+<li class="fragment"><p>Un residual es la diferencia entre una observación y su predicción</p></li>
+<li class="fragment"><p>Un residual estandarizado resulta de la división del residual para la raíz cuadrada de la predicción</p></li>
+<li class="fragment"><p>La distribución muestral de los residuales estandarizados tiene media 0 y desviación estándar 1</p></li>
+</ul></li>
+<li class="fragment"><p>Y es sobre esta distribución que los valores críticos del ANOVA (valores F) son calculados. Es decir, estos no dependen enteramente de los datos originales, por lo tanto los datos originales no tienen que ser necesariamente normalmente distribuidos.</p></li>
+<li class="fragment"><p>Pero, ¿por qué la confusión? <span class="fragment">Solo cuando el número de observaciones es lo suficientemente grande (y ya sabemos que distribución tiene la media muestral cuando el número incrementa), se tiene la certeza que los residuales serán normalmente distribuidos.</span></p></li>
+<li class="fragment"><p>En resumen, es mejor chequear la normalidad después que realizamos el ANOVA.</p></li>
+</ul>
+</div>
+</section>
+<section id="el-dataset-de-recursos-por-depredación" class="slide level2">
+<h2>El dataset de recursos por depredación</h2>
+
+<img data-src="images/frog.jpg" class="r-stretch quarto-figure-center"><div class="footer">
+<p>Imagen tomada por <a href="https://pixabay.com/users/12019-12019/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=69813" target="_blank">David Mark</a> de <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=69813" target="_blank">Pixabay</a></p>
+</div>
+</section>
+<section id="el-dataset-de-recursos-por-depredación-1" class="slide level2 smaller" data-visibility="uncounted">
+<h2>El dataset de recursos por depredación</h2>
+<div>
+<ul>
+<li class="fragment"><p>Los datos que usaremos en esta y otras secciones corresponden a un experimento del <a href="https://www.jstor.org/stable/23436298" target="_blank">Prof.&nbsp;Justin C. Touchon</a> acerca de la interacción entre predadores y recursos.</p></li>
+<li class="fragment"><p>El experimento consistió de múltiples tanques (mesocosmos) dispuestos al aire libre en Gamboa, Panamá. Los investigadores tenían por objetivo el saber como la variación en la incubación de huevos de la rana arbórea de ojos rojos podría afectar su desarrollo hasta la metamorfosis bajo varias combinaciones de recursos y predadores.</p></li>
+<li class="fragment"><p>Los tratamientos fueron los siguientes:</p>
+<ul>
+<li class="fragment"><p>Edad de incubación: Temprana (<code>E</code>: 4 días después de la oviposición) o tardía (<code>L</code>: 6 días después de la oviposición).</p></li>
+<li class="fragment"><p>Predadores: control (<code>C</code>), no letal (<code>NL</code>: larvas de libélula enjauladas) y letal (<code>L</code>: larvas de libélula libres)</p></li>
+<li class="fragment"><p>Recursos: bajo (<code>Lo</code>: 0.75 g) o alto (<code>Hi</code>: 1.5 g) de comida suministrados cada 5 días.</p></li>
+</ul></li>
+<li class="fragment"><p>Los mesocosmos fueron colocados en 8 bloques de 12 tanques cada uno.</p></li>
+<li class="fragment"><p>El experimento inició con 50 renacuajos por tanque y terminó cuando todos los renacuajos alcanzaron la metamorfosis, o murieron.</p></li>
+</ul>
+</div>
+</section>
+<section id="el-dataset-de-recursos-por-depredación-2" class="slide level2 smaller" data-visibility="uncounted">
+<h2>El dataset de recursos por depredación</h2>
+<div>
+<ul>
+<li class="fragment"><p>Variables de respuesta:</p>
+<ul>
+<li class="fragment"><p>Edad de metaformosis contada desde el día de oviposición (<code>Age.DPO</code>).</p></li>
+<li class="fragment"><p>Edad de salida del agua (<code>Age.FromEmergence</code>)</p></li>
+<li class="fragment"><p>Longitud nariz-cloaca al emerger (<code>SVL.initial</code>)</p></li>
+<li class="fragment"><p>Longitud de la cola al emerger (<code>Tail.initial</code>)</p></li>
+<li class="fragment"><p>Longitud nariz-cloaca al término de la reabsorción de la cola (<code>SVL.final</code>)</p></li>
+<li class="fragment"><p>Peso al término de la reabsorción de la cola (<code>Mass.final</code>)</p></li>
+<li class="fragment"><p>Número de días requeridos por cada metamorfo para reabsorber completamente la cola (<code>Resorb.days</code>)</p></li>
+</ul></li>
+<li class="fragment"><p>18 tanques conteniendo predadores no letales fueron descartados debido al brote de una enfermedad.</p></li>
+<li class="fragment"><p><strong>NOTA:</strong> el dataset original de Touchon contiene alrededor de 2500 observaciones. Sin embargo, para poder usar los datos bajo los supuestos del ANOVA es necesario reducirlos a las medias aritméticas de cada tratamiento por cuanto se tratan de pseudo repeticiones. Esta reducción ya está hecha en el archivo “touchon.csv” disponible con el <a href="https://mmorenozam.github.io/est-apl-uce-2023-website/materiales.html" target="_blank">resto de materiales extras del curso.</a></p></li>
+</ul>
+</div>
+</section>
+<section id="anova-de-una-vía" class="slide level2 smaller">
+<h2>ANOVA de una vía</h2>
+<div>
+<ul>
+<li class="fragment"><p>ANOVA de una vía se refiere cuando tenemos más de dos tratamientos que están definidos por un solo factor a la vez.</p></li>
+<li class="fragment"><p>Usando los datos del Prof.&nbsp;Touchon, vamos a ilustrar el caso del ANOVA de una vía. Para ello, vamos a considerar lo siguiente</p>
+<ul>
+<li class="fragment"><p>Supongamos que estamos interesados en saber si existe alguna diferencia entre la edad de salida del agua <code>Age.FromEmergence</code> determinada por los predadores:</p></li>
+<li class="fragment"><p>Los niveles del factor predadores son:</p>
+<ul>
+<li class="fragment"><p>Predadores no letales <code>NL</code></p></li>
+<li class="fragment"><p>Predadores letales <code>L</code></p></li>
+<li class="fragment"><p>Control (sin predadores) <code>C</code></p></li>
+</ul></li>
+</ul></li>
+<li class="fragment"><p>La <span class="math inline">\(H_0\)</span> en todo ANOVA es simplemente que no existe diferencia entre <span class="math inline">\(n\)</span> tratamientos, y la <span class="math inline">\(H_a\)</span> es que al menos uno de los tratamientos tiene una media distinta.</p></li>
+</ul>
+</div>
+</section>
+<section id="anova-en-r" class="slide level2">
+<h2>ANOVA en R</h2>
+<div>
+<ul>
+<li class="fragment"><p>Existen dos formas de llevar a cabo ANOVA en R:</p>
+<ol type="1">
+<li class="fragment"><p>Crear un modelo lineal con la función <code>lm</code> y luego llevar a cabo el ANOVA con la función <code>anova</code> sobre el objeto producto de <code>lm</code>.</p></li>
+<li class="fragment"><p>Aplicar directamente la función <code>aov</code> sobre nuestros datos.</p></li>
+</ol></li>
+<li class="fragment"><p>Ambas funciones (<code>lm</code> y <code>aov</code>) tienen la misma sintaxis. <span class="fragment">Personalmente prefiero la primera opción.</span></p></li>
+<li class="fragment"><p>Adicionalmente, la librería <code>car</code> ofrece la función <code>Anova</code>. El resultado de ambas es prácticamente el mismo para la mayoría de modelos. <span class="fragment">Sin embargo, personalmente prefiero <code>Anova</code> ya que permite realizar correcciones cuando tenemos datos no balanceados.</span></p></li>
+</ul>
+</div>
+</section>
+<section id="anova-de-una-vía-en-r" class="slide level2">
+<h2>ANOVA de una vía en R</h2>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p>Opción 1</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb79" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb79-2"><a href="#cb79-2"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb79-3"><a href="#cb79-3"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Age.FromEmergence <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb79-4"><a href="#cb79-4"></a><span class="fu">Anova</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<p>Opción 2</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb80" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb80-2"><a href="#cb80-2"></a>anova1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Age.FromEmergence <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb80-3"><a href="#cb80-3"></a><span class="fu">summary</span>(anova1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type II tests)
+
+Response: Age.FromEmergence
+          Sum Sq Df F value    Pr(&gt;F)    
+Pred        9467  2  10.442 9.986e-05 ***
+Residuals  33999 75                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+Pred         2   9467    4733   10.44 9.99e-05 ***
+Residuals   75  33999     453                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalidad-de-los-datos-residuales" class="slide level2">
+<h2>Normalidad de los datos (residuales)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb83" data-code-line-numbers="4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb83-2"><a href="#cb83-2"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb83-3"><a href="#cb83-3"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Age.FromEmergence <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb83-4"><a href="#cb83-4"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb83-5"><a href="#cb83-5"></a><span class="fu">plot</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normalidad-de-los-datos-residuales-1" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
+<h2>Normalidad de los datos (residuales)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb84-2"><a href="#cb84-2"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb84-3"><a href="#cb84-3"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Age.FromEmergence <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb84-4"><a href="#cb84-4"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb84-5"><a href="#cb84-5"></a><span class="fu">plot</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-55-1.png" width="576" class="r-stretch quarto-figure-center"></section>
+<section id="normalidad-de-los-datos-residuales-2" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
+<h2>Normalidad de los datos (residuales)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb85" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb85-2"><a href="#cb85-2"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb85-3"><a href="#cb85-3"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Age.FromEmergence) <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb85-4"><a href="#cb85-4"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb85-5"><a href="#cb85-5"></a><span class="fu">plot</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normalidad-de-los-datos-residuales-3" class="slide level2" data-visibility="uncounted" data-autoanimate="true">
+<h2>Normalidad de los datos (residuales)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb86-2"><a href="#cb86-2"></a>ranas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"touchon.csv"</span>)</span>
+<span id="cb86-3"><a href="#cb86-3"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Age.FromEmergence) <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span>
+<span id="cb86-4"><a href="#cb86-4"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb86-5"><a href="#cb86-5"></a><span class="fu">plot</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-57-1.png" width="576" class="r-stretch quarto-figure-center"></section>
+<section id="prueba-formal-de-normalidad" class="slide level2">
+<h2>Prueba formal de normalidad</h2>
+<div>
+<ul>
+<li class="fragment"><p>Como vimos, después de aplicar la transformación logarítmica el gráfico Q-Q mejoró considerablemente.</p></li>
+<li class="fragment"><p>Para estar seguros, podemos correr un test formal sobre los residuales del modelo con la ayuda de la librería <code>olsrr</code> mediante su función <code>ols_test_normality</code>.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">library</span>(olsrr)</span>
+<span id="cb87-2"><a href="#cb87-2"></a><span class="fu">ols_test_normality</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-----------------------------------------------
+       Test             Statistic       pvalue  
+-----------------------------------------------
+Shapiro-Wilk              0.9802         0.2645 
+Kolmogorov-Smirnov        0.0893         0.5625 
+Cramer-von Mises          8.6738         0.0000 
+Anderson-Darling          0.5447         0.1566 
+-----------------------------------------------</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="prueba-formal-de-normalidad-1" class="slide level2" data-visibility="uncounted">
+<h2>Prueba formal de normalidad</h2>
+<div>
+<ul>
+<li class="fragment">O también podemos calcular la prueba de Shapiro-Wilk con funciones base de R</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>residuales <span class="ot">&lt;-</span> <span class="fu">resid</span>(lm2)</span>
+<span id="cb89-2"><a href="#cb89-2"></a><span class="fu">shapiro.test</span>(residuales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuales
+W = 0.98017, p-value = 0.2645</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="homogeneidad-de-las-varianzas-en-anova" class="slide level2">
+<h2>Homogeneidad de las varianzas en ANOVA</h2>
+<div>
+<ul>
+<li class="fragment"><p>La prueba más usada para chequear la homogeneidad de varianzas de un ANOVA es la de Levene.</p></li>
+<li class="fragment"><p>Para ello utilizaremos la función <code>leveneTest</code> de la librería <code>car</code>. Podemos usar esta función directamente sobre los datos con la misma sintaxis de <code>lm</code>, o sobre el objeto <code>lm2</code> en el que anteriormente almacenamos el resultado del modelo lineal con la transformación.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">leveneTest</span>(lm2, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = "mean")
+      Df F value  Pr(&gt;F)  
+group  2  3.0464 0.05345 .
+      75                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="anova-de-una-vía-en-r-continuación" class="slide level2">
+<h2>ANOVA de una vía en R (continuación)</h2>
+<div>
+<ul>
+<li class="fragment">Así, una vez que hemos transformado para obtener normalidad en los residuales y chequeado la homogeneidad de varianzas, es tiempo de hecharle un vistazo al resultado del ANOVA:</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">Anova</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type II tests)
+
+Response: log(Age.FromEmergence)
+          Sum Sq Df F value    Pr(&gt;F)    
+Pred       9.710  2  12.389 2.244e-05 ***
+Residuals 29.392 75                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Por tanto, podemos concluir que al menos uno de los tratamientos es distinto (aceptamos la <span class="math inline">\(H_a\)</span> y rechazamos la <span class="math inline">\(H_0\)</span>)</li>
+</ul>
+</div>
+</section>
+<section id="qué-tan-distintos" class="slide level2 smaller">
+<h2>¿Qué tan distintos?</h2>
+<div>
+<ul>
+<li class="fragment"><p>Preguntas naturales seguidas de estos resultados son: ¿qué tan distintos son los tratamientos entre sí?, ¿puedo acaso ordernarlos de mayor a menor?, ¿existen pares de tratamientos que son iguales?</p></li>
+<li class="fragment"><p>Podemos comenzar con una ayuda visual (que pudo bien haber sido parte de nuestro AED)</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Código</a></li><li><a href="#tabset-1-2">Gráfico</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb95-2"><a href="#cb95-2"></a><span class="fu">qplot</span>(Pred, Age.FromEmergence,</span>
+<span id="cb95-3"><a href="#cb95-3"></a>      <span class="at">colour =</span> Pred,</span>
+<span id="cb95-4"><a href="#cb95-4"></a>      <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">"boxplot"</span>, <span class="st">"jitter"</span>),</span>
+<span id="cb95-5"><a href="#cb95-5"></a>      <span class="at">data =</span> ranas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-63-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparaciones-múltiples" class="slide level2">
+<h2>Comparaciones múltiples</h2>
+<div>
+<ul>
+<li class="fragment"><p>Los métodos de comparaciones múltiples nos ayudan a responder estas preguntas.</p></li>
+<li class="fragment"><p>Los más usados son:</p>
+<ul>
+<li class="fragment"><p>HSD Tukey (<em>Honestly significant difference</em>): lleva a cabo todos los pares de comparaciones posibles entre los niveles de un factor.</p></li>
+<li class="fragment"><p>Prueba de Dunnett: Compara los niveles únicamente con respecto al nivel control dentro del factor.</p></li>
+</ul></li>
+<li class="fragment"><p>Son conocidos como pruebas o comparaciones <em>post-hoc</em>.</p></li>
+<li class="fragment"><p>En R, la manera más sencilla de llevar a cabo comparaciones múltiples es mediante las librerías <code>emmeans</code> y <code>multcomp</code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="comparaciones-múltiples-1" class="slide level2 smaller">
+<h2>Comparaciones múltiples</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb96" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb96-2"><a href="#cb96-2"></a>ph1 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm2, <span class="at">specs =</span> <span class="st">"Pred"</span>)</span>
+<span id="cb96-3"><a href="#cb96-3"></a><span class="fu">summary</span>(ph1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparaciones-múltiples-2" class="slide level2 smaller" data-visibility="uncounted" data-autoanimate="true">
+<h2>Comparaciones múltiples</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb97-2"><a href="#cb97-2"></a>ph1 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm2, <span class="at">specs =</span> <span class="st">"Pred"</span>)</span>
+<span id="cb97-3"><a href="#cb97-3"></a><span class="fu">summary</span>(ph1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Pred emmean    SE df lower.CL upper.CL
+ C      3.53 0.111 75     3.31     3.75
+ L      2.76 0.111 75     2.54     2.98
+ NL     3.26 0.167 75     2.93     3.60
+
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 </code></pre>
+</div>
+</div>
+</section>
+<section id="comparaciones-múltiples-3" class="slide level2 smaller" data-visibility="uncounted" data-autoanimate="true">
+<h2>Comparaciones múltiples</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb99" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a>ph1 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm2, <span class="at">specs =</span> <span class="st">"Pred"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb99-2"><a href="#cb99-2"></a><span class="fu">summary</span>(ph1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparaciones-múltiples-4" class="slide level2 smaller" data-visibility="uncounted" data-autoanimate="true">
+<h2>Comparaciones múltiples</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>ph1 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm2, <span class="at">specs =</span> <span class="st">"Pred"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb100-2"><a href="#cb100-2"></a><span class="fu">summary</span>(ph1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Pred response   SE df lower.CL upper.CL
+ C        34.2 3.79 75     27.4     42.6
+ L        15.8 1.75 75     12.7     19.7
+ NL       26.2 4.38 75     18.8     36.5
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale </code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Y terminamos con <code>multcomp</code></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># multcomp necesita una librería extra llamada multcompView</span></span>
+<span id="cb102-2"><a href="#cb102-2"></a><span class="co"># No olvides instalar multcompView antes de correr este código</span></span>
+<span id="cb102-3"><a href="#cb102-3"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb102-4"><a href="#cb102-4"></a><span class="fu">cld</span>(ph1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Pred response   SE df lower.CL upper.CL .group
+ L        15.8 1.75 75     12.7     19.7  1    
+ NL       26.2 4.38 75     18.8     36.5   2   
+ C        34.2 3.79 75     27.4     42.6   2   
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+Tests are performed on the log scale 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="antes-de-continuar-3" class="slide level2">
+<h2>Antes de continuar</h2>
+<div>
+<ul>
+<li class="fragment">En este punto, antes de continuar hagamos uso nuevamente de la librería <code>flextable</code> para exportar nuestras tablas a Word.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb104-2"><a href="#cb104-2"></a>tabla_anova <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">Anova</span>(lm2))</span>
+<span id="cb104-3"><a href="#cb104-3"></a>tabla_tukey <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">cld</span>(ph1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-88d8b11c{}.cl-88cd67a8{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-88d244e4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88d25ab0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88d25ab1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88d25aba{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-88d8b11c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-88d25ab0"><p class="cl-88d244e4"><span class="cl-88cd67a8">Sum Sq</span></p></th><th class="cl-88d25ab0"><p class="cl-88d244e4"><span class="cl-88cd67a8">Df</span></p></th><th class="cl-88d25ab0"><p class="cl-88d244e4"><span class="cl-88cd67a8">F value</span></p></th><th class="cl-88d25ab0"><p class="cl-88d244e4"><span class="cl-88cd67a8">Pr(&gt;F)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-88d25ab1"><p class="cl-88d244e4"><span class="cl-88cd67a8">9.710023</span></p></td><td class="cl-88d25ab1"><p class="cl-88d244e4"><span class="cl-88cd67a8">2</span></p></td><td class="cl-88d25ab1"><p class="cl-88d244e4"><span class="cl-88cd67a8">12.38871</span></p></td><td class="cl-88d25ab1"><p class="cl-88d244e4"><span class="cl-88cd67a8">0.00002244333</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88d25aba"><p class="cl-88d244e4"><span class="cl-88cd67a8">29.391750</span></p></td><td class="cl-88d25aba"><p class="cl-88d244e4"><span class="cl-88cd67a8">75</span></p></td><td class="cl-88d25aba"><p class="cl-88d244e4"><span class="cl-88cd67a8"></span></p></td><td class="cl-88d25aba"><p class="cl-88d244e4"><span class="cl-88cd67a8"></span></p></td></tr></tbody></table></div>
+</div>
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-88e5c8e8{}.cl-88dc6730{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-88dfef0e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88dfef18{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88e00d40{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e00d4a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e00d54{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e00d55{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e00d56{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e00d57{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-88e5c8e8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-88e00d40"><p class="cl-88dfef0e"><span class="cl-88dc6730">Pred</span></p></th><th class="cl-88e00d4a"><p class="cl-88dfef18"><span class="cl-88dc6730">response</span></p></th><th class="cl-88e00d4a"><p class="cl-88dfef18"><span class="cl-88dc6730">SE</span></p></th><th class="cl-88e00d4a"><p class="cl-88dfef18"><span class="cl-88dc6730">df</span></p></th><th class="cl-88e00d4a"><p class="cl-88dfef18"><span class="cl-88dc6730">lower.CL</span></p></th><th class="cl-88e00d4a"><p class="cl-88dfef18"><span class="cl-88dc6730">upper.CL</span></p></th><th class="cl-88e00d40"><p class="cl-88dfef0e"><span class="cl-88dc6730">.group</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-88e00d54"><p class="cl-88dfef0e"><span class="cl-88dc6730">L</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">15.79873</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">1.748353</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">75</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">12.67301</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">19.69537</span></p></td><td class="cl-88e00d54"><p class="cl-88dfef0e"><span class="cl-88dc6730"> 1 </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88e00d54"><p class="cl-88dfef0e"><span class="cl-88dc6730">NL</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">26.17238</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">4.378862</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">75</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">18.75403</span></p></td><td class="cl-88e00d55"><p class="cl-88dfef18"><span class="cl-88dc6730">36.52512</span></p></td><td class="cl-88e00d54"><p class="cl-88dfef0e"><span class="cl-88dc6730">  2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88e00d56"><p class="cl-88dfef0e"><span class="cl-88dc6730">C</span></p></td><td class="cl-88e00d57"><p class="cl-88dfef18"><span class="cl-88dc6730">34.20777</span></p></td><td class="cl-88e00d57"><p class="cl-88dfef18"><span class="cl-88dc6730">3.785575</span></p></td><td class="cl-88e00d57"><p class="cl-88dfef18"><span class="cl-88dc6730">75</span></p></td><td class="cl-88e00d57"><p class="cl-88dfef18"><span class="cl-88dc6730">27.43991</span></p></td><td class="cl-88e00d57"><p class="cl-88dfef18"><span class="cl-88dc6730">42.64488</span></p></td><td class="cl-88e00d56"><p class="cl-88dfef0e"><span class="cl-88dc6730">  2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</section>
+<section id="antes-de-continuar-4" class="slide level2" data-visibility="uncounted">
+<h2>Antes de continuar</h2>
+<ul>
+<li>En este punto, antes de continuar hagamos uso nuevamente de la librería <code>flextable</code> para exportar nuestras tablas a Word.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb105-2"><a href="#cb105-2"></a>tabla_anova <span class="ot">&lt;-</span> <span class="fu">colformat_double</span>(<span class="fu">flextable</span>(<span class="fu">Anova</span>(lm2)), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb105-3"><a href="#cb105-3"></a>tabla_tukey <span class="ot">&lt;-</span> <span class="fu">colformat_double</span>(<span class="fu">flextable</span>(<span class="fu">cld</span>(ph1)), <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-890f1f9a{}.cl-890590ec{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8909ae48{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8909c0d6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8909c0e0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8909c0e1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-890f1f9a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-8909c0d6"><p class="cl-8909ae48"><span class="cl-890590ec">Sum Sq</span></p></th><th class="cl-8909c0d6"><p class="cl-8909ae48"><span class="cl-890590ec">Df</span></p></th><th class="cl-8909c0d6"><p class="cl-8909ae48"><span class="cl-890590ec">F value</span></p></th><th class="cl-8909c0d6"><p class="cl-8909ae48"><span class="cl-890590ec">Pr(&gt;F)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8909c0e0"><p class="cl-8909ae48"><span class="cl-890590ec">9.710</span></p></td><td class="cl-8909c0e0"><p class="cl-8909ae48"><span class="cl-890590ec">2.000</span></p></td><td class="cl-8909c0e0"><p class="cl-8909ae48"><span class="cl-890590ec">12.389</span></p></td><td class="cl-8909c0e0"><p class="cl-8909ae48"><span class="cl-890590ec">0.000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8909c0e1"><p class="cl-8909ae48"><span class="cl-890590ec">29.392</span></p></td><td class="cl-8909c0e1"><p class="cl-8909ae48"><span class="cl-890590ec">75.000</span></p></td><td class="cl-8909c0e1"><p class="cl-8909ae48"><span class="cl-890590ec"></span></p></td><td class="cl-8909c0e1"><p class="cl-8909ae48"><span class="cl-890590ec"></span></p></td></tr></tbody></table></div>
+</div>
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-891c451c{}.cl-8912b452{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-891669da{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-891669e4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89167dbc{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89167dbd{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89167dc6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89167dd0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89167dd1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89167dda{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-891c451c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-89167dbc"><p class="cl-891669da"><span class="cl-8912b452">Pred</span></p></th><th class="cl-89167dbd"><p class="cl-891669e4"><span class="cl-8912b452">response</span></p></th><th class="cl-89167dbd"><p class="cl-891669e4"><span class="cl-8912b452">SE</span></p></th><th class="cl-89167dbd"><p class="cl-891669e4"><span class="cl-8912b452">df</span></p></th><th class="cl-89167dbd"><p class="cl-891669e4"><span class="cl-8912b452">lower.CL</span></p></th><th class="cl-89167dbd"><p class="cl-891669e4"><span class="cl-8912b452">upper.CL</span></p></th><th class="cl-89167dbc"><p class="cl-891669da"><span class="cl-8912b452">.group</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-89167dc6"><p class="cl-891669da"><span class="cl-8912b452">L</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">15.799</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">1.748</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">75.000</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">12.673</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">19.695</span></p></td><td class="cl-89167dc6"><p class="cl-891669da"><span class="cl-8912b452"> 1 </span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89167dc6"><p class="cl-891669da"><span class="cl-8912b452">NL</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">26.172</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">4.379</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">75.000</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">18.754</span></p></td><td class="cl-89167dd0"><p class="cl-891669e4"><span class="cl-8912b452">36.525</span></p></td><td class="cl-89167dc6"><p class="cl-891669da"><span class="cl-8912b452">  2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89167dd1"><p class="cl-891669da"><span class="cl-8912b452">C</span></p></td><td class="cl-89167dda"><p class="cl-891669e4"><span class="cl-8912b452">34.208</span></p></td><td class="cl-89167dda"><p class="cl-891669e4"><span class="cl-8912b452">3.786</span></p></td><td class="cl-89167dda"><p class="cl-891669e4"><span class="cl-8912b452">75.000</span></p></td><td class="cl-89167dda"><p class="cl-891669e4"><span class="cl-8912b452">27.440</span></p></td><td class="cl-89167dda"><p class="cl-891669e4"><span class="cl-8912b452">42.645</span></p></td><td class="cl-89167dd1"><p class="cl-891669da"><span class="cl-8912b452">  2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</section>
+<section id="antes-de-continuar-5" class="slide level2" data-visibility="uncounted">
+<h2>Antes de continuar</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb106-2"><a href="#cb106-2"></a>tabla_anova <span class="ot">&lt;-</span> <span class="fu">colformat_double</span>(<span class="fu">flextable</span>(<span class="fu">Anova</span>(lm2)), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb106-3"><a href="#cb106-3"></a>tabla_tukey <span class="ot">&lt;-</span> <span class="fu">colformat_double</span>(<span class="fu">flextable</span>(<span class="fu">cld</span>(ph1)), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb106-4"><a href="#cb106-4"></a></span>
+<span id="cb106-5"><a href="#cb106-5"></a><span class="fu">save_as_docx</span>(<span class="st">"Tabla Anova"</span> <span class="ot">=</span> tabla_anova, <span class="st">"Tabla Anova"</span> <span class="ot">=</span> tabla_tukey,</span>
+<span id="cb106-6"><a href="#cb106-6"></a>             <span class="at">path =</span> <span class="st">"C:/Users/mmore/Documents/cursos_uce_2023/modulos/uce2023-modulo4/anova.docx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="images/anova_tabla.png" class="r-stretch quarto-figure-center"></section>
+<section id="anova-de-un-diseño-desbalanceado" class="slide level2 smaller">
+<h2>ANOVA de un diseño desbalanceado</h2>
+<div>
+<ul>
+<li class="fragment"><p>Recordemos que 18 tanques con predadores no letales fueron descartados debido al brote de una enfermedad.</p></li>
+<li class="fragment"><p>El diseño original de Touchon era balanceado. Al perderse unidades experimentales, el diseño se le puede denominar como desbalanceado. En otras palabras, el desbalance es la pérdida de observaciones.</p></li>
+<li class="fragment"><p>La mayoría de métodos estadísticos requieren ser corregidos ante observaciones perdidas para poder tener la certeza de que los estimados que obtenemos no sean sesgados.</p></li>
+<li class="fragment"><p>Sin adentrarnos en mayor detalle, uno de los componentes de la tabla de ANOVA es la suma de cuadrados. Existen tres tipos de suma de cuadrados: I, II y III.</p></li>
+<li class="fragment"><p>En breve, las sumas II y III se aconseja sean usadas cuando existen interacciones en el ANOVA.</p></li>
+<li class="fragment"><p>En R, la función <code>aov</code> calcula la suma de cuadrados tipo I. Este tipo de suma no es conveniente ante la presencia de desbalance de los datos.</p></li>
+<li class="fragment"><p>En cambio, la función <code>Anova</code> de la librería <code>car</code>, usa por default el tipo II que es precisamente el recomendado usar ante la presencia de desbalance.</p></li>
+<li class="fragment"><p>En resumen, sí. Hemos utilizado hasta el momento la corrección adecuada para estos datos.</p></li>
+</ul>
+</div>
+</section>
+<section id="ejercicio-4.8" class="slide level2">
+<h2>Ejercicio 4.8</h2>
+<ul>
+<li>Lleva a cabo un ANOVA con todos sus pasos para la variable <code>Resorb.days</code> de los datos de Touchon</li>
+</ul>
+</section>
+<section id="prueba-de-kruskal-wallis" class="slide level2 smaller">
+<h2>Prueba de Kruskal-Wallis</h2>
+<div>
+<ul>
+<li class="fragment"><p>La prueba de Kruskal-Wallis es la alternativa no paramétrica al ANOVA de una vía.</p></li>
+<li class="fragment"><p>Puede extenderse al ANOVA de múltiples vías reorganizando el diseño experimental.</p></li>
+<li class="fragment"><p>Similar a las pruebas de Wilcoxon, se basa en encontrar diferencias de las medianas en lugar de las medias y su poder ese menor.</p></li>
+<li class="fragment"><p>Para ilustrar este ejemplo, tomemos la variable <code>Age.DPO</code> del estudio de Touchon y veamos si existen diferencias con respecto al tratamiento de predador <code>Pred</code>. <code>Age.DPO</code> sin transformaciones no cumple con los supuestos del ANOVA.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">kruskal.test</span>(Age.DPO <span class="sc">~</span> Pred, <span class="at">data =</span> ranas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  Age.DPO by Pred
+Kruskal-Wallis chi-squared = 22.255, df = 2, p-value = 1.47e-05</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="comparaciones-múltiples-con-kruskal-wallis" class="slide level2 smaller">
+<h2>Comparaciones múltiples con Kruskal-Wallis</h2>
+<div>
+<ul>
+<li class="fragment"><p>Con KW también podemos llevar a cabo comparaciones múltiples.</p></li>
+<li class="fragment"><p>En R base contamos con la función <code>pairwise.wilcox.test</code> que lleva a cabo comparaciones por pares mediante el método de Wilcoxon.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a><span class="fu">pairwise.wilcox.test</span>(ranas<span class="sc">$</span>Age.DPO, ranas<span class="sc">$</span>Pred, <span class="at">p.adjust.method =</span> <span class="st">"BH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+
+data:  ranas$Age.DPO and ranas$Pred 
+
+   C       L    
+L  9.8e-06 -    
+NL 0.303   0.019
+
+P value adjustment method: BH </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-4.9" class="slide level2">
+<h2>Ejercicio 4.9</h2>
+<ul>
+<li>Encuentra si existen diferencias en la longitud nariz-cloaca al emerger (<code>SVL.initial</code>) con respecto a los predadores <code>Pred</code> en los datos de Touchon. ¿Qué método es factible usar?, ¿ANOVA de una vía o Kruskal-Wallis?</li>
+</ul>
+</section>
+<section id="antes-de-continuar-6" class="slide level2 smaller">
+<h2>Antes de continuar</h2>
+<div>
+<ul>
+<li class="fragment"><p>Con respecto a los DDE que vimos en el módulo 2, el ANOVA de una vía corresponde directamente al análisis que llevaríamos a cabo para un DCA.</p></li>
+<li class="fragment"><p>Para extender el modelo a un DBCA de una vía basta el incorporar otro efecto principal en el modelo:</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Age.FromEmergence) <span class="sc">~</span> Pred <span class="sc">+</span> <span class="fu">as.factor</span>(Block), <span class="at">data =</span> ranas)</span>
+<span id="cb111-2"><a href="#cb111-2"></a><span class="fu">Anova</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type II tests)
+
+Response: log(Age.FromEmergence)
+                  Sum Sq Df F value    Pr(&gt;F)    
+Pred              9.8369  2 13.9265 8.526e-06 ***
+as.factor(Block)  5.3760  7  2.1746   0.04728 *  
+Residuals        24.0158 68                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment"><p>La interpretación de este tipo de ANOVA se enfoca en el valor p de los tratamientos.</p></li>
+<li class="fragment"><p>No tiene mucho sentido el interpretar el valor p del factor de bloque ya que está ahí para controlar fuentes de variación.</p></li>
+<li class="fragment"><p>De manera similar, cuando extendamos el ANOVA a más factores, el análisis del DBCA factorial se consigue añadiendo un efecto principal para el bloque.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="antes-de-continuar-7" class="slide level2 smaller" data-visibility="uncounted">
+<h2>Antes de continuar</h2>
+<div>
+<ul>
+<li class="fragment">Para llevar a cabo las pruebas de comparaciones múltiples, seguimos el mismo procedimiento que describimos anteriormente ignorando el efecto del bloque.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a>ph_dbca <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm3, <span class="at">specs =</span> <span class="st">"Pred"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb113-2"><a href="#cb113-2"></a><span class="fu">cld</span>(ph_dbca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Pred response   SE df lower.CL upper.CL .group
+ L        15.8 1.66 68     12.8     19.5  1    
+ NL       27.6 4.89 68     19.4     39.3   2   
+ C        34.2 3.59 68     27.7     42.2   2   
+
+Results are averaged over the levels of: Block 
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+Tests are performed on the log scale 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="anova-de-múltiples-vías" class="slide level2 smaller">
+<h2>ANOVA de múltiples vías</h2>
+<div>
+<ul>
+<li class="fragment"><p>El ANOVA puede extenderse para analizar dos o más factores a la vez. Su nombre entonces varía dependiendo de cuántos factores analicemos, así: ANOVA de dos vías (2 factores), ANOVA de tres vías (3 factores) …</p></li>
+<li class="fragment"><p>En la práctica es recomendable diseñar experimentos hasta máximo 3 factores:</p>
+<ul>
+<li class="fragment"><p>A más factores, más costosa la investigación</p></li>
+<li class="fragment"><p>A más factores, sus interacciones son más difíciles de interpretar</p></li>
+<li class="fragment"><p>Es posible inclusive que tengamos resultados sin sentido (interacciones innecesarias)</p></li>
+</ul></li>
+<li class="fragment"><p>¿Qué son las interacciones?</p>
+<ul>
+<li class="fragment"><p>Una interacción se refiere cuando los niveles de un factor podrían depender de los niveles de otro.</p></li>
+<li class="fragment"><p>Por ejemplo, con los datos de las ranas, podríamos imaginar que en la ausencia de predadores, tener recursos altos o bajos podría influenciar el tiempo que tomaron los renacuajos en culminar la metamorfosis. Es decir, si hay predadores presentes, podría darse el caso de que las presas se escondan y coman menos influenciando así ese tiempo.</p></li>
+<li class="fragment"><p>Así, podríamos saber si el effecto de los recursos son influenciados ante la presencia de predadores</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="anova-de-múltiples-vías-en-r" class="slide level2 smaller">
+<h2>ANOVA de múltiples vías en R</h2>
+<div>
+<ul>
+<li class="fragment"><p>Vamos a usar nuevamente los datos de Touchon, la variable de respuesta es la edad de metamorfosis <code>Age.DPO</code> y los factores la presencia de predadores <code>Pred</code> y los recursos <code>Res</code>.</p></li>
+<li class="fragment"><p>Para llevar a cabo un ANOVA de múltiples vías en R podemos usar la siguiente sintaxis: <code>Factor1*Factor2</code></p></li>
+<li class="fragment"><p>Para ahorrarnos tiempo, supóngamos que ya corrimos un primer ANOVA, y encontramos que usando el logaritmo de <code>Age.DPO</code> podemos normalizar los residuales. <span class="fragment">Pero nos encontramos con esto:</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Age.DPO) <span class="sc">~</span> Pred<span class="sc">*</span>Res, <span class="at">data =</span> ranas)</span>
+<span id="cb115-2"><a href="#cb115-2"></a><span class="fu">leveneTest</span>(lm4, <span class="at">center =</span> <span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = "mean")
+      Df F value    Pr(&gt;F)    
+group  5  6.0253 0.0001033 ***
+      72                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment"><p><strong>¡La homogeneidad de las varianzas no se cumple!</strong> 😱</p></li>
+<li class="fragment"><p>Este es un escenario común y que quizá nos haga realmente considerar usar Kruskal-Wallis.</p></li>
+<li class="fragment"><p>Sin embargo, hay una opción! <span class="fragment">La función <code>Anova</code> de la librería <code>car</code> ofrece el argumento <code>white.adjust</code> que permite obtener un ANOVA corregido para <strong>heterodasticidad</strong> por el método de White-Huber.</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="anova-de-múltiples-vías-en-r-1" class="slide level2 smaller scrollable">
+<h2>ANOVA de múltiples vías en R</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a><span class="fu">Anova</span>(lm4, <span class="at">white.adjust =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table (Type II tests)
+
+Response: log(Age.DPO)
+          Df       F    Pr(&gt;F)    
+Pred       2 19.3707 1.857e-07 ***
+Res        1 28.4555 1.059e-06 ***
+Pred:Res   2  3.7678   0.02778 *  
+Residuals 72                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div>
+<ul>
+<li class="fragment"><p>Como vemos, existen dos efectos principales (predador y recursos) y su interacción (predador <span class="math inline">\(\times\)</span> recursos).</p></li>
+<li class="fragment"><p>Aquí encontramos que la interacción es significativa. Esto lo podemos interpretar así: “existe evidencia estadística significativa para concluir que la edad de metamorfosis de los renacuajos depende de una interacción entre la alimentación y la presencia de predadores”.</p></li>
+<li class="fragment"><p>Y ¿por qué solo interpretamos la interacción?:</p>
+<ul>
+<li class="fragment"><p>Cuando la interacción y los efectos principales son significativos, basta con interpretar la primera.</p></li>
+<li class="fragment"><p>Cuando la interacción es significativa y uno de los efectos principales no lo es, hay que ir en más detalle del por qué.</p></li>
+</ul></li>
+<li class="fragment"><p>Pero no sabemos en que dirección sucede esta afectacción (¿reduce o incrementa el tiempo de metaformosis?).</p></li>
+<li class="fragment"><p>Para responder estas pregunta, nos ayudaremos de las comparaciones múltiples.</p></li>
+<li class="fragment"><p>Pero antes, le daremos un vistazo a otra herramienta comúnmente usada: los gráficos de interacción.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="gráficos-de-interacción" class="slide level2">
+<h2>Gráficos de interacción</h2>
+<div>
+<ul>
+<li class="fragment"><p>Es una forma de representar las predicciones lineales de un modelo con respecto a los niveles de sus factores.</p></li>
+<li class="fragment"><p>Es recomendable usarlos con factores de hasta 3 niveles y en ANOVAS de dos factores.</p></li>
+<li class="fragment"><p>Existen diversas formas de realizarlos en R:</p>
+<ul>
+<li class="fragment"><p>Librería base de R</p></li>
+<li class="fragment"><p>Construirlos desde cero con <code>ggplot2</code></p></li>
+<li class="fragment"><p>Usar librerías accesorias de <code>ggplot2</code>. <span class="fragment">Para este caso, usaremos esta opción con la librería <code>interactions</code></span></p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="gráficos-de-interacción-en-r" class="slide level2 scrollable">
+<h2>Gráficos de interacción en R</h2>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">library</span>(interactions)</span>
+<span id="cb119-2"><a href="#cb119-2"></a>graf_inter1 <span class="ot">&lt;-</span> <span class="fu">cat_plot</span>(</span>
+<span id="cb119-3"><a href="#cb119-3"></a>  lm4,</span>
+<span id="cb119-4"><a href="#cb119-4"></a>  <span class="at">pred =</span> Pred,</span>
+<span id="cb119-5"><a href="#cb119-5"></a>  <span class="at">modx =</span> Res,</span>
+<span id="cb119-6"><a href="#cb119-6"></a>  <span class="at">geom =</span> <span class="st">"line"</span>,</span>
+<span id="cb119-7"><a href="#cb119-7"></a>  <span class="at">data =</span> ranas</span>
+<span id="cb119-8"><a href="#cb119-8"></a>)</span>
+<span id="cb119-9"><a href="#cb119-9"></a>graf_inter1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-81-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="fu">library</span>(interactions)</span>
+<span id="cb120-2"><a href="#cb120-2"></a>graf_inter2 <span class="ot">&lt;-</span> <span class="fu">cat_plot</span>(</span>
+<span id="cb120-3"><a href="#cb120-3"></a>  lm4,</span>
+<span id="cb120-4"><a href="#cb120-4"></a>  <span class="at">pred =</span> Res,</span>
+<span id="cb120-5"><a href="#cb120-5"></a>  <span class="at">modx =</span> Pred,</span>
+<span id="cb120-6"><a href="#cb120-6"></a>  <span class="at">geom =</span> <span class="st">"line"</span>,</span>
+<span id="cb120-7"><a href="#cb120-7"></a>  <span class="at">data =</span> ranas</span>
+<span id="cb120-8"><a href="#cb120-8"></a>)</span>
+<span id="cb120-9"><a href="#cb120-9"></a>graf_inter2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-83-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparaciones-múltiples-5" class="slide level2 smaller scrollable">
+<h2>Comparaciones múltiples</h2>
+<div>
+<ul>
+<li class="fragment"><p>Las comparaciones múltiples en ANOVAS de múltiples vías son ligeramente más complejos.</p></li>
+<li class="fragment"><p>La forma de llevarlas a cabo es ver a cada uno de los factores a la vez a lo largo de los niveles del otro.</p></li>
+<li class="fragment"><p>En <code>emmeans</code> esto se hace indicando en el argumento <code>specs</code> el factor del que queremos ver las diferencias y con el argumento <code>by</code> el factor sobre el cual veremos a lo largo las differencias del primero.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>ph2 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm4, <span class="at">specs =</span> <span class="st">"Pred"</span>, <span class="at">by =</span> <span class="st">"Res"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb121-2"><a href="#cb121-2"></a><span class="fu">pairs</span>(ph2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Res = Hi:
+ contrast ratio     SE df null t.ratio p.value
+ C / L    1.224 0.0985 72    1   2.512  0.0374
+ C / NL   1.055 0.1088 72    1   0.515  0.8644
+ L / NL   0.861 0.0889 72    1  -1.445  0.3234
+
+Res = Lo:
+ contrast ratio     SE df null t.ratio p.value
+ C / L    1.625 0.1308 72    1   6.030  &lt;.0001
+ C / NL   1.167 0.1205 72    1   1.500  0.2968
+ L / NL   0.718 0.0741 72    1  -3.204  0.0057
+
+P value adjustment: tukey method for comparing a family of 3 estimates 
+Tests are performed on the log scale </code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a>ph3 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm4, <span class="at">specs =</span> <span class="st">"Res"</span>, <span class="at">by =</span> <span class="st">"Pred"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb123-2"><a href="#cb123-2"></a><span class="fu">pairs</span>(ph3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pred = C:
+ contrast ratio     SE df null t.ratio p.value
+ Hi / Lo  0.644 0.0518 72    1  -5.470  &lt;.0001
+
+Pred = L:
+ contrast ratio     SE df null t.ratio p.value
+ Hi / Lo  0.855 0.0688 72    1  -1.951  0.0549
+
+Pred = NL:
+ contrast ratio     SE df null t.ratio p.value
+ Hi / Lo  0.713 0.0867 72    1  -2.782  0.0069
+
+Tests are performed on the log scale </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="comparaciones-múltiples-6" class="slide level2 smaller scrollable" data-visibility="uncounted">
+<h2>Comparaciones múltiples</h2>
+<div>
+<ul>
+<li class="fragment"><p>Esta forma de llevar a cabo las comparaciones es fácil de implementar con dos factores.</p></li>
+<li class="fragment"><p>Pero, sabemos que nos gustan las tablas con números indicando los grupos!</p></li>
+<li class="fragment"><p>Para llevar a cabo esto, tenemos que emplear un “truco”:</p>
+<ul>
+<li class="fragment"><p>Re-estructurar el diseño para que tenga la forma de un ANOVA de una vía. <span class="fragment">Esta es de hecho la forma en que también conseguimos el llevar a cabo pruebas de Kruskal-Wallis sobre diseños originalmente factoriales.</span></p></li>
+<li class="fragment"><p>Correr un nuevo modelo sobre este diseño</p></li>
+<li class="fragment"><p>Seguir el proceso de comparaciones múltiples que ya vimos para el ANOVA de una vía.</p></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a><span class="co"># creamos una variable dummy que combine los niveles de los factores</span></span>
+<span id="cb125-2"><a href="#cb125-2"></a>ranas<span class="sc">$</span>tratamiento <span class="ot">&lt;-</span> <span class="fu">paste</span>(ranas<span class="sc">$</span>Pred, ranas<span class="sc">$</span>Res, <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb125-3"><a href="#cb125-3"></a></span>
+<span id="cb125-4"><a href="#cb125-4"></a><span class="co"># corremos el modelo nuevamente con esta variable como predictor</span></span>
+<span id="cb125-5"><a href="#cb125-5"></a>lm5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Age.DPO) <span class="sc">~</span> tratamiento, <span class="at">data =</span> ranas)</span>
+<span id="cb125-6"><a href="#cb125-6"></a></span>
+<span id="cb125-7"><a href="#cb125-7"></a><span class="co"># usamos emmeans para calcular las comparaciones HSD Tukey</span></span>
+<span id="cb125-8"><a href="#cb125-8"></a>ph3 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lm5, <span class="at">specs =</span> <span class="st">"tratamiento"</span>, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb125-9"><a href="#cb125-9"></a></span>
+<span id="cb125-10"><a href="#cb125-10"></a><span class="co"># creamos la tabla con nuestras amados números indicando el grupo</span></span>
+<span id="cb125-11"><a href="#cb125-11"></a><span class="fu">cld</span>(ph3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> tratamiento response   SE df lower.CL upper.CL .group
+ L-Hi            47.1 2.68 72     42.0     52.7  1    
+ NL-Hi           54.7 4.70 72     46.0     64.9  12   
+ L-Lo            55.1 3.14 72     49.2     61.7  1    
+ C-Hi            57.6 3.28 72     51.5     64.6  12   
+ NL-Lo           76.7 6.60 72     64.6     91.0   23  
+ C-Lo            89.5 5.10 72     79.9    100.3    3  
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+P value adjustment: tukey method for comparing a family of 6 estimates 
+Tests are performed on the log scale 
+significance level used: alpha = 0.05 
+NOTE: If two or more means share the same grouping symbol,
+      then we cannot show them to be different.
+      But we also did not show them to be the same. </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios-4.10" class="slide level2">
+<h2>Ejercicios 4.10</h2>
+<ul>
+<li><p>Lleva a cabo un ANOVA de dos vías para las variables <code>Resorb.days</code> y los factores <code>Pred</code> y <code>Res</code>. La pregunta a investigar es saber si existe una interacción entre la presencia de predadores a distintos niveles de recursos que afecte el tiempo de reabsorción de la cola en los renacuajos de ranas arbóreas de ojos rojos.</p></li>
+<li><p>A pesar de que el modelo para <code>Resorb.day</code> que acabas de hacer cumple con los supuestos del ANOVA, solo por aprendizaje, conduce una prueba de Kruskal-Wallis usando los mismos factores.</p></li>
+<li><p>¿Cómo implementarías un DBCA factorial con estos datos?</p></li>
+</ul>
+</section></section>
+<section>
+<section id="regresión-lineal" class="title-slide slide level1 center">
+<h1>Regresión lineal</h1>
+
+</section>
+<section id="introducción-1" class="slide level2 smaller">
+<h2>Introducción</h2>
+<div>
+<ul>
+<li class="fragment"><p>Otro modelo estadístico ampliamente usado es la regresión lineal.</p></li>
+<li class="fragment"><p>Se diferencia del ANOVA al considerar un predictor continuo (no un factor categórico).</p></li>
+<li class="fragment"><p>Los supuestos de la regresión lineal son:</p>
+<ul>
+<li class="fragment"><p>Existencia de una relación lineal entre las variables continuas objeto de la regresión</p></li>
+<li class="fragment"><p>Normalidad de los residuales</p></li>
+<li class="fragment"><p>Que no exista multicolinearidad (en el caso de regresión múltiple)</p></li>
+<li class="fragment"><p>Que no exista auto correlación (que las observaciones no dependan una de otra dentro de una misma variable)</p></li>
+<li class="fragment"><p>Homogeneidad de la varianza de los residuales</p></li>
+</ul></li>
+<li class="fragment"><p>Contrario al ANOVA, no existen correcciones o métodos alternativos cuando las transformaciones fallan.</p></li>
+<li class="fragment"><p>Por esto, lo que se recomienda hacer es mencionar todos los detalles de la conducción del modelo. <span class="fragment">Cosa que rara vez pasa.</span></p></li>
+<li class="fragment"><p>En regresión lineal es quizá en el método que más se abusa del remover outliers.</p></li>
+</ul>
+</div>
+</section>
+<section id="regresión-lineal-en-r" class="slide level2 smaller scrollable">
+<h2>Regresión lineal en R</h2>
+<div>
+<ul>
+<li class="fragment"><p>Usando los datos de Touchon, podríamos preguntarnos si el tamaño de las ranas al final de la metamorfosis <code>SVL.final</code> está influenciado por la edad en finalizar la metamorfosis <code>Age.DPO</code>.</p></li>
+<li class="fragment"><p>Para minimizar el incumplimiento de los supuestos de la regresión lineal, hagamos de cuenta que con anterioridad encontramos que usando el logaritmo en ambas normaliza al menos los residuales.</p></li>
+<li class="fragment"><p>Esta regresión lineal sería de la siguiente forma:</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>lm6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(SVL.final) <span class="sc">~</span> <span class="fu">log</span>(Age.DPO), <span class="at">data =</span> ranas)</span>
+<span id="cb127-2"><a href="#cb127-2"></a><span class="fu">summary</span>(lm6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = log(SVL.final) ~ log(Age.DPO), data = ranas)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.182298 -0.049070  0.000516  0.038342  0.159057 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3.44001    0.09211  37.345  &lt; 2e-16 ***
+log(Age.DPO) -0.11624    0.02232  -5.208 1.58e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.06244 on 76 degrees of freedom
+Multiple R-squared:  0.263, Adjusted R-squared:  0.2533 
+F-statistic: 27.12 on 1 and 76 DF,  p-value: 1.581e-06</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Ahora démole un vistazo a los diagnósticos:</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-90-1.png" width="576"></p>
+</div>
+</div>
+<div>
+<ol type="1">
+<li class="fragment"><p><strong>Residuales vs.&nbsp;Valores Ajustados</strong>: Sirve para chequear la relación lineal entre las variables.</p></li>
+<li class="fragment"><p><strong>Gráfico Q-Q</strong>: Sirve para chequear la normalidad de los residuales.</p></li>
+<li class="fragment"><p><strong>Escala Localización</strong>: Sirve para chequear la homocedasticidad (homogeneidad de las variables).</p></li>
+<li class="fragment"><p><strong>Residuales y apalancamiento</strong>: Sirve para identificar outliers</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="interpretación-de-la-regresión-lineal" class="slide level2 smaller scrollable">
+<h2>Interpretación de la regresión lineal</h2>
+<div class="fragment">
+<p><span class="math display">\[
+y = mx + b
+\]</span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = log(SVL.final) ~ log(Age.DPO), data = ranas)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.182298 -0.049070  0.000516  0.038342  0.159057 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3.44001    0.09211  37.345  &lt; 2e-16 ***
+log(Age.DPO) -0.11624    0.02232  -5.208 1.58e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.06244 on 76 degrees of freedom
+Multiple R-squared:  0.263, Adjusted R-squared:  0.2533 
+F-statistic: 27.12 on 1 and 76 DF,  p-value: 1.581e-06</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Por cada incremento en una unidad del logaritmo de <code>Age.DPO</code>, tenemos una unidad en descenso del logaritmo de <code>SVL.final</code></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a><span class="fu">ggplot</span>(ranas, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(Age.DPO), <span class="at">y =</span> <span class="fu">log</span>(SVL.final))) <span class="sc">+</span></span>
+<span id="cb130-2"><a href="#cb130-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb130-3"><a href="#cb130-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-92-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="antes-de-terminar" class="title-slide slide level1 center">
+<h1>¡Antes de terminar!</h1>
+
+</section>
+<section id="el-mágico-r2" class="slide level2">
+<h2>El mágico <span class="math inline">\(R^2\)</span></h2>
+
+<img data-src="images/vieja.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="el-mágico-r2-1" class="slide level2 smaller" data-visibility="uncounted">
+<h2>El mágico <span class="math inline">\(R^2\)</span></h2>
+<div>
+<ul>
+<li class="fragment"><p>Quizá muchos hayan escuchado que un <span class="math inline">\(R^2\)</span> cercano a 1 es “ideal” cuando realizamos una regresión lineal.</p></li>
+<li class="fragment"><p>Recuerdo incluso haber sido indoctrinado acerca de márgenes para un buen <span class="math inline">\(R^2\)</span> (algo así como que por encima del 80% es “bueno”, mayor al 90% es excelente y 100% es el Nirvana).</p></li>
+<li class="fragment"><p>En breve, <span class="math inline">\(R^2\)</span> <strong>NO ES NINGUNA DE LAS SIGUIENTES COSAS</strong>:</p>
+<ul>
+<li class="fragment"><p>Una métrica de bondad de ajuste<span class="fragment">: no nos dice si el modelo se ajusta bien a los datos.</span></p></li>
+<li class="fragment"><p>Una métrica del error de predicción<span class="fragment">: no mide para nada que tan bueno es el modelo para predecir futuras observaciones.</span></p></li>
+<li class="fragment"><p>Una métrica que permita comparar modelos usando variables transformadas<span class="fragment">: es común jugar a transformar los datos para ver de que manera se puede inflarlo hacia el santo grial.</span></p></li>
+<li class="fragment"><p>Una métrica que permita que tan bien una variable explica otra<span class="fragment">: en el ejemplo que vimos, y en toda regresión lineal, si cambiamos el predictor por respuesta y viceversa, tendremos exactamente el mismo <span class="math inline">\(R^2\)</span></span></p></li>
+</ul></li>
+<li class="fragment"><p><span class="math inline">\(R^2\)</span> es simplemente una medida de la cantidad de variación que un modelo específico explica. <span class="fragment">¿Tiene alguna utilidad práctica?</span> <span class="fragment">no lo sé, en 10 años como estadístico no lo he usado nunca, al menos no, voluntariamente…</span></p></li>
+</ul>
+</div>
+</section>
+<section id="el-mágico-r2-2" class="slide level2 smaller" data-visibility="uncounted">
+<h2>El mágico <span class="math inline">\(R^2\)</span></h2>
+<div class="fragment">
+<ul>
+<li>Lo que visto es carnicerías de datos por inflar <span class="math inline">\(R^2\)</span> debido a esta mala interpretación que no se sabe su origen exacto (<a href="https://psycnet.apa.org/record/1946-01733-001" target="_blank">pero quizá aquí uno de tantos culpables perdidos en la historia</a>).</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Acá les dejo unos cuantos recursos que pueden revisar en más detalle si les interesa:</p>
+<ul>
+<li><p><a href="https://www.jstor.org/stable/2111095?casa_token=F0Om3ZPkjE4AAAAA%3AvR0lcSXuNHICl21EYDAoXSerVhME0AO_ZvkzayO1vYT6R3cCM9Ooy6-P9Wa6AEZN1Gcm960rjGFM9JVA4AJc4lm-nswzYJxdtiKr03H4tbVMRW16e35TlA" target="_blank">El paper “How not to lie with Statistics: Avoiding common mistakes in Quantitative Political Science”</a> Un artículo extenso pero que contiene una sección dedicada a desmitificar esta mala práctica.</p></li>
+<li><p><a href="https://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/10/lecture-10.pdf" target="_blank">Las notas de la clase del Prof.&nbsp;Cosma Shalizi de la Universidad Carnegie Mellon</a> donde hermosamente destruye los mitos en torno al <span class="math inline">\(R^2\)</span> citando fórmulas y principios estadísticos.</p></li>
+<li><p><a href="https://data.library.virginia.edu/is-r-squared-useless/" target="_blank">Un blog de Clay Ford, consultor estadístico de la Universidad de Virginia</a> donde demuestra con R que valores de <span class="math inline">\(R^2\)</span> cercanos a 0 no necesariamente implican un mal modelo, ni valores cercanos 1 son indicativo de modelos destacados.</p></li>
+</ul></li>
 </ul>
 </div>
 </section></section>
@@ -1708,7 +2967,7 @@ odds ratio
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":false,"theme":"whiteboard","boardmarkerWidth":4},
 'pointer': {"key":"q","color":"red","pointerSize":16,"alwaysVisible":false},
 'smaller': false,
@@ -1952,9 +3211,23 @@ odds ratio
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -2002,7 +3275,7 @@ odds ratio
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];

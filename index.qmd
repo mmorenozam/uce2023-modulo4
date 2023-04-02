@@ -1,14 +1,12 @@
 ---
 title: "Estadística aplicada con R"
-subtitle: "Módulo 4: Principios de Estadística"
+subtitle: "Módulo 4: Herramientas Estadísticas"
 title-slide-attributes:
   data-background-image: images/logo.jpeg
   data-background-size: contain
   data-background-opacity: "0.2"
 author: 
   - name: Mauricio Moreno, PhD
-    affiliations:
-      - Científico Bioestadístico en Bayer AG
 logo: images/logo.jpeg
 format: 
   revealjs:
@@ -22,7 +20,6 @@ format:
       buttons: false
     revealjs-plugins:
       - pointer
-editor: visual
 ---
 
 # Definiciones básicas
@@ -169,11 +166,11 @@ hist(data, col='steelblue', main='Histograma del ancho de caparazones')
 
 **Media aritmética**
 
-| Símbolo     | ¿Qué es?                                        | ¿Sabemos qué es?         |
-|----------|-------------------------------------|----------------------|
-| $\overline{X}$   | Media aritmética de la muestra                  | Calculada de los datos   |
-| $\mu$       | Verdadera media aritmética de la población      | Casi nunca es conocida   |
-| $\hat{\mu}$ | Estimado de la media aritmética de la población | Sí, identica a $\overline{X}$ |
+| Símbolo        | ¿Qué es?                                        | ¿Sabemos qué es?              |
+|---------|----------------------------------|----------------------|
+| $\overline{X}$ | Media aritmética de la muestra                  | Calculada de los datos        |
+| $\mu$          | Verdadera media aritmética de la población      | Casi nunca es conocida        |
+| $\hat{\mu}$    | Estimado de la media aritmética de la población | Sí, identica a $\overline{X}$ |
 
 $$
 \overline{X} = \frac{1}{n}\sum^{n}_{i=1}\left(X_i\right)
@@ -184,7 +181,7 @@ $$
 **Desviación estándar**
 
 | Símbolo        | ¿Qué es?                                          | ¿Sabemos qué es?           |
-|----------|------------------------------------|----------------------|
+|---------|------------------------------------|--------------------|
 | $s$            | Desviación estándar de la muestra                 | Calculada de los datos     |
 | $\sigma$       | Verdadera desviación estándar de la población     | Casi nunca es conocida     |
 | $\hat{\sigma}$ | Estimado de la deviación estándar de la población | Sí, pero no es igual a $s$ |
@@ -203,15 +200,14 @@ $$
 :::
 :::
 
-
 ## Estimación de parámetros de población {visibility="uncounted"}
 
 **Varianza**
 
-| Símbolo        | ¿Qué es?                                          | ¿Sabemos qué es?           |
-|----------|------------------------------------|----------------------|
-| $s^2$            | Varianza de la muestra                 | Calculada de los datos     |
-| $\sigma^2$       | Verdadera varianza de la población     | Casi nunca es conocida     |
+| Símbolo          | ¿Qué es?                                | ¿Sabemos qué es?             |
+|---------|------------------------------|-----------------------|
+| $s^2$            | Varianza de la muestra                  | Calculada de los datos       |
+| $\sigma^2$       | Verdadera varianza de la población      | Casi nunca es conocida       |
 | $\hat{\sigma}^2$ | Estimado de la varianza de la población | Sí, pero no es igual a $s^2$ |
 
 ::: columns
@@ -228,17 +224,14 @@ $$
 :::
 :::
 
-
 ## Intervalos de confianza {.smaller}
 
 ::: incremental
-
 -   Cómo hemos visto, los estimados de las verdaderas $\mu$ y $\sigma$ ($\hat{\mu}$ y $\hat{\sigma}$) provienen de distribuciones de muestreo, y como tales, inherentemente poseen cierto grado de incertidumbre.
 
 -   Los intervalos de confianza son medidas que nos permiten tener una idea de esa incertidumbre.
 
 -   En el estudio de la distribución normal estándar tenemos el conocimiento que existe un 95% de chances que una cantidad normalmente distribuida colectada al azar, estará distante de la media aritmética entre $\pm$ 1.96 desviaciones estándar.
-
 :::
 
 . . .
@@ -248,9 +241,7 @@ $$
 $$
 
 ::: incremental
-
--   Y se interpreta como: **con un 95\% de confianza, podemos esperar que la media aritmética verdadera de la población de interés se encuentra contenida entre...**
-
+-   Y se interpreta como: **con un 95% de confianza, podemos esperar que la media aritmética verdadera de la población de interés se encuentra contenida entre...**
 :::
 
 . . .
@@ -262,13 +253,11 @@ $$
 ## Intervalos de confianza {.smaller visibility="uncounted"}
 
 ::: incremental
-
 -   Sin embargo, como mencionamos $\sigma$ es casi nunca conocido, y es necesario hacer una corrección a la fórmula anterior. La distribución normal trabaja bien baja la presunción de un numero grande de observaciones.
 
 -   En su lugar, en 1908 el estadístico [Gosset](https://en.wikipedia.org/wiki/Student%27s_t-distribution){target="_blank"} parametrizó una distribución para muestras pequeñas que asemeja a la normal. Con el tiempo, esta distribución adoptó el nombre de *Student*.
 
 -   Y es precisamente que la fórmula anterior es corregida con la distribución de Student y así poder calcular intervalos de confianza para muestras pequeñas usando $s$ en lugar de $\sigma$:
-
 :::
 
 . . .
@@ -278,23 +267,19 @@ $$
 $$
 
 ::: incremental
-
 -   Donde el valor $t_{n-1,\alpha/2}$ refiere a:
 
     -   $n-1$: los grados de libertad, igual al número de observaciones $n$ de la muestra, menos 1
-    
-    -   $\alpha$: es el nivel de significancia (probabilidad de obtener un resultado erróneo por azar).
-    
-    -   Estos valores en el pasado se encontraban tabulados en libros de texto, hoy contamos con R!
 
+    -   $\alpha$: es el nivel de significancia (probabilidad de obtener un resultado erróneo por azar).
+
+    -   Estos valores en el pasado se encontraban tabulados en libros de texto, hoy contamos con R!
 :::
 
 ## Intervalos de confianza {visibility="uncounted" autoanimate="true"}
 
 ::: incremental
-
--   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$ 
-
+-   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$
 :::
 
 . . .
@@ -312,10 +297,7 @@ li <- x - (t95*s/(n-1))                  # límite inferior del IC95
 
 ## Intervalos de confianza {autoanimate="true" visibility="uncounted"}
 
-
--   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$ 
-
-
+-   Regresando al ejemplo del IQ, supongamos que medimos al azar el IQ de 5 personas y deseamos calcular el $\text{IC}_{95}$
 
 ```{r echo=T, eval=T, error=T}
 #| code-line-numbers: "8"
@@ -341,7 +323,7 @@ glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
 
 . . .
 
--   Calcula la media aritmética $\overline{X}$, la desviación de estándar $s$ y el intervalo de confianza al 95\% de la concentración de glucosa en estos ratones. Sin recurrir a pruebas estadísticas formales, ¿dirías que sus niveles de glucosa están dentro de lo normal o hay razón para desconfiar que son hiperglucémicos?
+-   Calcula la media aritmética $\overline{X}$, la desviación de estándar $s$ y el intervalo de confianza al 95% de la concentración de glucosa en estos ratones. Sin recurrir a pruebas estadísticas formales, ¿dirías que sus niveles de glucosa están dentro de lo normal o hay razón para desconfiar que son hiperglucémicos?
 
 -   Calcula el $\text{IC}_{95}$ sin usar la distribución de Student y nota la diferencia.
 
@@ -349,32 +331,28 @@ glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
 
 ## Hipótesis de investigación vs. hipótesis estadísticas {.smaller}
 
-::: incremental 
-
+::: incremental
 -   Una hipótesis de investigación gira alrededor del desarrollar una conclusión científica acerca de un tema de interés del investigador. Ejemplos: *el fumar causa cáncer*, *las vacunas causan/previenen enfermedades*.
 
     -   Es decir, pueden tener una naturaleza subjetiva, que expresan la pregunta del investigador de una manera general sin mayor descripción del ¿cómo? voy a probar o descartarla, ni ¿en qué extensión?.
 
--   Hipótesis estadísticas, por el contrario, deben ser matemáticamente precisas y basadas en las características de los datos que recolectemos con el fin de probar o descartar la hipótesis de investigación. 
+-   Hipótesis estadísticas, por el contrario, deben ser matemáticamente precisas y basadas en las características de los datos que recolectemos con el fin de probar o descartar la hipótesis de investigación.
 
-    -   Cómo es de esperar, el probar o descartar una hipótesis estadística será únicamente válida para la población sobre la cual una muestra fue tomada. 
+    -   Cómo es de esperar, el probar o descartar una hipótesis estadística será únicamente válida para la población sobre la cual una muestra fue tomada.
 
     -   Es ahí donde radica la importancia en definir la población sujeto de estudio de manera planificada con el objetivo de que cumpla tantos detalles sean necesarios de la hipótesis de investigación. Ejemplo, el modelo animal más usado es el ratón. Si bien es cierto constituye uno de los primeros pasos en el desarrollo de muchas investigaciones, los hallazgos en ratones NO pueden ser inmediatamente atribuibles a suceder en seres humanos.
-
 :::
-    
+
 ## Hipótesis nula y alternativa {.smaller}
 
 ::: incremental
-
 -   La formulación de hipótesis estadísticas puede reducirse a establer preguntas de investigación en forma de las hipótesis nula y alternativa.
 
 -   La más sencilla manera de formular esta dupla, es la siguiente. Supongamos que tenemos dos grupos experimentales para probar la eficiencia de un nuevo procedimiento quirúrgico. Un grupo de pacientes será sometido a la intervención tradicional (control), y el otro grupo al nuevo procedimiento (experimental).
 
     -   La hipótesis nula ($H_0$) establece que: no existe diferencia entre el grupo control y el grupo experimental,
-    
+
     -   Mientras que la hipótesis alternativa ($H_a$) establece que: sí existe differencia entre ambos.
-    
 :::
 
 . . .
@@ -385,14 +363,10 @@ H_0& : \mu_c = \mu_e& H_0& : \mu_c- \mu_e =0 \\
 H_a& : \mu_c \neq \mu_e& H_a& : \mu_c- \mu_e \neq 0
 \end{align}
 ```
-
-
 ## Tipos de errores
 
 ::: incremental
-
 -   Al llevar a cabo pruebas de hipótesis pueden ocurrir errores
-
 :::
 
 . . .
@@ -429,15 +403,12 @@ Las pruebas estadísticas dependen de la cantidad de variación y la diferencia 
 ## Poder de una prueba estadística
 
 ::: incremental
-
 -   El poder de una prueba estadística es la probabilidad de rechazar la hipótesis nula cuando esta es de hecho falsa.
 
 -   Se puede derivar de la tabla anterior
-
 :::
 
 . . .
-
 
 ```{r, results='asis'}
 dat <- data.frame(
@@ -457,54 +428,43 @@ cat(M)
 
 . . .
 
--   En la práctica, existen fórmulas cerradas para la determinación del número mínimo de observaciones para alcanzar un poder adecuado ($\ge$ 80\%).
-
+-   En la práctica, existen fórmulas cerradas para la determinación del número mínimo de observaciones para alcanzar un poder adecuado ($\ge$ 80%).
 
 ## Tamaño del efecto {.smaller}
 
 ::: incremental
-
 -   El tamaño del efecto ($\theta$) es un valor que por lo general es determinado por el investigador y que puede ser la diferencia de interés a detectar en una prueba estadística.
 
--   Por simplicidad, vamos a enfocarnos en el ejercicio de los ratones. Supongamos que el investigador está interesado en saber cual sería el número de ratones que necesitaría para con un 80\% de poder, encontrar una diferencia entre la media aritmética de su muestra y un valor que considera razonable chequear igual a 100 mg/dL. Este último valor viene a ser el $\theta$.
+-   Por simplicidad, vamos a enfocarnos en el ejercicio de los ratones. Supongamos que el investigador está interesado en saber cual sería el número de ratones que necesitaría para con un 80% de poder, encontrar una diferencia entre la media aritmética de su muestra y un valor que considera razonable chequear igual a 100 mg/dL. Este último valor viene a ser el $\theta$.
 
 -   Las hipótesis de esta prueba se verían así
-
 :::
 
 . . .
 
-
 ```{=tex}
 \begin{align}
 H_0& : \mu_c- \mu_r = \theta \\
 H_a& : \mu_c- \mu_r \neq \theta
 \end{align}
 ```
-
 ::: incremental
-
 -   Sin embargo, la pregunta del investigador aún está incompleta. [**A tu criterio, ¿qué falta?**]{.fragment}
 
 -   Al formular hipótesis, hemos considerado el caso más simple hasta el momento. Pero recordando la idea inicial del experimento de los ratones, la opción lógica sería preguntarnos ¿cuántos ratones necesitamos para estar seguros que la población sea hiperglucémica? (cuyo valor de glucosa en sangre esté por encima del de un ratón sano)
-
 :::
 
 ## Pruebas de dos colas
 
-
 ```{=tex}
 \begin{align}
 H_0& : \mu_c- \mu_r = \theta \\
 H_a& : \mu_c- \mu_r \neq \theta
 \end{align}
 ```
-
 ![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/dcolas.gif){fig-align="center" width="400"}
 
-
 ## Pruebas de una cola
-
 
 ```{=tex}
 \begin{align}
@@ -512,11 +472,9 @@ H_0& : \mu_c- \mu_r \le \theta \\
 H_a& : \mu_c- \mu_r > \theta
 \end{align}
 ```
-
 ![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/ucolagreat.gif){fig-align="center" width="400"}
 
 ## Pruebas de una cola {visibility="uncounted"}
-
 
 ```{=tex}
 \begin{align}
@@ -524,20 +482,16 @@ H_0& : \mu_c- \mu_r \ge \theta \\
 H_a& : \mu_c- \mu_r < \theta
 \end{align}
 ```
-
 ![Imagen tomada de [*UCLA: Advanced Research Computing*](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/){target="_blank"}](images/ucolaless.gif){fig-align="center" width="400"}
-
 
 ## Un ejemplo de análisis de poder
 
 ::: incremental
-
 -   Retomando el poder de una prueba estadística (aunque no es un objetivo de este curso), culminaremos esta sección ejemplificando un análisis de poder con nuestro ejemplo del IQ de una muestra de participantes de una determinada población.
 
 -   Sin entrar en mayor detalle, esto puede lograrse mediante el uso de la librería `pwr`
 
 -   El tamaño del efecto para análisis de poder tiene que ser estandarizado
-
 :::
 
 . . .
@@ -548,15 +502,12 @@ $$
 
 ::: footer
 Para mayor detalle del uso de `pwr` en análisis de poder, puedes acceder a [este recurso](https://med.und.edu/research/daccota/_files/pdfs/berdc_resource_pdfs/sample_size_r_module.pdf){target="_blank"}
-
 :::
 
-## Un ejemplo de análisis de poder{.smaller visibility="uncounted"}
+## Un ejemplo de análisis de poder {.smaller visibility="uncounted"}
 
 ::: incremental
-
 -   Acerca del IQ de la muestra de una población, supongamos que el investigador está interesado en saber el número de participantes necesarios para conducir un estudio donde se pueda demostrar que un valor de 100 en IQ esta dentro de la media aritmética del IQ de la población de donde se tomó la muestra.
-
 :::
 
 . . .
@@ -579,7 +530,7 @@ pwr.t.test(d = theta,
            alternative = "two.sided")
 ```
 
-## Un ejemplo de análisis de poder{visibility="uncounted"}
+## Un ejemplo de análisis de poder {visibility="uncounted"}
 
 ```{r echo=T, eval=T, error=T}
 library(pwr)
@@ -598,10 +549,9 @@ pwr.t.test(d = theta,
            alternative = "two.sided")
 ```
 
-
 ## Ejercicio 4.2
 
-A partir de los estadísticos de muestreo de la muestra de ratones del ejemplo anterior, ¿cuál sería el número de los mismos para en un futuro experimento llevar a cabo una prueba estadística con al menos 80\% de poder si el objetivo es demostrar que de hecho la media aritmética de esta línea de ratones está por encima del límite superior de 100 mg/dL de glucosa en sangre que se sabe poseen ratones saludables? 
+A partir de los estadísticos de muestreo de la muestra de ratones del ejemplo anterior, ¿cuál sería el número de los mismos para en un futuro experimento llevar a cabo una prueba estadística con al menos 80% de poder si el objetivo es demostrar que de hecho la media aritmética de esta línea de ratones está por encima del límite superior de 100 mg/dL de glucosa en sangre que se sabe poseen ratones saludables?
 
 ```{r echo=T, eval=F, error=T}
 glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
@@ -610,45 +560,70 @@ glc_rat <- c(108.7, 93.7, 52.7, 79.0, 74.7, 131.9, 99.5, 63.3, 98.6, 92.7)
 ## Valores críticos y el valor p
 
 ::: incremental
-
 -   Pero ¿cómo sabemos si una hipótesis es aceptada o rechazada?
 
 -   Regresando al concepto de los intervalos de confianza, los cuartiles de la distribución de Student calculados a un nivel de significancia $\alpha$ son valores críticos sobre los cuales se determina el rechazo o aceptación de la hipótesis nula.
 
 -   El valor p, describe que tan probable sería observar resultados de la prueba asumiendo que la hipótesis nula no hubiese sido rechazada. Por ello, a menores valores p, mayor la diferencia estadística con respecto a la hipótesis alternativa.
+:::
+
+## Antes de continuar
+
+![](images/cena.png){fig-align="center"}
+
+::: footer
+Imagen tomada de [aquí](https://arbor-analytics.com/post/2022-10-10-p-ing-in-the-woods-p-values-in-forest-science/){target="_blank"}
+:::
+
+## Antes de continuar {.smaller visibility="uncounted"}
+
+::: incremental
+-   El umbral de 0.05 es una convención arbitraria [creada por Fischer](https://www.bmj.com/rapid-response/2011/11/03/origin-5-p-value-threshold#:~:text=statistician%20RA%20Fisher%20in%201926%20%5B1%5D.){target="_blank"} en los inicios de la estadística moderna.
+
+-   Lastimosamente, se ha generalizado la idea de que por más mínima sea la diferencia con respecto a 0.05, esta representa la diferencia entre publicar o no (en el campo académico), entre lanzar o no un nuevo fármaco/producto al mercado (en la industria).
+
+-   En 2014, debido a un fallo de la [corte suprema de justicia de los Estados Unidos](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5017929/#:~:text=A%20statistically%20significant%20test%20result,that%20no%20effect%20was%20observed.){target="_blank"} que le dio la potestad a los inversionistas de farmaceúticas a demandarlas por fallar en reportar efectos secundarios de sus productos a pesar de haber sido hallados estadísticamente no significativos, la Asociación Americana de Estadística (ASA) se vio en la necesidad de definir más exhaustivamente el concepto del valor p.
+
+-   Entre las recomendaciones de la ASA, se enfatizó el dar mayor prioridad a la estimación de otros estadísticos complementarios al valor p, tales como intervalos de confianza u otros provenientes de la estadística Bayesiana (intervalos de credibilidad, factores de Bayes).
+
+-   Esta última (estadística Bayesiana), ofrece una interpretación más natural de la estadística al basarse en métricas de incertidumbre puras y no en números arbirtrarios como el valor p.
+
+-   En resumen, una investigación no es inútil si el valor p sobrepasa o está por debajo de 0.05 por cantidades pequeñas.
+:::
+
+## Antes de continuar {.smaller visibility="uncounted" .smaller}
+
+::: incremental
+-   En su lugar, en escenarios en que el valor p está alejado por una décima o varias centésimas de 0.05, los resultados deberían interpretarse como indeterminados para generalizar sobre la población objeto de estudio y específicos a las condiciones experimentales (análisis estadísticos, instrumentos de medición, etc) bajo las cuales fueron tomadas y modeladas las mediciones.
+
+-   En el contexto de los modelos estadísticos que veremos más adelante, esto ha derivado en un "temor" del investigador cuando los resultados no pasan los chequeos de los supuestos sobre los que estos modelos se cimentan. Sobre todo cuando el valor p dista de 0.05 por ínfimas cantidades.
+
+-   Esto puede llevar a malas prácticas científicas tales como: no reportar el resultado de los chequeos, blindar los datos, escoger "outliers" y removerlos y en el peor de los casos, manipular los datos para tratar de acomodar nuestros datos a estos chequeos.
+
+-   Todo lo que he mencionado, no solamente constituyen casos de mala conducta científica, sino lo que hoy en día se le conoce como *p hacking* (que se puede resumir a torturar los datos hasta que nos confiesen una verdad agradable a nuestros propósitos).
 
 :::
 
 # Pruebas estadísticas paramétricas
 
-## Antes de continuar
+## Datos para esta sección
 
 ::: incremental
-
 -   Para esta sección del curso usaremos algunas de las tablas de datos del libro [*Using R for Introductory Statistics*](https://www.routledge.com/Using-R-for-Introductory-Statistics/Verzani/p/book/9781466590731#:~:text=Resources%20Support%20Material-,Book%20Description,small%2C%20task%2Doriented%20steps.){target="_blank"}, como también de la librería `datarium`.
 
 -   Para ello, instalaremos las librerías de R: `UsingR` y `datarium`.
-
 :::
 
 . . .
-
 
 ```{r echo=T, eval=T, error=T}
 library(UsingR)
 library(datarium)
 ```
 
-::: incremental
-
--   En esta sección iniciaremos directamente con la conducción de las pruebas sin una formal evaluación de la normalidad de los datos. Más tarde veremos que algunas de las tablas de datos no están normalmente distribuidas 😉
-
-:::
-
 ## Pruebas t {.smaller}
 
 ::: incremental
-
 -   Las pruebas t son usadas para encontrar la diferencia entre dos medias aritméticas.
 
 -   La $H_0$ en estas pruebas es que las medias aritméticas son las mismas.
@@ -658,30 +633,223 @@ library(datarium)
 -   Existen tres tipos de pruebas t
 
     -   Pruebas t de una muestra
-    
+
     -   Pruebas t de muestras independientes
-    
+
     -   Pruebas t de muestras emparejadas
-    
--   Estas pruebas fueron desarrolladas bajo la suposición de la normalidad y de homogeneidad de las varianzas.
+
+-   Estas pruebas fueron desarrolladas bajo la suposición de la **normalidad** y de **homogeneidad de las varianzas**.
 
 -   De acuerdo a lo que hemos visto acerca del teorema del límite central, muestras grandes casi aseguran la normalidad.
 
 -   Cuando el número de observaciones en una muestra es pequeño, es recomendable llevar a cabo un test de normalidad para decidir si es posible llevar a cabo una prueba t o una de sus alternativas.
-
 :::
 
+## Normalidad de una muestra
+
+::: incremental
+-   Antes de llevar a cabo las pruebas t, hemos mencionado sus supuestos. Por ello, es aconsejable el siempre realizar estas pruebas antes de usarlas.
+
+-   Existen dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no
+
+    -   Indirectamente: gráfico Q-Q
+
+    -   Prueba formal de normalidad (ejemplo: Shapiro-Wilk)
+
+-   **En el caso del ANOVA**, es importante enfatizar que estas pruebas no necesariamente tienen que hacerse antes de la prueba, como ya veremos más adelante.
+:::
+
+## Gráfico Q-Q
+
+::: incremental
+-   El gráfico Q-Q es una prueba visual indirecta de la normalidad.
+
+-   Consiste en crear un gráfico de dispersión entre los valores observados de una muestra vs. los valores que deberían estos tener si siguieran una distribución normal.
+
+-   Mientras en el gráfico de dispersión los puntos más se distribuyan a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.
+
+-   Su desventaja es que es muy subjetivo, y a menudo requiere una prueba formal para poder confirmarlo.
+:::
+
+## Gráfico Q-Q {visibility="uncounted"}
+
+```{r echo=T, eval=F, error=T, fig.width=6, fig.align='center'}
+#| code-line-numbers: "1|2|3"
+set.seed(123)
+y <- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar
+qqnorm(y)                             # producimos el gráfico Q-Q
+```
+
+## Gráfico Q-Q {visibility="uncounted"}
+
+```{r echo=T, eval=T, error=T, fig.width=6, fig.align='center'}
+set.seed(123)
+y <- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar
+qqnorm(y)                             # producimos el gráfico Q-Q
+```
+
+## Prueba de normalidad Shapiro-Wilk
+
+::: incremental
+-   La $H_0$ de esta prueba (y del resto de pruebas formales de normalidad) es que un set de $n$ observaciones es normalmente distribuido.
+
+-   Otro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.
+
+-   Para ilustrar su uso, chequeemos la normalidad de los datos que simulamos anteriormente
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.width=6, fig.align='center'}
+shapiro.test(y)
+```
+
+## Prueba de homogeneidad de las varianzas {.smaller}
+
+::: incremental
+-   En el caso de comparaciones entre las medias de dos grupos, la homogeneidad de varianzas puede chequearse usando la prueba F.
+
+-   La prueba t de una muestra no requiere chequear este supuesto.
+
+-   Para ilustrar su uso, creemos otro vector con datos simulados. En este caso, un igual número de observaciones con la misma desviación estándar pero diferente media:
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.width=6, fig.align='center'}
+set.seed(123)
+x <- rnorm(n = 30, mean = 4, sd = 1)
+var.test(x, y)
+```
+
+## Supuestos en la práctica {.scrollable}
+
+::: incremental
+-   Usemos las pruebas con datos reales, esta vez con la tabla de datos `crime` de la librería `Using R`.
+
+-   Esta tabla de datos contiene registros de las tasas de crimen (# de reportes/100000 habitantes) en 50 estados en los Estados Unidos correspondiente a los años 1983 y 1993.
+
+-   Sin enfocarnos por el momento en que prueba t específica usaremos, limitémonos a chequear la normalidad y la homogeneidad de varianzas entre las tasas de crimen registradas en 1983 y 1993.
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+data(crime)
+```
+
+::: columns
+::: {.column .fragment width="50%"}
+Normalidad 1983
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1983)     
+```
+:::
+
+::: {.column .fragment width="50%"}
+Normalidad 1993
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1993)     
+```
+:::
+:::
+
+. . .
+
+Homogeneidad de las varianzas
+
+```{r echo=T, eval=T, error=T, fig.width=6, fig.align='center'}
+var.test(crime$y1983, crime$y1993)
+```
+
+![](images/calmarno.jpg){fig-align="center"}
+
+## Transformación de variables
+
+::: incremental
+-   A menudo nos encontraremos con conjuntos de observaciones que no cumplen uno o ninguno de los supuestos.
+
+-   Antes de considerar pruebas no paramétricas, podemos intentar transformaciones de variables para regresar al mundo de las pruebas paramétricas. Las transformaciones más usadas son:
+
+    -   La raíz cuadrada (si los datos no contienen números negativos)
+
+    -   Elevar al cuadrado
+
+    -   Logaritmo (si los datos solo incluyen números reales positivos, cero excluido)
+:::
+
+## Transformación de variables {visibility="\"uncounted"}
+
+::: incremental
+-   Existe un método más sofisticado para "normalizar" una muestra. [[La transformación de Box-Cox.](https://www.r-bloggers.com/2022/10/box-cox-transformation-in-r/)]{.fragment}
+
+-   Cuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.
+
+-   En otras palabras, una misma transformación **debe** aplicarse a todos los grupos a ser comparados. **NO** tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.
+
+-   Si el número de observaciones es muy reducido, usualmente no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas.
+:::
+
+## Transformación de variables {.scrollable visibility="\"uncounted"}
+
+::: columns
+::: {.column .fragment width="50%"}
+Raíz cuadrada
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(sqrt(crime$y1983))     
+```
+:::
+
+::: {.column .fragment width="50%"}
+Elevar al cuadrado
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(crime$y1983^2)     
+```
+:::
+:::
+
+::: columns
+::: {.column .fragment width="50%"}
+Logaritmo
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(log(crime$y1983))     
+```
+:::
+
+::: {.column .fragment width="50%"}
+Chequeemos con el otro grupo
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(log(crime$y1993))     
+```
+:::
+:::
+
+. . .
+
+Homogeneidad de las varianzas con transformación logarítmica
+
+```{r echo=T, eval=T, error=T, fig.width=6, fig.align='center'}
+var.test(log(crime$y1983), log(crime$y1993))
+```
+
+![](images/kid.jpg){fig-align="center"}
 
 ## Prueba t de una muestra
 
 ::: incremental
-
 -   Es usada para comparar la media aritmética de una muestra con un valor conocido (un estándar por ejemplo).
 
 -   Por lo general la el valor al que se va a comparar proviene de referencias bibliográficas, pre-experimentos o supociones fundamentadas.
 
--   Regresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables.
+-   En este caso, el supuesto que debe cumplirse es el de la normalidad de los datos
 
+-   Regresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables.
 :::
 
 ## Prueba t de una muestra {visibility="uncounted" autoanimate="true"}
@@ -719,7 +887,6 @@ blood
 ## Prueba t de muestras independientes
 
 ::: incremental
-
 -   Es usado para comparar las medias aritméticas de dos grupos independientes.
 
 -   Por ejemplo, si deseas comparar las medias aritméticas de individuos agrupados por sexo.
@@ -727,14 +894,54 @@ blood
 -   Para ilustrar esta prueba, vamos a hacer uso de la tabla de datos de `genderweight` de la librería `datarium`.
 
     -   Veamos si existe una diferencia significativa en la media del peso entre hombres y mujeres
-
 :::
 
-. . . 
+. . .
 
 ```{r echo=T, eval=T, error=T}
 data(genderweight)
 ```
+
+## Prueba t de muestras independientes {.scrollable .smaller visibility="uncounted"}
+
+::: columns
+::: {.column .fragment width="50%"}
+Chequeamos normalidad: Group M
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(subset(genderweight, group == "M")$weight)     
+```
+:::
+
+::: {.column .fragment width="50%"}
+Chequeamos normalidad: Group F
+
+```{r echo=T, eval=T, error=T}
+shapiro.test(subset(genderweight, group == "F")$weight)     
+```
+:::
+:::
+
+. . .
+
+Chequeamos la homogeneidad de las varianzas
+
+```{r echo=T, eval=T, error=T}
+var.test(genderweight$weight ~ genderweight$group)
+```
+
+::: incremental
+-   **¡La homogeneidad de las varianzas no se cumple!** 😱
+
+-   ¿Debemos transformar? [No necesariamente]{.fragment}
+
+-   **Únicamente en el caso de las pruebas t**, el no cumplir con el supuesto de la homogeneidad de varianzas no es un gran problema.
+
+-   La función base de R `t.test` cuenta con el argumento `var.equal = F` como default.
+
+-   Bajo este argumento, no se asumen varianzas iguales entre los grupos y en su lugar R lleva a cabo la aproximación de Welch para lidiar con este problema.
+
+:::
 
 ## Prueba t de muestras independientes {visibility="uncounted"}
 
@@ -755,11 +962,9 @@ normtemp
 
 **Tip: para acceder a las columnas con las temperaturas corporales y sexo, usa la siguiente sintaxis: `normtemp$temperature` y `normtemp$gender` respectivamente**
 
-
 ## Prueba t para muestras emparejadas
 
 ::: incremental
-
 -   Es usado para comparar las medias de dos grupos que guardan una relación.
 
 -   Esto solo ocurre cuando las medidas se han realizado a partir de los mismos grupos. Por ejemplo, al inicio y al final de un experimento.
@@ -767,7 +972,6 @@ normtemp
 -   Para esta prueba, vamos a usar la tabla de datos `crime` de la librería `UsingR`
 
     -   Veamos si existe una diferencia en las tasas de crimen (# de reportes/100000 habitantes) en 50 estados de los Estados unidos entre 1983 y 1993
-
 :::
 
 . . .
@@ -776,19 +980,28 @@ normtemp
 data(crime)
 ```
 
-## Prueba t para muestras emparejadas {visibility="uncounted"}
+## Prueba t para muestras emparejadas {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=F, error=T}
+#| code-line-numbers: "1|2|3"
+t.test(x = log(crime$y1983), y = log(crime$y1993), paired = TRUE)
+exp(mean(log(crime$y1983)))
+exp(mean(log(crime$y1993)))
+```
+
+## Prueba t para muestras emparejadas {visibility="uncounted" autoanimate="true"}
 
 ```{r echo=T, eval=T, error=T}
-t.test(x = crime$y1983, y = crime$y1993, paired = TRUE)
-mean(crime$y1983)
-mean(crime$y1993)
+t.test(x = log(crime$y1983), y = log(crime$y1993), paired = TRUE)
+exp(mean(log(crime$y1983)))
+exp(mean(log(crime$y1993)))
 ```
 
 ## Ejercicio 4.5
 
 La tabla de datos `mice2` de la librería `datarium` tiene las medidas del peso de 10 ratones antes y después de haber sido sometidos a una determinada dieta. Encuentra si existe una diferencia significativa en el peso de estos ratones antes y después del régimen de dieta al que fueron expuestos. ¿Ganaron o perdieron peso?
 
-Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre `normtemp` aparecerá disponible en la ventana del ambiente de RStudio
+Copia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre `mice2` aparecerá disponible en la ventana del ambiente de RStudio
 
 ```{r echo=T, eval=F, error=T}
 data(mice2)
@@ -797,163 +1010,7 @@ mice2
 
 **Tip: usa el mismo tips de los ejemplos anteriores**
 
-## Normalidad de una muestra
-
-::: incremental
-
--   Hasta este momento, hemos asumido que todos los datos analizados son normalmente distribuidos.
-
--   Por esta razón, no he introducido las pruebas que en la práctica deberías realizar en orden de determinar que prueba estadística es la más adecuada para realizar inferencias estadísticas.
-
--   Existen dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no
-
-    -   Indirectamente: gráfico Q-Q
-    
-    -   Prueba formal de normalidad Shapiro-Wilk
-
-:::
-
-## Gráfico Q-Q
-
-::: incremental
-
--   El gráfico Q-Q es una prueba visual indirecta de la normalidad.
-
--   Consiste en crear un gráfico de dispersión entre los valores observados de una muestra vs. los valores que deberían estos tener si siguieran una distribución normal.
-
--   Mientras el gráfico de dispersión más concentra sus puntos a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.
-
--   Es muy subjetivo.
-
-:::
-
-
-## Gráfico Q-Q {visibility="uncounted"} 
-
-```{r echo=T, eval=T, error=T}
-y <- rnorm(n = 100, mean = 0, sd = 1) # simulamos 100 observaciones de una normal estandar
-qqnorm(y)                             # producimos el gráfico Q-Q
-
-```
-
-## Prueba de normalidad Shapiro-Wilk
-
-::: incremental
-
--   La $H_0$ de esta prueba es que un set de $n$ observaciones es normalmente distribuido.
-
--   Otro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.
-
--   Probemos entonces si los datos de crimen en los Estados Unidos son normalmente distribuidos:
-
-    -   Como en este caso tenemos dos muestras, debemos chequear la normalidad de cada grupo sujeto de comparación por separado.
-
-:::
-
-## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
-
-::: columns
-::: {.column .fragment width="50%"}
-
-```{r echo=T, eval=T, error=T}
-shapiro.test(crime$y1983)     
-```
-
-
-:::
-
-::: {.column .fragment width="50%"}
-```{r echo=T, eval=T, error=T}
-shapiro.test(crime$y1993)     
-```
-
-:::
-:::
-
-::: incremental
-
--   **¡Los datos no son normalmente distribuidos!** 😱
-
--   Antes de recurrir a pruebas para datos no normales, podemos recurrir a probar transformaciones de los datos. Las transformaciones más usadas son:
-
-    -   La raíz cuadrada (si los datos no contienen números negativos)
-    
-    -   Elevar al cuadrado 
-    
-    -   Logaritmo (si los datos solo incluyen números reales positivos, cero excluido)
-
-:::
-
-
-## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
-
-::: columns
-::: {.column .fragment width="50%"}
-
-Raíz cuadrada
-
-```{r echo=T, eval=T, error=T}
-shapiro.test(sqrt(crime$y1983))     
-```
-
-
-:::
-
-::: {.column .fragment width="50%"}
-
-Elevar al cuadrado
-
-```{r echo=T, eval=T, error=T}
-shapiro.test(crime$y1983^2)     
-```
-
-:::
-:::
-
-::: columns
-::: {.column .fragment width="50%"}
-
-Logaritmo
-
-```{r echo=T, eval=T, error=T}
-shapiro.test(log(crime$y1983))     
-```
-
-
-:::
-
-::: {.column .fragment width="50%"}
-
-Chequeemos con el otro grupo
-
-```{r echo=T, eval=T, error=T}
-shapiro.test(log(crime$y1993))     
-```
-
-:::
-:::
-
-## Prueba de normalidad Shapiro-Wilk {visibility="uncounted}
-
-. . .
-
-**Ojo con las transformaciones**
-
-::: incremental
-
--   Existe un método más sofisticado para "normalizar" una muestra. [[La transformación de Box-Cox.](https://www.r-bloggers.com/2022/10/box-cox-transformation-in-r/)]{.fragment}
-
--   Cuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.
-
--   En otras palabras, una misma transformación **debe** aplicarse a todos los grupos a ser comparados. **NO** tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.
-
--   Si el número de observaciones es muy reducido, no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas.
-
-:::
-
 ## Ejercicios 4.6 {.smaller}
-
--   Chequea si los datos que usamos en el ejercicio 4.5 de la tabla de datos `mice2` son normalmente distribuidos.
 
 -   En la librería `UsingR` tenemos disponible una lista con 5 objetos bajo el nombre `cancer`. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cancer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?
 
@@ -969,7 +1026,6 @@ colon <- cancer$colon
 ## Pruebas de Wilcoxon para datos no normales
 
 ::: incremental
-
 -   Las pruebas de Wilcoxon usan la mediana como criterio para evaluar la $H_0$.
 
 -   Lastimosamente, estas pruebas son usualmente menos poderosas (mayor tasa de errores tipo II).
@@ -977,22 +1033,17 @@ colon <- cancer$colon
 -   Tiene dos formas:
 
     -   Pruebas para una muestra (análoga a la prueba t para una muestra)
-    
-    -   Pruebas para dos muestras (análoga a las pruebas t para dos muestras independientes y emparejadas)
 
+    -   Pruebas para dos muestras (análoga a las pruebas t para dos muestras independientes y emparejadas)
 :::
 
-
-## Prueba de Wilcoxon para una muestra 
+## Prueba de Wilcoxon para una muestra
 
 ::: incremental
-
 -   [Prof. Danielle Navarro](https://learningstatisticswithr.com/){target="_blank"} midió el nivel de felicidad de sus estudiantes antes y después de su clase de Estadística. Ella estaba interesada en saber si el tomar una clase de Estadística tiene algún efecto en la felicidad de sus estudiantes. Los datos que obtuvo no están normalmente distribuidos. Por ello, se vio en la necesidad de llevar a cabo una prueba de Wilcoxon.
 
 -   En este caso, la $H_0$, es que la diferencia de la mediana de la felicidad de sus estudiantes antes y después de la clase debería ser igual a cero para clamar que no existe tal efecto.
-
 :::
-
 
 ## Prueba de Wilcoxon para una muestra {visibility="uncounted"}
 
@@ -1008,11 +1059,9 @@ wilcox.test(felicidad$change, mu = 0)
 ## Prueba de Wilcoxon para dos muestras
 
 ::: incremental
+-   Regresando al ejemplo de la tabla de datos `genderweight`, supongamos que estos no están normalmente distribuidos.
 
--   Regresando al ejemplo de la tabla de datos `genderweight`, sus datos no están normalmente distribuidos 😮
-
--   Suponiendo que no encontramos una transformación adecuada para normalizarlos, usaremos la prueba de Wilcoxon para muestras independientes.
-
+-   Usaremos la prueba de Wilcoxon para muestras independientes para ver si existe diferencia entre los pesos de hombres y mujeres.
 :::
 
 . . .
@@ -1025,7 +1074,7 @@ wilcox.test(genderweight$weight ~ genderweight$group, paired = F)
 
 -   Con el vector de nombre `colon` que creaste en el ejercicio 4.6, aplica una prueba de Wilcoxon para una muestra bajo la hipótesis de que la mediana de los días de superviviencia de un paciente con cáncer de colon es de 370 días.
 
--   A partir de la tabla de datos de felicidad de la Prof. Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba que de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?.
+-   A partir de la tabla de datos de felicidad de la Prof. Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?.
 
 # Pruebas básicas para datos discretos
 
@@ -1097,27 +1146,22 @@ Usaremos para este ejemplo los datos del Titanic. La pregunta de investigación 
 
 1.  Cargamos en nuestro ambiente la tabla de datos (librería `datarium`)
 
-
 ```{r echo=T, eval=T, error=T}
 data(titanic.raw)
 ```
-
 
 . . .
 
 2.  Definimos las clases de referencia
 
-
 ```{r echo=F, eval=F, error=T}
 head(titanic.raw, 4)
 ```
-
 
 ```{r echo=T, eval=T, error=T}
 titanic.raw$Survived <- relevel(titanic.raw$Survived, ref = "Yes")
 titanic.raw$Sex <- relevel(titanic.raw$Sex, ref = "Female")
 ```
-
 
 ## Cociente de probabilidad en R {.smaller visibility="uncounted"}
 
@@ -1137,7 +1181,7 @@ tabla_cont <- table(titanic.raw$Sex, titanic.raw$Survived)
 tabla_cont
 ```
 :::
-::: 
+:::
 
 . . .
 
@@ -1151,15 +1195,13 @@ oddratio <- fisher.test(tabla_cont)
 :::
 
 ::: {.column .fragment width="45%"}
-
 <br>
+
 ```{r echo=T, eval=T, error=T}
 oddratio 
 ```
-
 :::
 :::
-
 
 ## ¿Cómo interpretamos estos resultados? {.smaller}
 
@@ -1179,19 +1221,945 @@ oddratio
 -   Adicionalmente, del valor p de la prueba estadística exacta de Fisher menor al 0.05, se puede concluir que este cociente de probabilidad es significativo. En otras palabras, existe evidencia estadística significativa para afirmar que las probabilidades de sobrevivir durante el hundimiento del Titanic fueron 10 veces más para pasajeras mujeres en comparación a los hombres.
 :::
 :::
-::: 
+:::
 
 # Análisis de Varianza (ANOVA)
 
 ## Introducción
 
 ::: incremental
-
 -   Hasta el momento nos hemos enfocado a los casos donde comparamos las medias entre dos grupos.
 
--   El Análisis de Varianza, desarrollado por Fisher a inicios del siglo 20
+-   Pero es más común el evaluar distintos tratamientos al mismo tiempo, como ya vimos en el módulo 2 del curso.
+
+-   Para ello, contamos con el ANOVA, desarrollado por el estadístico Ronald Fisher a inicios del siglo 20, y que sin duda es el método estadístico más usado hoy en día.
+
+-   Su nombre puede ser confuso. [El objetivo de un ANOVA es el de determinar la existencia de diferencias entre las medias aritméticas de las muestras representativas de $n$ poblaciones (o en términos más precisos, tratamientos).]{.fragment}
+:::
+
+## Supuestos del ANOVA {.smaller}
+
+::: incremental
+1.  Independencia de los datos: conseguida mediante una correcta randomización y definición del experimento.
+
+2.  Homogeneidad de las varianzas: la varianza entre los tratamientos es la misma.
+
+3.  **Normalidad**: [pero, ¿de qué exactamente?]{.fragment}
+
+-   Siempre ha existido una confusión de este supuesto. Cómo vimos antes, la normalidad es un requisito para conducir pruebas t, y lo es también para el ANOVA.
+
+-   Muchos libros de texto y otros recursos, mencionan que los datos de cada tratamiento deben ser normalmente distribuidos para llevar a cabo un ANOVA. [Esto es cierto e impráctico a la vez.]{.fragment}
+
+-   Mencionamos que como mínimo deberíamos contar con 3 repeticiones por tratamiento. [Pero, ¿son 3 repeticiones suficientes para alcanzar la normalidad?]{.fragment}
+
+-   Es común el sugerir el llevar a cabo una prueba de normalidad antes de llevar a cabo un ANOVA, pero esto tiene varios problemas que supongo no te han dicho antes:
+
+    -   Cada tratamiento tiene su propia media, en caso de medias muy distantes entre sí, la prueba puede fallar.
+
+    -   En su lugar, podrías correr una prueba por cada tratamiento. Esto solo funciona con un considerable número de observaciones/tratamiento (3 no son suficientes).
+:::
+
+## Supuestos del ANOVA {.smaller visibility="uncounted"}
+
+::: incremental
+-   Esta confusión nos puede llevar a soluciones erróneas como transformar datos, borrar outliers o utilizar pruebas no paramétricas innecesariamente.
+
+-   Entonces, ¿**normalidad** de qué?
+
+-   De los residuales estandarizados!... [¿Qué es un residual?]{.fragment}
+    
+    -   Un residual es la diferencia entre una observación y su predicción
+    
+    -   Un residual estandarizado resulta de la división del residual para la raíz cuadrada de la predicción
+    
+    -   La distribución muestral de los residuales estandarizados tiene media 0 y desviación estándar 1
+
+-   Y es sobre esta distribución que los valores críticos del ANOVA (valores F) son calculados. Es decir, estos no dependen enteramente de los datos originales, por lo tanto los datos originales no tienen que ser necesariamente normalmente distribuidos.
+
+-   Pero, ¿por qué la confusión? [Solo cuando el número de observaciones es lo suficientemente grande (y ya sabemos que distribución tiene la media muestral cuando el número incrementa), se tiene la certeza que los residuales serán normalmente distribuidos.]{.fragment}
+
+-   En resumen, es mejor chequear la normalidad después que realizamos el ANOVA.
 
 :::
 
+## El dataset de recursos por depredación
+
+![](images/frog.jpg){fig-align="center"}
+
+::: footer
+Imagen tomada por [David Mark](https://pixabay.com/users/12019-12019/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=69813){target="_blank"} de [Pixabay](https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=69813){target="_blank"}
+:::
+
+## El dataset de recursos por depredación {.smaller visibility="uncounted"}
+
+::: incremental
+-   Los datos que usaremos en esta y otras secciones corresponden a un experimento del [Prof. Justin C. Touchon](https://www.jstor.org/stable/23436298){target="_blank"} acerca de la interacción entre predadores y recursos.
+
+-   El experimento consistió de múltiples tanques (mesocosmos) dispuestos al aire libre en Gamboa, Panamá. Los investigadores tenían por objetivo el saber como la variación en la incubación de huevos de la rana arbórea de ojos rojos podría afectar su desarrollo hasta la metamorfosis bajo varias combinaciones de recursos y predadores.
+
+-   Los tratamientos fueron los siguientes:
+
+    -   Edad de incubación: Temprana (`E`: 4 días después de la oviposición) o tardía (`L`: 6 días después de la oviposición).
+
+    -   Predadores: control (`C`), no letal (`NL`: larvas de libélula enjauladas) y letal (`L`: larvas de libélula libres)
+
+    -   Recursos: bajo (`Lo`: 0.75 g) o alto (`Hi`: 1.5 g) de comida suministrados cada 5 días.
+
+-   Los mesocosmos fueron colocados en 8 bloques de 12 tanques cada uno.
+
+-   El experimento inició con 50 renacuajos por tanque y terminó cuando todos los renacuajos alcanzaron la metamorfosis, o murieron.
+:::
+
+## El dataset de recursos por depredación {.smaller visibility="uncounted"}
+
+::: incremental
+-   Variables de respuesta:
+
+    -   Edad de metaformosis contada desde el día de oviposición (`Age.DPO`).
+
+    -   Edad de salida del agua (`Age.FromEmergence`)
+
+    -   Longitud nariz-cloaca al emerger (`SVL.initial`)
+
+    -   Longitud de la cola al emerger (`Tail.initial`)
+
+    -   Longitud nariz-cloaca al término de la reabsorción de la cola (`SVL.final`)
+
+    -   Peso al término de la reabsorción de la cola (`Mass.final`)
+
+    -   Número de días requeridos por cada metamorfo para reabsorber completamente la cola (`Resorb.days`)
+
+-   18 tanques conteniendo predadores no letales fueron descartados debido al brote de una enfermedad.
+
+-   **NOTA:** el dataset original de Touchon contiene alrededor de 2500 observaciones. Sin embargo, para poder usar los datos bajo los supuestos del ANOVA es necesario reducirlos a las medias aritméticas de cada tratamiento por cuanto se tratan de pseudo repeticiones. Esta reducción ya está hecha en el archivo "touchon.csv" disponible con el [resto de materiales extras del curso.](https://mmorenozam.github.io/est-apl-uce-2023-website/materiales.html){target="_blank"}
+:::
+
+## ANOVA de una vía {.smaller}
+
+::: incremental
+-   ANOVA de una vía se refiere cuando tenemos más de dos tratamientos que están definidos por un solo factor a la vez.
+
+-   Usando los datos del Prof. Touchon, vamos a ilustrar el caso del ANOVA de una vía. Para ello, vamos a considerar lo siguiente
+
+    -   Supongamos que estamos interesados en saber si existe alguna diferencia entre la edad de salida del agua `Age.FromEmergence` determinada por los predadores:
+
+    -   Los niveles del factor predadores son:
+
+        -   Predadores no letales `NL`
+
+        -   Predadores letales `L`
+
+        -   Control (sin predadores) `C`
+
+-   La $H_0$ en todo ANOVA es simplemente que no existe diferencia entre $n$ tratamientos, y la $H_a$ es que al menos uno de los tratamientos tiene una media distinta.
+:::
+
+## ANOVA en R
+
+::: incremental
+-   Existen dos formas de llevar a cabo ANOVA en R:
+
+    1.  Crear un modelo lineal con la función `lm` y luego llevar a cabo el ANOVA con la función `anova` sobre el objeto producto de `lm`.
+
+    2.  Aplicar directamente la función `aov` sobre nuestros datos.
+
+-   Ambas funciones (`lm` y `aov`) tienen la misma sintaxis. [Personalmente prefiero la primera opción.]{.fragment}
+
+-   Adicionalmente, la librería `car` ofrece la función `Anova`. El resultado de ambas es prácticamente el mismo para la mayoría de modelos. [Sin embargo, personalmente prefiero `Anova` ya que permite realizar correcciones cuando tenemos datos no balanceados.]{.fragment}
+:::
+
+## ANOVA de una vía en R
+
+::: columns
+::: {.column .fragment width="50%"}
+Opción 1
+
+```{r echo=T, eval=F, error=T, fig.align = 'center'}
+#| code-line-numbers: "1|2|3|4"
+library(car)
+ranas <- read.csv("touchon.csv")
+lm1 <- lm(Age.FromEmergence ~ Pred, data = ranas)
+Anova(lm1)
+```
+:::
+
+::: {.column .fragment width="50%"}
+Opción 2
+
+```{r echo=T, eval=F, error=T, fig.align = 'center'}
+#| code-line-numbers: "1|2|3"
+ranas <- read.csv("touchon.csv")
+anova1 <- aov(Age.FromEmergence ~ Pred, data = ranas)
+summary(anova1)
+```
+:::
+:::
+
+::: columns
+::: {.column .fragment width="50%"}
+```{r echo=F, eval=T, error=T, fig.align = 'center'}
+library(car)
+ranas <- read.csv("touchon.csv")
+lm1 <- lm(Age.FromEmergence ~ Pred, data = ranas)
+Anova(lm1)
+```
+:::
+
+::: {.column .fragment width="50%"}
+```{r echo=F, eval=T, error=T, fig.align = 'center'}
+ranas <- read.csv("touchon.csv")
+anova1 <- aov(Age.FromEmergence ~ Pred, data = ranas)
+summary(anova1)
+```
+:::
+:::
+
+## Normalidad de los datos (residuales)
+
+```{r echo=T, eval=F, error=T, fig.align = 'center', fig.width=5}
+#| code-line-numbers: "4|5"
+library(car)
+ranas <- read.csv("touchon.csv")
+lm1 <- lm(Age.FromEmergence ~ Pred, data = ranas)
+par(mfrow = c(2, 2))
+plot(lm1)
+```
+
+## Normalidad de los datos (residuales) {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(car)
+ranas <- read.csv("touchon.csv")
+lm1 <- lm(Age.FromEmergence ~ Pred, data = ranas)
+par(mfrow = c(2, 2))
+plot(lm1)
+```
+
+## Normalidad de los datos (residuales) {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=F, error=T, fig.align = 'center', fig.width=6}
+#| code-line-numbers: "3"
+library(car)
+ranas <- read.csv("touchon.csv")
+lm2 <- lm(log(Age.FromEmergence) ~ Pred, data = ranas)
+par(mfrow = c(2, 2))
+plot(lm2)
+```
+
+## Normalidad de los datos (residuales) {visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(car)
+ranas <- read.csv("touchon.csv")
+lm2 <- lm(log(Age.FromEmergence) ~ Pred, data = ranas)
+par(mfrow = c(2, 2))
+plot(lm2)
+```
+
+## Prueba formal de normalidad
+
+::: incremental
+-   Como vimos, después de aplicar la transformación logarítmica el gráfico Q-Q mejoró considerablemente.
+
+-   Para estar seguros, podemos correr un test formal sobre los residuales del modelo con la ayuda de la librería `olsrr` mediante su función `ols_test_normality`.
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(olsrr)
+ols_test_normality(lm2)
+```
+
+## Prueba formal de normalidad {visibility="uncounted"}
+
+::: incremental
+-   O también podemos calcular la prueba de Shapiro-Wilk con funciones base de R
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+residuales <- resid(lm2)
+shapiro.test(residuales)
+```
+
+## Homogeneidad de las varianzas en ANOVA
+
+::: incremental
+-   La prueba más usada para chequear la homogeneidad de varianzas de un ANOVA es la de Levene.
+
+-   Para ello utilizaremos la función `leveneTest` de la librería `car`. Podemos usar esta función directamente sobre los datos con la misma sintaxis de `lm`, o sobre el objeto `lm2` en el que anteriormente almacenamos el resultado del modelo lineal con la transformación.
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+leveneTest(lm2, center = "mean")
+```
+
+## ANOVA de una vía en R (continuación)
+
+::: incremental
+-   Así, una vez que hemos transformado para obtener normalidad en los residuales y chequeado la homogeneidad de varianzas, es tiempo de hecharle un vistazo al resultado del ANOVA:
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+Anova(lm2)
+```
+
+. . .
+
+-   Por tanto, podemos concluir que al menos uno de los tratamientos es distinto (aceptamos la $H_a$ y rechazamos la $H_0$)
+
+## ¿Qué tan distintos? {.smaller}
+
+::: incremental
+-   Preguntas naturales seguidas de estos resultados son: ¿qué tan distintos son los tratamientos entre sí?, ¿puedo acaso ordernarlos de mayor a menor?, ¿existen pares de tratamientos que son iguales?
+
+-   Podemos comenzar con una ayuda visual (que pudo bien haber sido parte de nuestro AED)
+:::
+
+. . .
+
+::: panel-tabset
+### Código
+
+```{r echo=T, eval=F, error=T, fig.align = 'center'}
+library(ggplot2)
+qplot(Pred, Age.FromEmergence,
+      colour = Pred,
+      geom = c("boxplot", "jitter"),
+      data = ranas)
+```
+
+### Gráfico
+
+```{r echo=F, eval=T, error=T, fig.align = 'center', fig.height=4}
+library(ggplot2)
+qplot(Pred, Age.FromEmergence, colour = Pred,
+      geom = c("boxplot", "jitter"),
+      data = ranas)
+```
+:::
+
+## Comparaciones múltiples
+
+::: incremental
+-   Los métodos de comparaciones múltiples nos ayudan a responder estas preguntas.
+
+-   Los más usados son:
+
+    -   HSD Tukey (*Honestly significant difference*): lleva a cabo todos los pares de comparaciones posibles entre los niveles de un factor.
+
+    -   Prueba de Dunnett: Compara los niveles únicamente con respecto al nivel control dentro del factor.
+
+-   Son conocidos como pruebas o comparaciones *post-hoc*.
+
+-   En R, la manera más sencilla de llevar a cabo comparaciones múltiples es mediante las librerías `emmeans` y `multcomp`.
+:::
+
+## Comparaciones múltiples {.smaller}
+
+```{r echo=T, eval=F, error=T, fig.align = 'center', fig.width=6}
+#| code-line-numbers: "1|2|3"
+library(emmeans)
+ph1 <- emmeans(lm2, specs = "Pred")
+summary(ph1)
+```
+
+## Comparaciones múltiples {.smaller visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(emmeans)
+ph1 <- emmeans(lm2, specs = "Pred")
+summary(ph1)
+```
+
+## Comparaciones múltiples {.smaller visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=F, error=T, fig.align = 'center', fig.width=6}
+#| code-line-numbers: "1"
+ph1 <- emmeans(lm2, specs = "Pred", type = "response")
+summary(ph1)
+```
+
+## Comparaciones múltiples {.smaller visibility="uncounted" autoanimate="true"}
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+ph1 <- emmeans(lm2, specs = "Pred", type = "response")
+summary(ph1)
+```
+
+. . .
+
+-   Y terminamos con `multcomp`
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+# multcomp necesita una librería extra llamada multcompView
+# No olvides instalar multcompView antes de correr este código
+library(multcomp)
+cld(ph1)
+```
+
+## Antes de continuar
+
+::: incremental
+
+-   En este punto, antes de continuar hagamos uso nuevamente de la librería `flextable` para exportar nuestras tablas a Word.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(flextable)
+tabla_anova <- flextable(Anova(lm2))
+tabla_tukey <- flextable(cld(ph1))
+```
+
+. . .
+
+```{r echo=F, eval=T, error=T, fig.align = 'center', fig.width=6}
+
+tabla_anova 
+tabla_tukey
+```
+
+## Antes de continuar {visibility="uncounted"}
+
+
+-   En este punto, antes de continuar hagamos uso nuevamente de la librería `flextable` para exportar nuestras tablas a Word.
+
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+library(flextable)
+tabla_anova <- colformat_double(flextable(Anova(lm2)), digits = 3)
+tabla_tukey <- colformat_double(flextable(cld(ph1)), digits = 3)
+```
+
+. . .
+
+```{r echo=F, eval=T, error=T, fig.align = 'center', fig.width=6}
+
+tabla_anova 
+tabla_tukey
+```
+
+## Antes de continuar {visibility="uncounted"}
+
+```{r echo=T, eval=F, error=T, fig.align = 'center', fig.width=6}
+library(flextable)
+tabla_anova <- colformat_double(flextable(Anova(lm2)), digits = 3)
+tabla_tukey <- colformat_double(flextable(cld(ph1)), digits = 3)
+
+save_as_docx("Tabla Anova" = tabla_anova, "Tabla Anova" = tabla_tukey,
+             path = "C:/Users/mmore/Documents/cursos_uce_2023/modulos/uce2023-modulo4/anova.docx")
+```
+
+![](images/anova_tabla.png){fig-align="center"}
+
+
+## ANOVA de un diseño desbalanceado {.smaller}
+
+::: incremental
+-   Recordemos que 18 tanques con predadores no letales fueron descartados debido al brote de una enfermedad.
+
+-   El diseño original de Touchon era balanceado. Al perderse unidades experimentales, el diseño se le puede denominar como desbalanceado. En otras palabras, el desbalance es la pérdida de observaciones.
+
+-   La mayoría de métodos estadísticos requieren ser corregidos ante observaciones perdidas para poder tener la certeza de que los estimados que obtenemos no sean sesgados.
+
+-   Sin adentrarnos en mayor detalle, uno de los componentes de la tabla de ANOVA es la suma de cuadrados. Existen tres tipos de suma de cuadrados: I, II y III.
+
+-   En breve, las sumas II y III se aconseja sean usadas cuando existen interacciones en el ANOVA.
+
+-   En R, la función `aov` calcula la suma de cuadrados tipo I. Este tipo de suma no es conveniente ante la presencia de desbalance de los datos.
+
+-   En cambio, la función `Anova` de la librería `car`, usa por default el tipo II que es precisamente el recomendado usar ante la presencia de desbalance.
+
+-   En resumen, sí. Hemos utilizado hasta el momento la corrección adecuada para estos datos.
+:::
+
+## Ejercicio 4.8
+
+-   Lleva a cabo un ANOVA con todos sus pasos para la variable `Resorb.days` de los datos de Touchon
+
+## Prueba de Kruskal-Wallis {.smaller}
+
+::: incremental
+
+-   La prueba de Kruskal-Wallis es la alternativa no paramétrica al ANOVA de una vía.
+
+-   Puede extenderse al ANOVA de múltiples vías reorganizando el diseño experimental.
+
+-   Similar a las pruebas de Wilcoxon, se basa en encontrar diferencias de las medianas en lugar de las medias y su poder ese menor.
+
+-   Para ilustrar este ejemplo, tomemos la variable `Age.DPO` del estudio de Touchon y veamos si existen diferencias con respecto al tratamiento de predador `Pred`. `Age.DPO` sin transformaciones no cumple con los supuestos del ANOVA.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+kruskal.test(Age.DPO ~ Pred, data = ranas)
+```
+
+## Comparaciones múltiples con Kruskal-Wallis {.smaller}
+
+::: incremental
+
+-   Con KW también podemos llevar a cabo comparaciones múltiples.
+
+-   En R base contamos con la función `pairwise.wilcox.test` que lleva a cabo comparaciones por pares mediante el método de Wilcoxon.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+pairwise.wilcox.test(ranas$Age.DPO, ranas$Pred, p.adjust.method = "BH")
+```
+
+## Ejercicio 4.9
+
+-   Encuentra si existen diferencias en la longitud nariz-cloaca al emerger (`SVL.initial`) con respecto a los predadores `Pred` en los datos de Touchon. ¿Qué método es factible usar?, ¿ANOVA de una vía o Kruskal-Wallis?
+
+## Antes de continuar {.smaller}
+
+::: incremental
+
+-   Con respecto a los DDE que vimos en el módulo 2, el ANOVA de una vía corresponde directamente al análisis que llevaríamos a cabo para un DCA.
+
+-   Para extender el modelo a un DBCA de una vía basta el incorporar otro efecto principal en el modelo:
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+lm3 <- lm(log(Age.FromEmergence) ~ Pred + as.factor(Block), data = ranas)
+Anova(lm3)
+```
+
+::: incremental
+
+-   La interpretación de este tipo de ANOVA se enfoca en el valor p de los tratamientos.
+
+-   No tiene mucho sentido el interpretar el valor p del factor de bloque ya que está ahí para controlar fuentes de variación.
+
+-   De manera similar, cuando extendamos el ANOVA a más factores, el análisis del DBCA factorial se consigue añadiendo un efecto principal para el bloque.
+
+:::
+
+## Antes de continuar {visibility="uncounted" .smaller}
+
+::: incremental
+
+-   Para llevar a cabo las pruebas de comparaciones múltiples, seguimos el mismo procedimiento que describimos anteriormente ignorando el efecto del bloque.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+ph_dbca <- emmeans(lm3, specs = "Pred", type = "response")
+cld(ph_dbca)
+```
+
+## ANOVA de múltiples vías {.smaller}
+
+::: incremental
+
+-   El ANOVA puede extenderse para analizar dos o más factores a la vez. Su nombre entonces varía dependiendo de cuántos factores analicemos, así: ANOVA de dos vías (2 factores), ANOVA de tres vías (3 factores) ...
+
+-   En la práctica es recomendable diseñar experimentos hasta máximo 3 factores:
+
+    -   A más factores, más costosa la investigación
+    
+    -   A más factores, sus interacciones son más difíciles de interpretar
+    
+    -   Es posible inclusive que tengamos resultados sin sentido (interacciones innecesarias)
+    
+-   ¿Qué son las interacciones?
+
+    -   Una interacción se refiere cuando los niveles de un factor podrían depender de los niveles de otro.
+    
+    -   Por ejemplo, con los datos de las ranas, podríamos imaginar que en la ausencia de predadores, tener recursos altos o bajos podría influenciar el tiempo que tomaron los renacuajos en culminar la metamorfosis. Es decir, si hay predadores presentes, podría darse el caso de que las presas se escondan y coman menos influenciando así ese tiempo.
+    
+    -   Así, podríamos saber si el effecto de los recursos son influenciados ante la presencia de predadores
+
+:::
+
+## ANOVA de múltiples vías en R {.smaller}
+
+::: incremental
+
+-   Vamos a usar nuevamente los datos de Touchon, la variable de respuesta es la edad de metamorfosis `Age.DPO` y los factores la presencia de predadores `Pred` y los recursos `Res`.
+
+-   Para llevar a cabo un ANOVA de múltiples vías en R podemos usar la siguiente sintaxis: `Factor1*Factor2`
+
+-   Para ahorrarnos tiempo, supóngamos que ya corrimos un primer ANOVA, y encontramos que usando el logaritmo de `Age.DPO` podemos normalizar los residuales. [Pero nos encontramos con esto:]{.fragment}
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+lm4 <- lm(log(Age.DPO) ~ Pred*Res, data = ranas)
+leveneTest(lm4, center = "mean")
+```
+
+
+::: incremental
+
+-   **¡La homogeneidad de las varianzas no se cumple!** 😱
+
+-   Este es un escenario común y que quizá nos haga realmente considerar usar Kruskal-Wallis.
+
+-   Sin embargo, hay una opción! [La función `Anova` de la librería `car` ofrece el argumento `white.adjust` que permite obtener un ANOVA corregido para **heterodasticidad** por el método de White-Huber.]{.fragment}
+
+:::
+
+## ANOVA de múltiples vías en R {.smaller .scrollable}
+
+```{r echo=T, eval=T, error=T, fig.align = 'center', fig.width=6}
+Anova(lm4, white.adjust = T)
+```
+
+. . .
+
+::: incremental
+
+-   Como vemos, existen dos efectos principales (predador y recursos) y su interacción (predador $\times$ recursos).
+
+-   Aquí encontramos que la interacción es significativa. Esto lo podemos interpretar así: "existe evidencia estadística significativa para concluir que la edad de metamorfosis de los renacuajos depende de una interacción entre la alimentación y la presencia de predadores".
+
+-   Y ¿por qué solo interpretamos la interacción?:
+
+    -   Cuando la interacción y los efectos principales son significativos, basta con interpretar la primera.
+    
+    -   Cuando la interacción es significativa y uno de los efectos principales no lo es, hay que ir en más detalle del por qué.
+
+-   Pero no sabemos en que dirección sucede esta afectacción (¿reduce o incrementa el tiempo de metaformosis?).
+
+-   Para responder estas pregunta, nos ayudaremos de las comparaciones múltiples.
+
+-   Pero antes, le daremos un vistazo a otra herramienta comúnmente usada: los gráficos de interacción.
+
+:::
+
+## Gráficos de interacción
+
+::: incremental
+
+-   Es una forma de representar las predicciones lineales de un modelo con respecto a los niveles de sus factores. 
+
+-   Es recomendable usarlos con factores de hasta 3 niveles y en ANOVAS de dos factores.
+
+-   Existen diversas formas de realizarlos en R:
+
+    -   Librería base de R
+    
+    -   Construirlos desde cero con `ggplot2`
+    
+    -   Usar librerías accesorias de `ggplot2`. [Para este caso, usaremos esta opción con la librería `interactions`]{.fragment}
+:::
+
+## Gráficos de interacción en R {.scrollable}
+
+::: columns
+::: {.column .fragment width="50%"}
+```{r echo=T, eval=F, error=T}
+library(interactions)
+graf_inter1 <- cat_plot(
+  lm4,
+  pred = Pred,
+  modx = Res,
+  geom = "line",
+  data = ranas
+)
+graf_inter1
+```
+:::
+
+::: {.column .fragment width="50%"}
+```{r echo=F, eval=T, error=T}
+library(interactions)
+graf_inter1 <- cat_plot(
+  lm4,
+  pred = Pred,
+  modx = Res,
+  geom = "line",
+  data = ranas
+)
+graf_inter1
+```
+:::
+:::
+
+
+::: columns
+::: {.column .fragment width="50%"}
+```{r echo=T, eval=F, error=T}
+library(interactions)
+graf_inter2 <- cat_plot(
+  lm4,
+  pred = Res,
+  modx = Pred,
+  geom = "line",
+  data = ranas
+)
+graf_inter2
+```
+:::
+
+::: {.column .fragment width="50%"}
+```{r echo=F, eval=T, error=T}
+library(interactions)
+graf_inter2 <- cat_plot(
+  lm4,
+  pred = Res,
+  modx = Pred,
+  geom = "line",
+  data = ranas
+)
+graf_inter2
+```
+:::
+:::
+
+## Comparaciones múltiples {.smaller .scrollable}
+
+::: incremental
+
+-   Las comparaciones múltiples en ANOVAS de múltiples vías son ligeramente más complejos.
+
+-   La forma de llevarlas a cabo es ver a cada uno de los factores a la vez a lo largo de los niveles del otro.
+
+-   En `emmeans` esto se hace indicando en el argumento `specs` el factor del que queremos ver las diferencias y con el argumento `by` el factor sobre el cual veremos a lo largo las differencias del primero.
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+ph2 <- emmeans(lm4, specs = "Pred", by = "Res", type = "response")
+pairs(ph2)
+```
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+ph3 <- emmeans(lm4, specs = "Res", by = "Pred", type = "response")
+pairs(ph3)
+```
+
+## Comparaciones múltiples {visibility="uncounted" .smaller .scrollable}
+
+::: incremental
+
+-   Esta forma de llevar a cabo las comparaciones es fácil de implementar con dos factores.
+
+-   Pero, sabemos que nos gustan las tablas con números indicando los grupos!
+
+-   Para llevar a cabo esto, tenemos que emplear un "truco":
+
+    -   Re-estructurar el diseño para que tenga la forma de un ANOVA de una vía. [Esta es de hecho la forma en que también conseguimos el llevar a cabo pruebas de Kruskal-Wallis sobre diseños originalmente factoriales.]{.fragment}
+    
+    -   Correr un nuevo modelo sobre este diseño
+    
+    -   Seguir el proceso de comparaciones múltiples que ya vimos para el ANOVA de una vía.
+
+:::
+
+. . .
+
+```{r echo=T, eval=F, error=T}
+# creamos una variable dummy que combine los niveles de los factores
+ranas$tratamiento <- paste(ranas$Pred, ranas$Res, sep = "-")
+
+# corremos el modelo nuevamente con esta variable como predictor
+lm5 <- lm(log(Age.DPO) ~ tratamiento, data = ranas)
+
+# usamos emmeans para calcular las comparaciones HSD Tukey
+ph3 <- emmeans(lm5, specs = "tratamiento", type = "response")
+
+# creamos la tabla con nuestras amados números indicando el grupo
+cld(ph3)
+```
+
+. . .
+
+```{r echo=F, eval=T, error=T}
+# creamos una variable dummy que combine los niveles de los factores
+ranas$tratamiento <- paste(ranas$Pred, ranas$Res, sep = "-")
+
+# corremos el modelo nuevamente con esta variable como predictor
+lm5 <- lm(log(Age.DPO) ~ tratamiento, data = ranas)
+
+# usamos emmeans para calcular las comparaciones HSD Tukey
+ph3 <- emmeans(lm5, specs = "tratamiento", type = "response")
+
+# creamos la tabla con nuestras amadas letras
+cld(ph3)
+```
+
+## Ejercicios 4.10
+
+-   Lleva a cabo un ANOVA de dos vías para las variables `Resorb.days` y los factores `Pred` y `Res`. La pregunta a investigar es saber si existe una interacción entre la presencia de predadores a distintos niveles de recursos que afecte el tiempo de reabsorción de la cola en los renacuajos de ranas arbóreas de ojos rojos.
+
+-   A pesar de que el modelo para `Resorb.day` que acabas de hacer cumple con los supuestos del ANOVA, solo por aprendizaje, conduce una prueba de Kruskal-Wallis usando los mismos factores.
+
+-   ¿Cómo implementarías un DBCA factorial con estos datos?
+
+
+
+# Regresión lineal
+
+## Introducción {.smaller}
+
+::: incremental
+
+-   Otro modelo estadístico ampliamente usado es la regresión lineal.
+
+-   Se diferencia del ANOVA al considerar un predictor continuo (no un factor categórico).
+
+-   Los supuestos de la regresión lineal son:
+
+    -   Existencia de una relación lineal entre las variables continuas objeto de la regresión
+    
+    -   Normalidad de los residuales
+    
+    -   Que no exista multicolinearidad (en el caso de regresión múltiple)
+    
+    -   Que no exista auto correlación (que las observaciones no dependan una de otra dentro de una misma variable)
+    
+    -   Homogeneidad de la varianza de los residuales
+
+-   Contrario al ANOVA, no existen correcciones o métodos alternativos cuando las transformaciones fallan.
+
+-   Por esto, lo que se recomienda hacer es mencionar todos los detalles de la conducción del modelo. [Cosa que rara vez pasa.]{.fragment}
+
+-   En regresión lineal es quizá en el método que más se abusa del remover outliers. 
+
+:::
+
+## Regresión lineal en R {.smaller .scrollable}
+
+::: incremental
+
+-   Usando los datos de Touchon, podríamos preguntarnos si el tamaño de las ranas al final de la metamorfosis `SVL.final` está influenciado por la edad en finalizar la metamorfosis `Age.DPO`.
+
+-   Para minimizar el incumplimiento de los supuestos de la regresión lineal, hagamos de cuenta que con anterioridad encontramos que usando el logaritmo en ambas normaliza al menos los residuales.
+
+-   Esta regresión lineal sería de la siguiente forma:
+
+:::
+
+. . .
+
+```{r echo=T, eval=F, error=T}
+lm6 <- lm(log(SVL.final) ~ log(Age.DPO), data = ranas)
+summary(lm6)
+```
+
+. . .
+
+```{r echo=F, eval=T, error=T}
+lm6 <- lm(log(SVL.final) ~ log(Age.DPO), data = ranas)
+summary(lm6)
+```
+
+. . .
+
+-   Ahora démole un vistazo a los diagnósticos:
+
+```{r echo=F, eval=T, error=T, fig.width=6}
+par(mfrow = c(2, 2))
+plot(lm6)
+```
+
+::: incremental
+
+1.    **Residuales vs. Valores Ajustados**: Sirve para chequear la relación lineal entre las variables.
+
+2.    **Gráfico Q-Q**: Sirve para chequear la normalidad de los residuales.
+
+3.    **Escala Localización**: Sirve para chequear la homocedasticidad (homogeneidad de las variables).
+
+4.    **Residuales y apalancamiento**: Sirve para identificar outliers
+
+:::
+
+## Interpretación de la regresión lineal {.smaller .scrollable}
+
+. . .
+
+$$
+y = mx + b
+$$
+
+. . .
+
+```{r echo=F, eval=T, error=T}
+summary(lm6)
+```
+
+. . .
+
+-   Por cada incremento en una unidad del logaritmo de `Age.DPO`, tenemos una unidad en descenso del logaritmo de `SVL.final`
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+ggplot(ranas, aes(x = log(Age.DPO), y = log(SVL.final))) +
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+# ¡Antes de terminar!
+
+## El mágico $R^2$
+
+![](images/vieja.jpg){fig-align="center"}
+
+## El mágico $R^2$ {visibility="uncounted" .smaller}
+
+::: incremental
+
+-   Quizá muchos hayan escuchado que un $R^2$ cercano a 1 es "ideal" cuando realizamos una regresión lineal.
+
+-   Recuerdo incluso haber sido indoctrinado acerca de márgenes para un buen $R^2$ (algo así como que por encima del 80\% es "bueno", mayor al 90\% es excelente y 100\% es el Nirvana).
+
+-   En breve, $R^2$ **NO ES NINGUNA DE LAS SIGUIENTES COSAS**:
+
+    -   Una métrica de bondad de ajuste[: no nos dice si el modelo se ajusta bien a los datos.]{.fragment}
+    
+    -   Una métrica del error de predicción[: no mide para nada que tan bueno es el modelo para predecir futuras observaciones.]{.fragment}
+    
+    -   Una métrica que permita comparar modelos usando variables transformadas[: es común jugar a transformar los datos para ver de que manera se puede inflarlo hacia el santo grial.]{.fragment}
+    
+    -   Una métrica que permita que tan bien una variable explica otra[: en el ejemplo que vimos, y en toda regresión lineal, si cambiamos el predictor por respuesta y viceversa, tendremos exactamente el mismo $R^2$]{.fragment}
+    
+-   $R^2$ es simplemente una medida de la cantidad de variación que un modelo específico explica. [¿Tiene alguna utilidad práctica?]{.fragment} [ no lo sé, en 10 años como estadístico no lo he usado nunca, al menos no, voluntariamente...]{.fragment}
+
+:::
+
+## El mágico $R^2$ {visibility="uncounted" .smaller}
+
+. . .
+
+-   Lo que visto es carnicerías de datos por inflar $R^2$ debido a esta mala interpretación que no se sabe su origen exacto ([pero quizá aquí uno de tantos culpables perdidos en la historia](https://psycnet.apa.org/record/1946-01733-001){target="_blank"}).
+
+. . .
+
+-   Acá les dejo unos cuantos recursos que pueden revisar en más detalle si les interesa:
+
+    -   [El paper "How not to lie with Statistics: Avoiding common mistakes in Quantitative Political Science"](https://www.jstor.org/stable/2111095?casa_token=F0Om3ZPkjE4AAAAA%3AvR0lcSXuNHICl21EYDAoXSerVhME0AO_ZvkzayO1vYT6R3cCM9Ooy6-P9Wa6AEZN1Gcm960rjGFM9JVA4AJc4lm-nswzYJxdtiKr03H4tbVMRW16e35TlA){target="_blank"} Un artículo extenso pero que contiene una sección dedicada a desmitificar esta mala práctica.
+    
+    -   [Las notas de la clase del Prof. Cosma Shalizi de la Universidad Carnegie Mellon](https://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/10/lecture-10.pdf){target="_blank"} donde hermosamente destruye los mitos en torno al $R^2$ citando fórmulas y principios estadísticos.
+    
+    -   [Un blog de Clay Ford, consultor estadístico de la Universidad de Virginia](https://data.library.virginia.edu/is-r-squared-useless/){target="_blank"} donde demuestra con R que valores de $R^2$ cercanos a 0 no necesariamente implican un mal modelo, ni valores cercanos 1 son indicativo de modelos destacados. 
 
 # ¡Gracias!
