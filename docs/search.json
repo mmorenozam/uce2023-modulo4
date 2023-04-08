@@ -186,14 +186,14 @@
     "href": "index.html#pruebas-de-una-cola",
     "title": "Estadística aplicada con R",
     "section": "Pruebas de una cola",
-    "text": "Pruebas de una cola\n\\[\\begin{align}\nH_0& : \\mu_c- \\mu_r \\le \\theta \\\\\nH_a& : \\mu_c- \\mu_r &gt; \\theta\n\\end{align}\\]\n\nImagen tomada de UCLA: Advanced Research Computing"
+    "text": "Pruebas de una cola\n\\[\\begin{align}\nH_0& : \\mu_c- \\mu_r \\ge \\theta \\\\\nH_a& : \\mu_c- \\mu_r &lt; \\theta\n\\end{align}\\]\n\nImagen tomada de UCLA: Advanced Research Computing"
   },
   {
     "objectID": "index.html#pruebas-de-una-cola-1",
     "href": "index.html#pruebas-de-una-cola-1",
     "title": "Estadística aplicada con R",
     "section": "Pruebas de una cola",
-    "text": "Pruebas de una cola\n\\[\\begin{align}\nH_0& : \\mu_c- \\mu_r \\ge \\theta \\\\\nH_a& : \\mu_c- \\mu_r &lt; \\theta\n\\end{align}\\]\n\nImagen tomada de UCLA: Advanced Research Computing"
+    "text": "Pruebas de una cola\n\\[\\begin{align}\nH_0& : \\mu_c- \\mu_r \\le \\theta \\\\\nH_a& : \\mu_c- \\mu_r &gt; \\theta\n\\end{align}\\]\n\nImagen tomada de UCLA: Advanced Research Computing"
   },
   {
     "objectID": "index.html#un-ejemplo-de-análisis-de-poder",
@@ -238,18 +238,109 @@
     "text": "Antes de continuar\n\n\nImagen tomada de aquí"
   },
   {
+    "objectID": "index.html#antes-de-continuar-1",
+    "href": "index.html#antes-de-continuar-1",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nEl umbral de 0.05 es una convención arbitraria creada por Fischer en los inicios de la estadística moderna.\nLastimosamente, se ha generalizado la idea de que por más mínima sea la diferencia con respecto a 0.05, esta representa la diferencia entre publicar o no (en el campo académico), entre lanzar o no un nuevo fármaco/producto al mercado (en la industria).\nEn 2014, debido a un fallo de la corte suprema de justicia de los Estados Unidos que le dio la potestad a los inversionistas de farmaceúticas a demandarlas por fallar en reportar efectos secundarios de sus productos a pesar de haber sido hallados estadísticamente no significativos, la Asociación Americana de Estadística (ASA) se vio en la necesidad de definir más exhaustivamente el concepto del valor p.\nEntre las recomendaciones de la ASA, se enfatizó el dar mayor prioridad a la estimación de otros estadísticos complementarios al valor p, tales como intervalos de confianza u otros provenientes de la estadística Bayesiana (intervalos de credibilidad, factores de Bayes).\nEsta última (estadística Bayesiana), ofrece una interpretación más natural de la estadística al poder interpretar todos sus resultados en términos de probabilidades y no en números arbirtrarios como el valor p.\nEn resumen, una investigación no es inútil si el valor p sobrepasa o está por debajo de 0.05 por cantidades pequeñas."
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-2",
+    "href": "index.html#antes-de-continuar-2",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nEn su lugar, en escenarios en que el valor p está alejado por una décima o varias centésimas de 0.05, los resultados deberían interpretarse como indeterminados para generalizar sobre la población objeto de estudio y específicos a las condiciones experimentales (análisis estadísticos, instrumentos de medición, etc) bajo las cuales fueron tomadas y modeladas las mediciones.\nEn el contexto de los modelos estadísticos que veremos más adelante, esto ha derivado en un “temor” del investigador cuando los resultados no pasan los chequeos de los supuestos sobre los que estos modelos se cimentan. Sobre todo cuando el valor p dista de 0.05 por ínfimas cantidades.\nEsto puede llevar a malas prácticas científicas tales como: no reportar el resultado de los chequeos, blindar los datos, escoger “outliers” y removerlos y en el peor de los casos, manipular los datos para tratar de acomodar nuestros datos a estos chequeos.\nTodo lo que he mencionado, no solamente constituyen casos de mala conducta científica, sino lo que hoy en día se le conoce como p hacking (que se puede resumir a torturar los datos hasta que nos confiesen una verdad agradable a nuestros propósitos)."
+  },
+  {
+    "objectID": "index.html#datos-para-esta-sección",
+    "href": "index.html#datos-para-esta-sección",
+    "title": "Estadística aplicada con R",
+    "section": "Datos para esta sección",
+    "text": "Datos para esta sección\n\n\nPara esta sección del curso usaremos algunas de las tablas de datos del libro Using R for Introductory Statistics, como también de la librería datarium.\nPara ello, instalaremos las librerías de R: UsingR y datarium.\n\n\n\n\nlibrary(UsingR)\nlibrary(datarium)"
+  },
+  {
     "objectID": "index.html#pruebas-t",
     "href": "index.html#pruebas-t",
     "title": "Estadística aplicada con R",
     "section": "Pruebas t",
-    "text": "Pruebas t\n\n\nLas pruebas t son usadas para encontrar la diferencia entre dos medias aritméticas.\nLa \\(H_0\\) en estas pruebas es que las medias aritméticas son las mismas.\nSe rechaza la \\(H_0\\) cuando el valor p resultante es \\(&lt;\\) 0.05\nExisten tres tipos de pruebas t\n\nPruebas t de una muestra\nPruebas t de muestras independientes\nPruebas t de muestras emparejadas\n\nEstas pruebas fueron desarrolladas bajo la suposición de la normalidad y de homogeneidad de las varianzas.\nDe acuerdo a lo que hemos visto acerca del teorema del límite central, muestras grandes casi aseguran la normalidad.\nCuando el número de observaciones en una muestra es pequeño, es recomendable llevar a cabo un test de normalidad para decidir si es posible llevar a cabo una prueba t o una de sus alternativas."
+    "text": "Pruebas t\n\n\nLas pruebas t son usadas para encontrar la diferencia entre dos medias aritméticas.\nLa \\(H_0\\) en estas pruebas es que las medias aritméticas son las mismas.\nSe rechaza la \\(H_0\\) cuando el valor p resultante es \\(&lt;\\) 0.05\nExisten tres tipos de pruebas t\n\nPruebas t de una muestra\nPruebas t de muestras independientes\nPruebas t de muestras emparejadas\n\nEstas pruebas fueron desarrolladas bajo la suposición de la normalidad y de homogeneidad de las varianzas.\nDe acuerdo a lo que hemos visto acerca del teorema del límite central, muestras grandes casi aseguran la normalidad.\nCuando el número de observaciones en una muestra es pequeño, es recomendable llevar a cabo un test de normalidad para decidir si es posible una prueba t o una de sus alternativas."
+  },
+  {
+    "objectID": "index.html#normalidad-de-una-muestra",
+    "href": "index.html#normalidad-de-una-muestra",
+    "title": "Estadística aplicada con R",
+    "section": "Normalidad de una muestra",
+    "text": "Normalidad de una muestra\n\n\nAntes de llevar a cabo las pruebas t, hemos mencionado sus supuestos. Por ello, es aconsejable el siempre realizar estas pruebas antes de usarlas.\nExisten dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no\n\nIndirectamente: gráfico Q-Q\nPrueba formal de normalidad (ejemplo: Shapiro-Wilk)\n\nEn el caso del ANOVA, es importante enfatizar que estas pruebas no necesariamente tienen que hacerse antes de la prueba, como ya veremos más adelante."
+  },
+  {
+    "objectID": "index.html#gráfico-q-q",
+    "href": "index.html#gráfico-q-q",
+    "title": "Estadística aplicada con R",
+    "section": "Gráfico Q-Q",
+    "text": "Gráfico Q-Q\n\n\nEl gráfico Q-Q es una prueba visual indirecta de la normalidad.\nConsiste en crear un gráfico de dispersión entre los valores observados de una muestra vs. los valores que deberían estos tener si siguieran una distribución normal.\nMientras en el gráfico de dispersión los puntos más se distribuyan a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.\nSu desventaja es que es muy subjetivo, y a menudo requiere una prueba formal para poder confirmarlo."
+  },
+  {
+    "objectID": "index.html#gráfico-q-q-1",
+    "href": "index.html#gráfico-q-q-1",
+    "title": "Estadística aplicada con R",
+    "section": "Gráfico Q-Q",
+    "text": "Gráfico Q-Q\n\nset.seed(123)\ny &lt;- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar\nqqnorm(y)                             # producimos el gráfico Q-Q"
+  },
+  {
+    "objectID": "index.html#gráfico-q-q-2",
+    "href": "index.html#gráfico-q-q-2",
+    "title": "Estadística aplicada con R",
+    "section": "Gráfico Q-Q",
+    "text": "Gráfico Q-Q\n\nset.seed(123)\ny &lt;- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar\nqqnorm(y)                             # producimos el gráfico Q-Q"
+  },
+  {
+    "objectID": "index.html#prueba-de-normalidad-shapiro-wilk",
+    "href": "index.html#prueba-de-normalidad-shapiro-wilk",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba de normalidad Shapiro-Wilk",
+    "text": "Prueba de normalidad Shapiro-Wilk\n\n\nLa \\(H_0\\) de esta prueba (y del resto de pruebas formales de normalidad) es que un set de \\(n\\) observaciones es normalmente distribuido.\nOtro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.\nPara ilustrar su uso, chequeemos la normalidad de los datos que simulamos anteriormente\n\n\n\n\nshapiro.test(y)\n\n\n    Shapiro-Wilk normality test\n\ndata:  y\nW = 0.97894, p-value = 0.7966"
+  },
+  {
+    "objectID": "index.html#prueba-de-homogeneidad-de-las-varianzas",
+    "href": "index.html#prueba-de-homogeneidad-de-las-varianzas",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba de homogeneidad de las varianzas",
+    "text": "Prueba de homogeneidad de las varianzas\n\n\nEn el caso de comparaciones entre las medias de dos grupos, la homogeneidad de varianzas puede chequearse usando la prueba F.\nLa prueba t de una muestra no requiere chequear este supuesto.\nPara ilustrar su uso, creemos otro vector con datos simulados. En este caso, un igual número de observaciones con la misma desviación estándar pero diferente media:\n\n\n\n\nset.seed(123)\nx &lt;- rnorm(n = 30, mean = 4, sd = 1)\nvar.test(x, y)\n\n\n    F test to compare two variances\n\ndata:  x and y\nF = 1, num df = 29, denom df = 29, p-value = 1\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.4759648 2.1009958\nsample estimates:\nratio of variances \n                 1"
+  },
+  {
+    "objectID": "index.html#supuestos-en-la-práctica",
+    "href": "index.html#supuestos-en-la-práctica",
+    "title": "Estadística aplicada con R",
+    "section": "Supuestos en la práctica",
+    "text": "Supuestos en la práctica\n\n\nUsemos las pruebas con datos reales, esta vez con la tabla de datos crime de la librería Using R.\nEsta tabla de datos contiene registros de las tasas de crimen (# de reportes/100000 habitantes) en 50 estados en los Estados Unidos correspondiente a los años 1983 y 1993.\nSin enfocarnos por el momento en que prueba t específica usaremos, limitémonos a chequear la normalidad y la homogeneidad de varianzas entre las tasas de crimen registradas en 1983 y 1993.\n\n\n\n\ndata(crime)\n\n\n\nNormalidad 1983\n\nshapiro.test(crime$y1983)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1983\nW = 0.77333, p-value = 1.827e-07\n\n\n\nNormalidad 1993\n\nshapiro.test(crime$y1993)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1993\nW = 0.77348, p-value = 1.841e-07\n\n\n\n\n\n\nHomogeneidad de las varianzas\n\nvar.test(crime$y1983, crime$y1993)\n\n\n    F test to compare two variances\n\ndata:  crime$y1983 and crime$y1993\nF = 0.49163, num df = 50, denom df = 50, p-value = 0.01342\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.2806163 0.8613069\nsample estimates:\nratio of variances \n         0.4916266"
+  },
+  {
+    "objectID": "index.html#transformación-de-variables",
+    "href": "index.html#transformación-de-variables",
+    "title": "Estadística aplicada con R",
+    "section": "Transformación de variables",
+    "text": "Transformación de variables\n\n\nA menudo nos encontraremos con conjuntos de observaciones que no cumplen uno o ninguno de los supuestos.\nAntes de considerar pruebas no paramétricas, podemos intentar transformaciones de variables para regresar al mundo de las pruebas paramétricas. Las transformaciones más usadas son:\n\nLa raíz cuadrada (si los datos no contienen números negativos)\nElevar al cuadrado\nLogaritmo (si los datos solo incluyen números reales positivos, cero excluido)"
+  },
+  {
+    "objectID": "index.html#transformación-de-variables-1",
+    "href": "index.html#transformación-de-variables-1",
+    "title": "Estadística aplicada con R",
+    "section": "Transformación de variables",
+    "text": "Transformación de variables\n\n\nExiste un método más sofisticado para “normalizar” una muestra. La transformación de Box-Cox.\nCuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.\nEn otras palabras, una misma transformación debe aplicarse a todos los grupos a ser comparados. NO tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.\nSi el número de observaciones es muy reducido, usualmente no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas."
+  },
+  {
+    "objectID": "index.html#transformación-de-variables-2",
+    "href": "index.html#transformación-de-variables-2",
+    "title": "Estadística aplicada con R",
+    "section": "Transformación de variables",
+    "text": "Transformación de variables\n\n\nRaíz cuadrada\n\nshapiro.test(sqrt(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  sqrt(crime$y1983)\nW = 0.9411, p-value = 0.01359\n\n\n\nElevar al cuadrado\n\nshapiro.test(crime$y1983^2)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1983^2\nW = 0.38921, p-value = 2.954e-13\n\n\n\n\n\n\nLogaritmo\n\nshapiro.test(log(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1983)\nW = 0.98076, p-value = 0.5713\n\n\n\nChequeemos con el otro grupo\n\nshapiro.test(log(crime$y1993))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1993)\nW = 0.96191, p-value = 0.1006\n\n\n\n\n\nHomogeneidad de las varianzas con transformación logarítmica\n\nvar.test(log(crime$y1983), log(crime$y1993))\n\n\n    F test to compare two variances\n\ndata:  log(crime$y1983) and log(crime$y1993)\nF = 0.84048, num df = 50, denom df = 50, p-value = 0.5412\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.4797393 1.4724831\nsample estimates:\nratio of variances \n         0.8404808"
   },
   {
     "objectID": "index.html#prueba-t-de-una-muestra",
     "href": "index.html#prueba-t-de-una-muestra",
     "title": "Estadística aplicada con R",
     "section": "Prueba t de una muestra",
-    "text": "Prueba t de una muestra\n\n\nEs usada para comparar la media aritmética de una muestra con un valor conocido (un estándar por ejemplo).\nPor lo general la el valor al que se va a comparar proviene de referencias bibliográficas, pre-experimentos o supociones fundamentadas.\nEn este caso, el supuesto que debe cumplirse es el de la normalidad de los datos\nRegresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables."
+    "text": "Prueba t de una muestra\n\n\nEs usada para comparar la media aritmética de una muestra con un valor conocido (un estándar por ejemplo).\nPor lo general el valor al que se va a comparar proviene de referencias bibliográficas, pre-experimentos o supociones fundamentadas.\nEn este caso, el supuesto que debe cumplirse es el de la normalidad de los datos\nRegresando a nuestro ejemplo de los ratones, determinemos si la media de la muestra es mayor al límite superior de glucosa de ratones saludables."
   },
   {
     "objectID": "index.html#prueba-t-de-una-muestra-1",
@@ -284,7 +375,14 @@
     "href": "index.html#prueba-t-de-muestras-independientes-1",
     "title": "Estadística aplicada con R",
     "section": "Prueba t de muestras independientes",
-    "text": "Prueba t de muestras independientes\n\n\nChequeamos normalidad: Group M\n\nshapiro.test(subset(genderweight, group == \"M\")$weight)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  subset(genderweight, group == \"M\")$weight\nW = 0.98634, p-value = 0.9886\n\n\n\nChequeamos normalidad: Group F\n\nshapiro.test(subset(genderweight, group == \"F\")$weight)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  subset(genderweight, group == \"F\")$weight\nW = 0.93847, p-value = 0.2243\n\n\n\n\n\nChequeamos la homogeneidad de las varianzas\n\nvar.test(genderweight$weight ~ genderweight$group)\n\n\n    F test to compare two variances\n\ndata:  genderweight$weight by genderweight$group\nF = 0.21692, num df = 19, denom df = 19, p-value = 0.001648\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.08585766 0.54802553\nsample estimates:\nratio of variances \n         0.2169152 \n\n\n\n\n¡La homogeneidad de las varianzas no se cumple! 😱\n¿Debemos transformar? No necesariamente\nÚnicamente en el caso de las pruebas t, el no cumplir con el supuesto de la homogeneidad de varianzas no es un gran problema.\nLa función base de R t.test cuenta con el argumento var.equal = F como default.\nBajo este argumento, no se asumen varianzas iguales entre los grupos y en su lugar R lleva a cabo la aproximación de Welch para lidiar con este problema."
+    "text": "Prueba t de muestras independientes\n\n\nChequeamos normalidad: Group M\n\nshapiro.test(subset(genderweight, group == \"M\")$weight)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  subset(genderweight, group == \"M\")$weight\nW = 0.98634, p-value = 0.9886\n\n\n\nChequeamos normalidad: Group F\n\nshapiro.test(subset(genderweight, group == \"F\")$weight)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  subset(genderweight, group == \"F\")$weight\nW = 0.93847, p-value = 0.2243\n\n\n\n\n\nChequeamos la homogeneidad de las varianzas\n\nvar.test(genderweight$weight ~ genderweight$group)\n\n\n    F test to compare two variances\n\ndata:  genderweight$weight by genderweight$group\nF = 0.21692, num df = 19, denom df = 19, p-value = 0.001648\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.08585766 0.54802553\nsample estimates:\nratio of variances \n         0.2169152 \n\n\n\n\n¡La homogeneidad de las varianzas no se cumple! 😱\n¿Debemos transformar? No necesariamente\nEl no cumplir con el supuesto de la homogeneidad de varianzas no es un gran problema gracias a varias correcciones.\nLa función base de R t.test cuenta con el argumento var.equal = F como default.\nBajo este argumento, no se asumen varianzas iguales entre los grupos y en su lugar R lleva a cabo la aproximación de Welch para lidiar con este problema."
+  },
+  {
+    "objectID": "index.html#prueba-t-de-muestras-independientes-2",
+    "href": "index.html#prueba-t-de-muestras-independientes-2",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba t de muestras independientes",
+    "text": "Prueba t de muestras independientes\n\nt.test(genderweight$weight ~ genderweight$group)\n\n\n    Welch Two Sample t-test\n\ndata:  genderweight$weight by genderweight$group\nt = -20.791, df = 26.872, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group F and group M is not equal to 0\n95 percent confidence interval:\n -24.53135 -20.12353\nsample estimates:\nmean in group F mean in group M \n       63.49867        85.82612"
   },
   {
     "objectID": "index.html#ejercicio-4.4",
@@ -308,6 +406,13 @@
     "text": "Prueba t para muestras emparejadas\n\nt.test(x = log(crime$y1983), y = log(crime$y1993), paired = TRUE)\nexp(mean(log(crime$y1983)))\nexp(mean(log(crime$y1993)))"
   },
   {
+    "objectID": "index.html#prueba-t-para-muestras-emparejadas-2",
+    "href": "index.html#prueba-t-para-muestras-emparejadas-2",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba t para muestras emparejadas",
+    "text": "Prueba t para muestras emparejadas\n\nt.test(x = log(crime$y1983), y = log(crime$y1993), paired = TRUE)\n\n\n    Paired t-test\n\ndata:  log(crime$y1983) and log(crime$y1993)\nt = -10.027, df = 50, p-value = 1.469e-13\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -0.3628437 -0.2417349\nsample estimates:\nmean difference \n     -0.3022893 \n\nexp(mean(log(crime$y1983)))\n\n[1] 362.8298\n\nexp(mean(log(crime$y1993)))\n\n[1] 490.8915"
+  },
+  {
     "objectID": "index.html#ejercicio-4.5",
     "href": "index.html#ejercicio-4.5",
     "title": "Estadística aplicada con R",
@@ -315,60 +420,11 @@
     "text": "Ejercicio 4.5\nLa tabla de datos mice2 de la librería datarium tiene las medidas del peso de 10 ratones antes y después de haber sido sometidos a una determinada dieta. Encuentra si existe una diferencia significativa en el peso de estos ratones antes y después del régimen de dieta al que fueron expuestos. ¿Ganaron o perdieron peso?\nCopia y pega las siguientes líneas de código a tu script. Luego de ejecutarlas, una tabla de datos de nombre mice2 aparecerá disponible en la ventana del ambiente de RStudio\n\ndata(mice2)\nmice2\n\nTip: usa el mismo tips de los ejemplos anteriores"
   },
   {
-    "objectID": "index.html#normalidad-de-una-muestra",
-    "href": "index.html#normalidad-de-una-muestra",
-    "title": "Estadística aplicada con R",
-    "section": "Normalidad de una muestra",
-    "text": "Normalidad de una muestra\n\n\nAntes de llevar a cabo las pruebas t, hemos mencionado sus supuestos. Por ello, es aconsejable el siempre realizar estas pruebas antes de usarlas.\nExisten dos tipos de pruebas para establecer si una muestra es normalmente distribuida o no\n\nIndirectamente: gráfico Q-Q\nPrueba formal de normalidad (ejemplo: Shapiro-Wilk)\n\nEn el caso del ANOVA, es importante enfatizar que estas pruebas no necesariamente tienen que hacerse antes de la prueba, como ya veremos más adelante."
-  },
-  {
-    "objectID": "index.html#gráfico-q-q",
-    "href": "index.html#gráfico-q-q",
-    "title": "Estadística aplicada con R",
-    "section": "Gráfico Q-Q",
-    "text": "Gráfico Q-Q\n\n\nEl gráfico Q-Q es una prueba visual indirecta de la normalidad.\nConsiste en crear un gráfico de dispersión entre los valores observados de una muestra vs. los valores que deberían estos tener si siguieran una distribución normal.\nMientras en el gráfico de dispersión los puntos más se distribuyan a lo largo de una diagonal, más cercanos están los datos de la muestra a seguir un distribución normal.\nSu desventaja es que es muy subjetivo, y a menudo requiere una prueba formal para poder confirmarlo."
-  },
-  {
-    "objectID": "index.html#gráfico-q-q-1",
-    "href": "index.html#gráfico-q-q-1",
-    "title": "Estadística aplicada con R",
-    "section": "Gráfico Q-Q",
-    "text": "Gráfico Q-Q\n\nset.seed(123)\ny &lt;- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar\nqqnorm(y)                             # producimos el gráfico Q-Q"
-  },
-  {
-    "objectID": "index.html#prueba-de-normalidad-shapiro-wilk",
-    "href": "index.html#prueba-de-normalidad-shapiro-wilk",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba de normalidad Shapiro-Wilk",
-    "text": "Prueba de normalidad Shapiro-Wilk\n\n\nLa \\(H_0\\) de esta prueba (y del resto de pruebas formales de normalidad) es que un set de \\(n\\) observaciones es normalmente distribuido.\nOtro conocido método es Kolmogorov-Smirnov. Sin embargo, Shapiro-Wilk es más apropiado para cuando el número de muestras es menor a 50.\nPara ilustrar su uso, chequeemos la normalidad de los datos que simulamos anteriormente\n\n\n\n\nshapiro.test(y)\n\n\n    Shapiro-Wilk normality test\n\ndata:  y\nW = 0.97894, p-value = 0.7966"
-  },
-  {
-    "objectID": "index.html#prueba-de-normalidad-shapiro-wilk-1",
-    "href": "index.html#prueba-de-normalidad-shapiro-wilk-1",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba de normalidad Shapiro-Wilk",
-    "text": "Prueba de normalidad Shapiro-Wilk\n\n\nRaíz cuadrada\n\nshapiro.test(sqrt(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  sqrt(crime$y1983)\nW = 0.9411, p-value = 0.01359\n\n\n\nElevar al cuadrado\n\nshapiro.test(crime$y1983^2)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1983^2\nW = 0.38921, p-value = 2.954e-13\n\n\n\n\n\n\nLogaritmo\n\nshapiro.test(log(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1983)\nW = 0.98076, p-value = 0.5713\n\n\n\nChequeemos con el otro grupo\n\nshapiro.test(log(crime$y1993))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1993)\nW = 0.96191, p-value = 0.1006"
-  },
-  {
-    "objectID": "index.html#prueba-de-normalidad-shapiro-wilk-2",
-    "href": "index.html#prueba-de-normalidad-shapiro-wilk-2",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba de normalidad Shapiro-Wilk",
-    "text": "Prueba de normalidad Shapiro-Wilk\n\nOjo con las transformaciones\n\n\nExiste un método más sofisticado para “normalizar” una muestra. La transformación de Box-Cox.\nCuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.\nEn otras palabras, una misma transformación debe aplicarse a todos los grupos a ser comparados. NO tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.\nSi el número de observaciones es muy reducido, no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas."
-  },
-  {
-    "objectID": "index.html#prueba-de-normalidad-shapiro-wilk-3",
-    "href": "index.html#prueba-de-normalidad-shapiro-wilk-3",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba de normalidad Shapiro-Wilk",
-    "text": "Prueba de normalidad Shapiro-Wilk\n\nOjo con las transformaciones\n\n\nExiste un método más sofisticado para “normalizar” una muestra. La transformación de Box-Cox.\nCuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.\nEn otras palabras, una misma transformación debe aplicarse a todos los grupos a ser comparados. NO tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.\nSi el número de observaciones es muy reducido, no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas."
-  },
-  {
     "objectID": "index.html#ejercicios-4.6",
     "href": "index.html#ejercicios-4.6",
     "title": "Estadística aplicada con R",
     "section": "Ejercicios 4.6",
-    "text": "Ejercicios 4.6\n\nEn la librería UsingR tenemos disponible una lista con 5 objetos bajo el nombre cancer. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cancer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?\n\nTip: usa el siguiente código para extraer en un vector los datos de pacientes con cáncer de colon:\n\ndata(cancer)\ncolon &lt;- cancer$colon"
+    "text": "Ejercicios 4.6\n\nEn la librería UsingR tenemos disponible una lista con 5 objetos bajo el nombre cancer. Esta contiene el tiempo de sobreviviencia en días de pacientes con distintos tipos de cáncer desde el momento de su diagnóstico hasta su deceso. Chequea si los datos correspondientes a cáncer de colon son normalmente distribuidos. Si no lo son, prueba si puedes normalizarlos usando alguna de las tres transformaciones que vimos. En el caso que más de una transformación funcione, ¿cuál escogerías para continuar con alguna prueba estadística, y por qué?\n\nTip: usa el siguiente código para extraer en un vector los datos de pacientes con cáncer de colon:\n\ndata(cancer)\ncolon &lt;- cancer$colon"
   },
   {
     "objectID": "index.html#pruebas-de-wilcoxon-para-datos-no-normales",
@@ -406,11 +462,39 @@
     "text": "Ejercicios 4.7\n\nCon el vector de nombre colon que creaste en el ejercicio 4.6, aplica una prueba de Wilcoxon para una muestra bajo la hipótesis de que la mediana de los días de superviviencia de un paciente con cáncer de colon es de 370 días.\nA partir de la tabla de datos de felicidad de la Prof. Navarro, lleva a cabo una prueba de Wilcoxon para dos muestras emparejadas de la felicidad de los estudiantes antes y después de recibir una clase de Estadística. Compara el resultado con la prueba de una muestra que usé de ejemplo. ¿Por qué no hay diferencia?."
   },
   {
+    "objectID": "index.html#introducción",
+    "href": "index.html#introducción",
+    "title": "Estadística aplicada con R",
+    "section": "Introducción",
+    "text": "Introducción\n\n\nPara valores discretos univariados tenemos:\n\nEstadísticos descriptivos\nPrueba de bondad de ajuste de \\(\\chi^2\\)\n\nPara datos discretos bivariados arreglados en Tablas de contingencia tenemos:\n\nPrueba de independencia de \\(\\chi^2\\)\nPrueba exacta de Fisher"
+  },
+  {
+    "objectID": "index.html#revisitando-los-estadísticos-descriptivos",
+    "href": "index.html#revisitando-los-estadísticos-descriptivos",
+    "title": "Estadística aplicada con R",
+    "section": "Revisitando los estadísticos descriptivos",
+    "text": "Revisitando los estadísticos descriptivos\n\n\nRecordarán que en módulo de análisis exploratorio de datos vimos los estadísticos descriptivos usando la función base summary.\nSin embargo, para los fines del AED, summary es suficiente para tener una idea de estos estadísticos pero su exportación a tablas de Word es un proceso tedioso.\nAprovechando esta oportunidad, vamos a ver una forma de ver a los estadísticos descriptivos con la posibilidad de exportarlos a Word de una manera sencilla.\nPara ello usaremos la librería tidycomm, flextable y palmerpenguins.\n\n\n\n\nlibrary(tidycomm)\nlibrary(palmerpenguins)\nlibrary(flextable)\n\ndata(\"penguins\")\npenguins_cat &lt;- describe_cat(penguins)\npenguins_cat\n\n# A tibble: 3 × 6\n  Variable     N Missing Unique Mode   Mode_N\n  &lt;chr&gt;    &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   &lt;int&gt;\n1 species    344       0      3 Adelie    152\n2 island     344       0      3 Biscoe    168\n3 sex        333      11      3 male      168"
+  },
+  {
+    "objectID": "index.html#tablas-de-estadísticos-descriptivos",
+    "href": "index.html#tablas-de-estadísticos-descriptivos",
+    "title": "Estadística aplicada con R",
+    "section": "Tablas de estadísticos descriptivos",
+    "text": "Tablas de estadísticos descriptivos\nTablas de estadísticos descriptivos de variables continuas\n\npenguins_con &lt;- describe(penguins)\npenguins_con\n\n# A tibble: 5 × 15\n  Varia…¹     N Missing      M      SD    Min    Q25    Mdn    Q75    Max  Range\n  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 bill_l…   342       2   43.9   5.46    32.1   39.2   44.4   48.5   59.6   27.5\n2 bill_d…   342       2   17.2   1.97    13.1   15.6   17.3   18.7   21.5    8.4\n3 flippe…   342       2  201.   14.1    172    190    197    213    231     59  \n4 body_m…   342       2 4202.  802.    2700   3550   4050   4750   6300   3600  \n5 year      344       0 2008.    0.818 2007   2007   2008   2009   2009      2  \n# … with 4 more variables: CI_95_LL &lt;dbl&gt;, CI_95_UL &lt;dbl&gt;, Skewness &lt;dbl&gt;,\n#   Kurtosis &lt;dbl&gt;, and abbreviated variable name ¹​Variable\n\n\n\n\ntabla1 &lt;- flextable(penguins_cat)\ntabla2 &lt;- flextable(penguins_con)\ntabla2\n\n\nVariableNMissingMSDMinQ25MdnQ75MaxRangeCI_95_LLCI_95_ULSkewnessKurtosisbill_length_mm342243.921935.459583732.139.22544.4548.559.627.543.3412544.502610.052884812.119235bill_depth_mm342217.151171.974793213.115.60017.3018.721.58.416.9411317.36121-0.142834632.088845flipper_length_mm3422200.9152014.0617137172.0190.000197.00213.0231.059.0199.41960202.410810.344163832.012566body_mass_g34224,201.75439801.95453572,700.03,550.0004,050.004,750.06,300.03,600.04,116.458334,287.050440.468263962.273757year34402,008.029070.81835592,007.02,007.0002,008.002,009.02,009.02.02,007.942282,008.11586-0.053493211.499457\n\n\n\n\n\ntabla1 &lt;- flextable(penguins_cat)\ntabla2 &lt;- flextable(penguins_con)\ntabla2 &lt;- colformat_double(tabla2, j = c(3:15), digits = 2)\ntabla2\n\n\nVariableNMissingMSDMinQ25MdnQ75MaxRangeCI_95_LLCI_95_ULSkewnessKurtosisbill_length_mm342243.925.4632.1039.2344.4548.5059.6027.5043.3444.500.052.12bill_depth_mm342217.151.9713.1015.6017.3018.7021.508.4016.9417.36-0.142.09flipper_length_mm3422200.9214.06172.00190.00197.00213.00231.0059.00199.42202.410.342.01body_mass_g34224,201.75801.952,700.003,550.004,050.004,750.006,300.003,600.004,116.464,287.050.472.27year34402,008.030.822,007.002,007.002,008.002,009.002,009.002.002,007.942,008.12-0.051.50\n\nsave_as_docx(\"Tabla1\" = tabla1, \"Tabla2\" = tabla2,\n             path = \"C:/Users/mmore/Documents/cursos_uce_2023/modulos/uce2023-modulo4/descriptivos.docx\")"
+  },
+  {
+    "objectID": "index.html#prueba-de-bondad-de-ajuste-chi2",
+    "href": "index.html#prueba-de-bondad-de-ajuste-chi2",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba de bondad de ajuste \\(\\chi^2\\)",
+    "text": "Prueba de bondad de ajuste \\(\\chi^2\\)\n\n\nPermite el comparar que tan bien se ajustan las proporciones (probabilidades) observadas en las categorías de una variable discreta con respecto de una probabilidad hipotética de estas.\nVolviendo con los pingüinos de Palmer, supongamos que quisieramos probar que la distribución observada de estos a lo largo de las tres islas donde fueron encontrados es igual 1/3 por isla.\nLa \\(H_0\\) sería: encontramos la misma proporción de pingüinos en cada isla (1/3 = 1/3 = 1/3)\n\n\n\n\nChecamos cuántos pingüinos fueron observados por isla\n\n\ntable(penguins$island)\n\n\n   Biscoe     Dream Torgersen \n      168       124        52 \n\n\n\n\n\nLlevamos a cabo la prueba de bondad de ajuste de \\(\\chi^2\\)\n\n\npenguins_isla &lt;- c(168, 124, 52)\nchisq.test(penguins_isla, p = c(1/3, 1/3, 1/3))\n\n\n    Chi-squared test for given probabilities\n\ndata:  penguins_isla\nX-squared = 59.814, df = 2, p-value = 1.027e-13"
+  },
+  {
     "objectID": "index.html#tablas-de-contingencia",
     "href": "index.html#tablas-de-contingencia",
     "title": "Estadística aplicada con R",
     "section": "Tablas de contingencia",
-    "text": "Tablas de contingencia\n\n\nUna tabla de contigencia nos sirve para ver si los valores de una variable categórica dependen de los valores de otra variable categórica.\nEl análisis de contingencia nos permite probar formalmente la asociación entre dos o más variables categóricas.\n\n¿Qué tan probable es que beban más alcohol personas que fuman con respecto a aquellas que no?\n¿Las personas que toman una aspirina diaria tienen menos probabilidad de sufrir un ataque cardíaco con respecto a las que no?"
+    "text": "Tablas de contingencia\n\n\nUna tabla de contigencia nos sirve para ver si los valores de una variable categórica dependen de los valores de otra variable categórica.\n\n¿Qué tan probable es que beban más alcohol personas que fuman con respecto a aquellas que no?\n¿Las personas que toman una aspirina diaria tienen menos probabilidad de sufrir un ataque cardíaco con respecto a las que no?\n¿Durante la tragedia del Titanic, tuvieron tanto hombres como mujeres los mismos chances de salvarse?"
   },
   {
     "objectID": "index.html#tabla-de-contingencia-n-times-n",
@@ -420,32 +504,60 @@
     "text": "Tabla de contingencia \\(n \\times n\\)\n\n\n\n\n\n\nModificado de Miloš Gejdoš, et al. (2019) Int. J. Environ. Res. Public Health 16(1)"
   },
   {
-    "objectID": "index.html#tabla-de-contingencia-n-times-n-1",
-    "href": "index.html#tabla-de-contingencia-n-times-n-1",
+    "objectID": "index.html#prueba-de-independencia-de-chi2",
+    "href": "index.html#prueba-de-independencia-de-chi2",
     "title": "Estadística aplicada con R",
-    "section": "Tabla de contingencia \\(n \\times n\\)",
-    "text": "Tabla de contingencia \\(n \\times n\\)\n\n\n\n\n\n\n\nLa variable B (o respuesta) contendrá como posibles resultados “éxito” o “fracaso”.\nLa variable A (o explanatoria) posee las clases que identifican los grupos cuya probabilidad es sujeto de comparación.\n\n\n\nModificado de Miloš Gejdoš, et al. (2019) Int. J. Environ. Res. Public Health 16(1)"
+    "section": "Prueba de independencia de \\(\\chi^2\\)",
+    "text": "Prueba de independencia de \\(\\chi^2\\)\n\n\nPuede usarse con 2 variables discretas con más de dos categorías.\nLa \\(H_0\\) en esta prueba es que las filas y columnas de la tabla de contingencia son independientes.\n\n\n\n\nConstruimos la tabla de contingencia\n\n\ncont_tabla &lt;- xtabs(~ island + species, data = penguins)\ncont_tabla\n\n           species\nisland      Adelie Chinstrap Gentoo\n  Biscoe        44         0    124\n  Dream         56        68      0\n  Torgersen     52         0      0\n\n\n\n\n\nLlevamos a cabo la prueba de independencia de \\(\\chi^2\\)\n\n\nchisq &lt;- chisq.test(cont_tabla)\nchisq\n\n\n    Pearson's Chi-squared test\n\ndata:  cont_tabla\nX-squared = 299.55, df = 4, p-value &lt; 2.2e-16"
+  },
+  {
+    "objectID": "index.html#dependencia-entre-las-filas-y-las-columnas",
+    "href": "index.html#dependencia-entre-las-filas-y-las-columnas",
+    "title": "Estadística aplicada con R",
+    "section": "Dependencia entre las filas y las columnas",
+    "text": "Dependencia entre las filas y las columnas\n\n\nExtraemos los residuos (residuos) de la prueba \\(\\chi^2\\)\n\n\nresiduos &lt;- chisq$residuals\n\n\n\n\nCon ayuda de la librería corrplot podemos ver a las dependencias una por una\n\n\nlibrary(corrplot)\ncorrplot(residuos, is.corr = F)"
+  },
+  {
+    "objectID": "index.html#ejercicio-4.8",
+    "href": "index.html#ejercicio-4.8",
+    "title": "Estadística aplicada con R",
+    "section": "Ejercicio 4.8",
+    "text": "Ejercicio 4.8\nLa tabla de datos housetasks tiene una tabla de contingencia con dos variables discretas, en las filas: tareas del hogar, y en las columnas: responsable (de llevarlas a cabo). Las celdas de esta tabla cuentan el número de veces que estas preguntas fueron contestadas en una encuesta. Para acceder a esta tabla, copia, pega y ejecuta las siguientes líneas de código:\n\nfile_path &lt;- \"http://www.sthda.com/sthda/RDoc/data/housetasks.txt\"\nhousetasks &lt;- read.delim(file_path, row.names = 1)\n\nRealiza una prueba de independencia de \\(\\chi^2\\) en esta tabla de contigencia."
+  },
+  {
+    "objectID": "index.html#prueba-exacta-de-fisher",
+    "href": "index.html#prueba-exacta-de-fisher",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba exacta de Fisher",
+    "text": "Prueba exacta de Fisher\n\n\nEs usada cuando el conteo de las combinaciones de las clases de dos variables discretas es pequeño. Cuando este número es muy grande, la función de R fisher.test devuelve un mensaje sugiriendo usar otra prueba estadística en su lugar.\nTambién se puede usar cuando las variables discretas tienen varias categorías. Sin embargo, su uso más común es en tablas de contingencia 2 .\nEsto último por cuánto introduce un estadístico conocido como cociente de probabilidades (en inglés: odds ratio) que sirve para hacer conclusiones interesantes."
+  },
+  {
+    "objectID": "index.html#tabla-de-contingencia-2-times-2",
+    "href": "index.html#tabla-de-contingencia-2-times-2",
+    "title": "Estadística aplicada con R",
+    "section": "Tabla de contingencia \\(2 \\times 2\\)",
+    "text": "Tabla de contingencia \\(2 \\times 2\\)\n\n\n\n\n\n\n\nLa variable B (o respuesta) contendrá como posibles resultados “éxito” o “fracaso”.\nLa variable A (o explanatoria) posee las clases que identifican los grupos cuya probabilidad es sujeto de comparación.\n\n\n\nModificado de Miloš Gejdoš, et al. (2019) Int. J. Environ. Res. Public Health 16(1)"
   },
   {
     "objectID": "index.html#cociente-de-probabilidad-para-tablas-de-contingencia-2-times-2",
     "href": "index.html#cociente-de-probabilidad-para-tablas-de-contingencia-2-times-2",
     "title": "Estadística aplicada con R",
     "section": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)",
-    "text": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)\n\n\nEl cociente de probabilidad mide la magnitud de asociación entre dos variables categóricas cuando estas tienen dos clases.\nEn una tabla de contingencia \\(2 \\times 2\\), el cociente de probabilidad (OR) se define como:\n\n\n\n\\[ OR=\\frac{n_{11}/n_{12}}{n_{21}/n_{22}} \\]"
+    "text": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)\n\n\nEl cociente de probabilidad mide la magnitud de asociación entre dos variables categóricas cuando estas tienen dos clases (categorías).\nEn una tabla de contingencia \\(2 \\times 2\\), el cociente de probabilidad (OR) se define como:\n\n\n\n\\[ OR=\\frac{n_{11}/n_{12}}{n_{21}/n_{22}} \\]"
   },
   {
     "objectID": "index.html#cociente-de-probabilidad-para-tablas-de-contingencia-2-times-2-1",
     "href": "index.html#cociente-de-probabilidad-para-tablas-de-contingencia-2-times-2-1",
     "title": "Estadística aplicada con R",
     "section": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)",
-    "text": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)\n\n\nLa interpretación del OR depende de la magnitud del mismo:\n\nIgual a 1, los eventos (clase de la variable explanatoria) son independientes de la variable de respuesta.\nMayor o menor a 1, existe una relación positiva o negativa de la variable explanatoria con la variable de respuesta.\nLa magnitud de OR depende de la clase tomada como base en el análisis."
+    "text": "Cociente de probabilidad para tablas de contingencia \\(2 \\times 2\\)\n\n\nLa interpretación del OR depende de la magnitud del mismo:\n\nIgual a 1, los eventos (clase de la variable explanatoria) son independientes de la variable de respuesta.\nMayor o menor a 1, existe una relación positiva o negativa de la variable explanatoria con la variable de respuesta.\nLa magnitud de OR depende de la clase tomada como referencia en el análisis.\nLos coecientes de probabilidad son más fáciles de interpretar cuando son \\(\\ge\\) 1"
   },
   {
     "objectID": "index.html#cociente-de-probabilidad-en-r",
     "href": "index.html#cociente-de-probabilidad-en-r",
     "title": "Estadística aplicada con R",
     "section": "Cociente de probabilidad en R",
-    "text": "Cociente de probabilidad en R\n\nUsaremos para este ejemplo los datos del Titanic. La pregunta de investigación es: ¿tuvieron las mujeres mayores probabilidades de salvarse durante el hundimiento del Titanic?\n\n\n\nCargamos en nuestro ambiente la tabla de datos (librería datarium)\n\n\ndata(titanic.raw)\n\n\n\n\nDefinimos las clases de referencia\n\n\ntitanic.raw$Survived &lt;- relevel(titanic.raw$Survived, ref = \"Yes\")\ntitanic.raw$Sex &lt;- relevel(titanic.raw$Sex, ref = \"Female\")"
+    "text": "Cociente de probabilidad en R\n\nUsaremos para este ejemplo los datos del Titanic. La pregunta de investigación es: ¿tuvieron las mujeres mayores chances de salvarse durante el hundimiento del Titanic?\n\n\n\nCargamos en nuestro ambiente la tabla de datos (librería datarium)\n\n\ndata(titanic.raw)\n\n\n\n\nDefinimos las clases de referencia\n\n\ntitanic.raw$Survived &lt;- relevel(titanic.raw$Survived, ref = \"Yes\")\ntitanic.raw$Sex &lt;- relevel(titanic.raw$Sex, ref = \"Female\")"
   },
   {
     "objectID": "index.html#cociente-de-probabilidad-en-r-1",
@@ -462,11 +574,25 @@
     "text": "¿Cómo interpretamos estos resultados?\n\n\n\n\noddratio\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  tabla_cont\np-value &lt; 2.2e-16\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n  7.97665 12.92916\nsample estimates:\nodds ratio \n   10.1319 \n\n\n\n\n\nVemos que el cociente de probabilidad (OR) es 10. La interpretación es: durante el hundimiento del Titanic fue 10 veces más probable que un pasajero se salve si este era mujer.\nAdicionalmente, del valor p de la prueba estadística exacta de Fisher menor al 0.05, se puede concluir que este cociente de probabilidad es significativo. En otras palabras, existe evidencia estadística significativa para afirmar que las probabilidades de sobrevivir durante el hundimiento del Titanic fueron 10 veces más para pasajeras mujeres en comparación a los hombres."
   },
   {
-    "objectID": "index.html#introducción",
-    "href": "index.html#introducción",
+    "objectID": "index.html#introducción-1",
+    "href": "index.html#introducción-1",
     "title": "Estadística aplicada con R",
     "section": "Introducción",
     "text": "Introducción\n\n\nHasta el momento nos hemos enfocado a los casos donde comparamos las medias entre dos grupos.\nPero es más común el evaluar distintos tratamientos al mismo tiempo, como ya vimos en el módulo 2 del curso.\nPara ello, contamos con el ANOVA, desarrollado por el estadístico Ronald Fisher a inicios del siglo 20, y que sin duda es el método estadístico más usado hoy en día.\nSu nombre puede ser confuso. El objetivo de un ANOVA es el de determinar la existencia de diferencias entre las medias aritméticas de las muestras representativas de \\(n\\) poblaciones (o en términos más precisos, tratamientos)."
+  },
+  {
+    "objectID": "index.html#supuestos-del-anova",
+    "href": "index.html#supuestos-del-anova",
+    "title": "Estadística aplicada con R",
+    "section": "Supuestos del ANOVA",
+    "text": "Supuestos del ANOVA\n\n\nIndependencia de los datos: conseguida mediante una correcta randomización y definición del experimento.\nHomogeneidad de las varianzas: la varianza entre los tratamientos es la misma.\nNormalidad: pero, ¿de qué exactamente?\n\n\nSiempre ha existido una confusión de este supuesto. Cómo vimos antes, la normalidad es un requisito para conducir pruebas t, y lo es también para el ANOVA.\nMuchos libros de texto y otros recursos, mencionan que los datos de cada tratamiento deben ser normalmente distribuidos para llevar a cabo un ANOVA. Esto es cierto e impráctico a la vez.\nMencionamos que como mínimo deberíamos contar con 3 repeticiones por tratamiento. Pero, ¿son 3 repeticiones suficientes para alcanzar la normalidad?\nEs común el sugerir el llevar a cabo una prueba de normalidad antes de un ANOVA, pero esto tiene varios problemas que supongo no te han dicho antes:\n\nCada tratamiento tiene su propia media, en caso de medias muy distantes entre sí, la prueba puede fallar.\nEn su lugar, podrías correr una prueba por cada tratamiento. Esto solo funciona con un considerable número de observaciones/tratamiento (3 no son suficientes)."
+  },
+  {
+    "objectID": "index.html#supuestos-del-anova-1",
+    "href": "index.html#supuestos-del-anova-1",
+    "title": "Estadística aplicada con R",
+    "section": "Supuestos del ANOVA",
+    "text": "Supuestos del ANOVA\n\n\nEsta confusión nos puede llevar a soluciones erróneas como transformar datos, borrar outliers o utilizar pruebas no paramétricas innecesariamente.\nEntonces, ¿normalidad de qué?\nDe los residuos estandarizados!… ¿Qué es un residual?\n\nUn residual es la diferencia entre una observación y su predicción\nUn residual estandarizado resulta de la división del residual para la raíz cuadrada de la predicción\nLa distribución muestral de los residuos estandarizados tiene media 0 y desviación estándar 1\n\nY es sobre esta distribución que los valores críticos del ANOVA (valores F) son calculados. Es decir, estos no dependen enteramente de los datos originales, por lo tanto los datos originales no tienen que ser necesariamente normalmente distribuidos.\nPero, ¿por qué la confusión? Solo cuando el número de observaciones es lo suficientemente grande (y ya sabemos que distribución tiene la media muestral cuando el número incrementa), se tiene la certeza que los residuos serán normalmente distribuidos.\nEn resumen, es mejor chequear la normalidad después que realizamos el ANOVA."
   },
   {
     "objectID": "index.html#el-dataset-de-recursos-por-depredación",
@@ -487,56 +613,56 @@
     "href": "index.html#el-dataset-de-recursos-por-depredación-2",
     "title": "Estadística aplicada con R",
     "section": "El dataset de recursos por depredación",
-    "text": "El dataset de recursos por depredación\n\n\nVariables de respuesta:\n\nEdad de metaformosis contada desde el día de oviposición (Age.DPO).\nEdad de salida del agua (Age.FromEmergence)\nLongitud nariz-cloaca al emerger (SVL.initial)\nLongitud de la cola al emerger (Tail.initial)\nLongitud nariz-cloaca al término de la reabsorción de la cola (SVL.final)\nPeso al término de la reabsorción de la cola (Mass.final)\nNúmero de días requeridos por cada metamorfo para reabsorber completamente la cola (Resorb.days)\n\n18 tanques conteniendo predadores no letales fueron descartados debido al brote de una enfermedad.\nNOTA: el dataset original de Touchon contiene alrededor de 2500 observaciones. Sin embargo, para poder usar los datos bajo los supuestos del ANOVA es necesario reducirlos a las medias aritméticas de cada tratamiento por cuanto se tratan de pseudo repeticiones. Esta reducción ya está hecha en el archivo “touchon.csv” disponible con el resto de materiales extras del curso."
+    "text": "El dataset de recursos por depredación\n\n\nVariables de respuesta:\n\nEdad de metaformosis contada desde el día de oviposición (Age.DPO).\nEdad de salida del agua (Age.FromEmergence)\nLongitud nariz-cloaca al emerger (SVL.initial)\nLongitud de la cola al emerger (Tail.initial)\nLongitud nariz-cloaca al término de la reabsorción de la cola (SVL.final)\nPeso al término de la reabsorción de la cola (Mass.final)\nNúmero de días requeridos por cada metamorfo para reabsorber completamente la cola (Resorb.days)\n\n18 tanques conteniendo predadores no letales fueron descartados debido al brote de una enfermedad\nNOTA: el dataset original de Touchon contiene alrededor de 2500 observaciones. Sin embargo, para poder usar los datos bajo los supuestos del ANOVA es necesario reducirlos a las medias aritméticas de cada tratamiento por cuanto se tratan de pseudo repeticiones. Esta reducción ya está hecha en el archivo “touchon.csv” disponible con el resto de materiales extras del curso."
   },
   {
-    "objectID": "index.html#supuestos-del-anova",
-    "href": "index.html#supuestos-del-anova",
+    "objectID": "index.html#explorando-este-dataset",
+    "href": "index.html#explorando-este-dataset",
     "title": "Estadística aplicada con R",
-    "section": "Supuestos del ANOVA",
-    "text": "Supuestos del ANOVA\n\n\nIndependencia de los datos: conseguida mediante una correcta randomización y definición del experimento.\nHomogeneidad de las varianzas: la varianza entre los tratamientos es la misma.\nNormalidad: pero, ¿de qué exactamente?\n\n\nSiempre ha existido una confusión de este supuesto. Cómo vimos antes, la normalidad es un requisito para conducir pruebas t, y lo es también para el ANOVA.\nMuchos libros de texto y otros recursos, mencionan que los datos de cada tratamiento deben ser normalmente distribuidos para llevar a cabo un ANOVA. Esto es cierto e impráctico a la vez.\nMencionamos que como mínimo deberíamos contar con 3 repeticiones por tratamiento. Pero, ¿son 3 repeticiones suficientes para alcanzar la normalidad?\nEs común el sugerir el llevar a cabo una prueba de normalidad antes de llevar a cabo un ANOVA, pero esto tiene varios problemas que supongo no te han dicho antes:\n\nCada tratamiento tiene su propia media, en caso de medias muy distantes entre sí, la prueba puede fallar.\nEn su lugar, podrías correr una prueba por cada tratamiento. Esto solo funciona con un considerable número de observaciones/tratamiento (3 no son suficientes)."
+    "section": "Explorando este dataset",
+    "text": "Explorando este dataset\n\n\nHaremos una exploración básica del dataset anteriormente descrito: gráficos de caja y bigote, de barras, de densidad y matrices de dispersión.\nComo estos datos han sido pre-procesados, omitiremos el mapa de observaciones perdidas.\nPara esto, aprovecho la oportunidad para introducir otro par de librerías útiles\nComo vimos anteriormente, ggplot2 es una poderosa librería de visualización de datos cuyo uso es relativamente sencillo. Sin embargo, su dominio requiere un poco de tiempo y paciencia. Para quienes quizá deseen una manera más rápida de realizar sus gráficos y solamente tomarse el tiempo en añadir detalles finales, usaremos ggpubr."
   },
   {
-    "objectID": "index.html#supuestos-del-anova-1",
-    "href": "index.html#supuestos-del-anova-1",
+    "objectID": "index.html#medias-aritméticas-observadas",
+    "href": "index.html#medias-aritméticas-observadas",
     "title": "Estadística aplicada con R",
-    "section": "Supuestos del ANOVA",
-    "text": "Supuestos del ANOVA\n\n\nEsta confusión nos puede llevar a soluciones erróneas como transformar datos, borrar outliers o utilizar pruebas no paramétricas innecesariamente.\nEntonces, ¿normalidad de qué?\nDe los residuales estandarizados!… ¿Qué es un residual?\n\nUn residual es la diferencia entre una observación y su predicción\nUn residual estandarizado resulta de la división del residual para la raíz cuadrada de la predicción\nLa distribución muestral de los residuales estandarizados tiene media 0 y desviación estándar 1\n\nY es sobre esta distribución que los valores críticos del ANOVA (valores F) son calculados. Es decir, estos no dependen enteramente de los datos originales, por lo tanto los datos originales no tienen que ser necesariamente normalmente distribuidos.\nPero, ¿por qué la confusión? Solo cuando el número de observaciones es lo suficientemente grande (y ya sabemos que distribución tiene la media muestral cuando el número incrementa), se tiene la certeza que los residuales serán normalmente distribuidos.\nEn resumen, es mejor chequear la normalidad después que realizamos el ANOVA."
+    "section": "Medias aritméticas observadas",
+    "text": "Medias aritméticas observadas\n\n# usaremos nuevamente la librería `tidycomm` para los estadísticos descriptivos\nranas &lt;- read.csv(\"touchon.csv\")\ndescribe(ranas)\n\n# A tibble: 9 × 15\n  Varia…¹     N Missing      M     SD    Min    Q25    Mdn    Q75    Max   Range\n  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1 Block      78       0  4.13   2.30   1      2      4      6       8      7    \n2 Tank.U…    78       0 44.2   28.0    1     20.2   40.5   67.5    96     95    \n3 Age.DPO    78       0 64.7   23.8   38.1   47.7   57.4   71.7   141.   103.   \n4 Age.Fr…    78       0 30.7   23.8    4.11  13.7   23.4   37.7   107.   103.   \n5 SVL.in…    78       0 19.0    1.34  16.3   18.0   18.9   19.7    22.3    5.98 \n6 Tail.i…    78       0  5.87   0.845  4.41   5.33   5.68   6.16    8.6    4.19 \n7 SVL.fi…    78       0 19.4    1.44  16.7   18.3   19.2   20.0    23.3    6.62 \n8 Mass.f…    78       0  0.430  0.109  0.269  0.359  0.404  0.462   0.75   0.481\n9 Resorb…    78       0  4.40   0.595  3.38   4.02   4.26   4.79    6.5    3.12 \n# … with 4 more variables: CI_95_LL &lt;dbl&gt;, CI_95_UL &lt;dbl&gt;, Skewness &lt;dbl&gt;,\n#   Kurtosis &lt;dbl&gt;, and abbreviated variable name ¹​Variable"
   },
   {
-    "objectID": "index.html#anova-en-r",
-    "href": "index.html#anova-en-r",
+    "objectID": "index.html#gráficos-de-barras",
+    "href": "index.html#gráficos-de-barras",
     "title": "Estadística aplicada con R",
-    "section": "ANOVA en R",
-    "text": "ANOVA en R\n\n\nExisten dos formas de llevar a cabo ANOVA en R:\n\nCrear un modelo lineal con la función lm y luego llevar a cabo el ANOVA con la función anova sobre el objeto producto de lm.\nAplicar directamente la función aov sobre nuestros datos.\n\nAmbas funciones (lm y aov) tienen la misma sintaxis. Personalmente prefiero la primera opción.\nAdicionalmente, la librería car ofrece la función Anova. El resultado de ambas es prácticamente el mismo para la mayoría de modelos. Sin embargo, personalmente prefiero Anova ya que permite realizar correcciones cuando tenemos datos no balanceados."
+    "section": "Gráficos de barras",
+    "text": "Gráficos de barras\n\nCódigoGráfico\n\n\n\nlibrary(ggpubr)\nggbarplot(data = ranas,\n          x = \"Pred\",\n          y = \"Age.FromEmergence\",\n          add = \"mean_se\",\n          fill = \"Pred\")\n\nggbarplot(data = ranas,\n          x = \"Res\",\n          y = \"Age.FromEmergence\",\n          add = \"mean_se\",\n          fill = \"Pred\")"
   },
   {
-    "objectID": "index.html#anova-en-r-1",
-    "href": "index.html#anova-en-r-1",
+    "objectID": "index.html#gráficos-de-barras-1",
+    "href": "index.html#gráficos-de-barras-1",
     "title": "Estadística aplicada con R",
-    "section": "ANOVA en R",
-    "text": "ANOVA en R\n\n\nOpción 1\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\nAnova(lm1)\n\n\nOpción 2\n\nranas &lt;- read.csv(\"touchon.csv\")\nanova1 &lt;- aov(Age.FromEmergence ~ Pred, data = ranas)\nsummary(anova1)\n\n\n\n\n\n\n\nAnova Table (Type II tests)\n\nResponse: Age.FromEmergence\n          Sum Sq Df F value    Pr(&gt;F)    \nPred        9467  2  10.442 9.986e-05 ***\nResiduals  33999 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nPred         2   9467    4733   10.44 9.99e-05 ***\nResiduals   75  33999     453                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+    "section": "Gráficos de barras",
+    "text": "Gráficos de barras\n\nCódigoGráfico\n\n\n\np1 &lt;- ggbarplot(data = ranas,\n                x = \"Pred\",\n                y = \"Age.FromEmergence\",\n                add = \"mean_se\",\n                fill = \"Pred\")\n\np1 + labs(title = \"Gráfico de barras de edad desde oviposición\",\n       subtitle = \"Datos del estudio de Prof. Touchon\",\n       caption = \"Gráfica propia\",\n       x = \"Predadores\",\n       y = \"Edad desde oviposición\",\n       color = \"Predador\")"
   },
   {
-    "objectID": "index.html#anova-en-r-2",
-    "href": "index.html#anova-en-r-2",
+    "objectID": "index.html#gráficos-de-caja-y-bigote",
+    "href": "index.html#gráficos-de-caja-y-bigote",
     "title": "Estadística aplicada con R",
-    "section": "ANOVA en R",
-    "text": "ANOVA en R\n\n\nOpción 1\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\nAnova(lm1)\n\nAnova Table (Type II tests)\n\nResponse: Age.FromEmergence\n          Sum Sq Df F value    Pr(&gt;F)    \nPred        9467  2  10.442 9.986e-05 ***\nResiduals  33999 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nOpción 2\n\nranas &lt;- read.csv(\"touchon.csv\")\nanova1 &lt;- aov(Age.FromEmergence ~ Pred, data = ranas)\nsummary(anova1)\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nPred         2   9467    4733   10.44 9.99e-05 ***\nResiduals   75  33999     453                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+    "section": "Gráficos de caja y bigote",
+    "text": "Gráficos de caja y bigote\n\nCódigoGráfico\n\n\n\nggboxplot(data = ranas,\n          x = \"Pred\",\n          y = \"Age.FromEmergence\",\n          fill = \"Pred\")\n\nggboxplot(data = ranas,\n          x = \"Res\",\n          y = \"Age.FromEmergence\",\n          fill = \"Res\")"
   },
   {
-    "objectID": "index.html#homogeneidad-de-las-varianzas",
-    "href": "index.html#homogeneidad-de-las-varianzas",
+    "objectID": "index.html#gráficos-de-densidad",
+    "href": "index.html#gráficos-de-densidad",
     "title": "Estadística aplicada con R",
-    "section": "Homogeneidad de las varianzas",
-    "text": "Homogeneidad de las varianzas"
+    "section": "Gráficos de densidad",
+    "text": "Gráficos de densidad\n\nCódigoGráfico\n\n\n\nggdensity(data = ranas,\n          x = \"Age.FromEmergence\", \n          add = \"mean\", \n          rug = \"true\", \n          color = \"Pred\", \n          fill = \"Pred\")\n\nggdensity(data = ranas,\n          x = \"Age.FromEmergence\", \n          add = \"mean\", \n          rug = \"true\", \n          color = \"Res\", \n          fill = \"Res\")"
   },
   {
-    "objectID": "index.html#anova-de-una-vía-en-r",
-    "href": "index.html#anova-de-una-vía-en-r",
+    "objectID": "index.html#matriz-de-dispersión",
+    "href": "index.html#matriz-de-dispersión",
     "title": "Estadística aplicada con R",
-    "section": "ANOVA de una vía en R",
-    "text": "ANOVA de una vía en R\n\n\nOpción 1\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\nAnova(lm1)\n\n\nOpción 2\n\nranas &lt;- read.csv(\"touchon.csv\")\nanova1 &lt;- aov(Age.FromEmergence ~ Pred, data = ranas)\nsummary(anova1)\n\n\n\n\n\n\n\nAnova Table (Type II tests)\n\nResponse: Age.FromEmergence\n          Sum Sq Df F value    Pr(&gt;F)    \nPred        9467  2  10.442 9.986e-05 ***\nResiduals  33999 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nPred         2   9467    4733   10.44 9.99e-05 ***\nResiduals   75  33999     453                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+    "section": "Matriz de dispersión",
+    "text": "Matriz de dispersión\n\nCódigoGráfico\n\n\n\nlibrary(GGally)\nranas_matriz &lt;- ranas[,c(6:12)]\nggpairs(ranas_matriz)"
   },
   {
     "objectID": "index.html#anova-de-una-vía",
@@ -546,116 +672,95 @@
     "text": "ANOVA de una vía\n\n\nANOVA de una vía se refiere cuando tenemos más de dos tratamientos que están definidos por un solo factor a la vez.\nUsando los datos del Prof. Touchon, vamos a ilustrar el caso del ANOVA de una vía. Para ello, vamos a considerar lo siguiente\n\nSupongamos que estamos interesados en saber si existe alguna diferencia entre la edad de salida del agua Age.FromEmergence determinada por los predadores:\nLos niveles del factor predadores son:\n\nPredadores no letales NL\nPredadores letales L\nControl (sin predadores) C\n\n\nLa \\(H_0\\) en todo ANOVA es simplemente que no existe diferencia entre \\(n\\) tratamientos, y la \\(H_a\\) es que al menos uno de los tratamientos tiene una media distinta."
   },
   {
-    "objectID": "index.html#normalidad-de-los-datos-residuales",
-    "href": "index.html#normalidad-de-los-datos-residuales",
+    "objectID": "index.html#anova-en-r",
+    "href": "index.html#anova-en-r",
     "title": "Estadística aplicada con R",
-    "section": "Normalidad de los datos (residuales)",
-    "text": "Normalidad de los datos (residuales)\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm1)"
+    "section": "ANOVA en R",
+    "text": "ANOVA en R\n\n\nExisten dos formas de llevar a cabo ANOVA en R:\n\nCrear un modelo lineal con la función lm y luego el ANOVA con la función anova sobre el objeto producto de lm.\nAplicar directamente la función aov sobre nuestros datos.\n\nAmbas funciones (lm y aov) tienen la misma sintaxis. Personalmente prefiero la primera opción.\nAdicionalmente, la librería car ofrece la función Anova. El resultado de ambas es prácticamente el mismo para la mayoría de modelos. Sin embargo, personalmente prefiero Anova ya que permite realizar correcciones cuando tenemos datos no balanceados."
   },
   {
-    "objectID": "index.html#normalidad-de-los-datos-residuales-1",
-    "href": "index.html#normalidad-de-los-datos-residuales-1",
+    "objectID": "index.html#anova-de-una-vía-en-r",
+    "href": "index.html#anova-de-una-vía-en-r",
     "title": "Estadística aplicada con R",
-    "section": "Normalidad de los datos (residuales)",
-    "text": "Normalidad de los datos (residuales)\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm1)"
+    "section": "ANOVA de una vía en R",
+    "text": "ANOVA de una vía en R\n\n\nOpción 1\n\nlibrary(car)\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\nAnova(lm1)\n\n\nOpción 2\n\nanova1 &lt;- aov(Age.FromEmergence ~ Pred, data = ranas)\nsummary(anova1)\n\n\n\n\n\n\n\nAnova Table (Type II tests)\n\nResponse: Age.FromEmergence\n          Sum Sq Df F value    Pr(&gt;F)    \nPred        9467  2  10.442 9.986e-05 ***\nResiduals  33999 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nPred         2   9467    4733   10.44 9.99e-05 ***\nResiduals   75  33999     453                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
   },
   {
-    "objectID": "index.html#normalidad-de-los-datos-residuales-2",
-    "href": "index.html#normalidad-de-los-datos-residuales-2",
+    "objectID": "index.html#diagnósticos-del-anova",
+    "href": "index.html#diagnósticos-del-anova",
     "title": "Estadística aplicada con R",
-    "section": "Normalidad de los datos (residuales)",
-    "text": "Normalidad de los datos (residuales)\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm2 &lt;- lm(log(Age.FromEmergence) ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm2)"
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\n\nAntes de conducir pruebas formales para los supuestos del ANOVA, es preciso darle un vistazo a diagnósticos visuales que podemos obtener del mismo.\nEl ANOVA es un caso de regresión lineal (con predictores categóricos), por lo que en esta sección nos centraremos en la interpretación de estos diagnósticos desde la perspectiva del ANOVA.\nEn el apartado de regresión lineal volveremos a profundizar en las interpretaciones de los mismos para ese caso determinado.\nPara acceder a estos diagnósticos, basta usar la función plot sobre el objeto donde guardamos los resultados del modelo lm1."
   },
   {
-    "objectID": "index.html#normalidad-de-los-datos-residuales-3",
-    "href": "index.html#normalidad-de-los-datos-residuales-3",
+    "objectID": "index.html#diagnósticos-del-anova-1",
+    "href": "index.html#diagnósticos-del-anova-1",
     "title": "Estadística aplicada con R",
-    "section": "Normalidad de los datos (residuales)",
-    "text": "Normalidad de los datos (residuales)\n\nlibrary(car)\nranas &lt;- read.csv(\"touchon.csv\")\nlm2 &lt;- lm(log(Age.FromEmergence) ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm2)"
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\nlm1 &lt;- lm(Age.FromEmergence ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm1)\npar(mfrow = c(1, 1))"
+  },
+  {
+    "objectID": "index.html#diagnósticos-del-anova-2",
+    "href": "index.html#diagnósticos-del-anova-2",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA"
+  },
+  {
+    "objectID": "index.html#diagnósticos-del-anova-3",
+    "href": "index.html#diagnósticos-del-anova-3",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\n\n\n\n\n\n\n\nResiduos vs. Valores ajustados\nEn este plot podemos evidenciar departuras del supuesto de la homocedasticidad. Idealmente, la línea roja que se muestra debería ir a lo largo de la horizontal en la coordenada cero del eje y (sobre la línea entrecortada)."
+  },
+  {
+    "objectID": "index.html#diagnósticos-del-anova-4",
+    "href": "index.html#diagnósticos-del-anova-4",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\n\n\n\n\n\n\n\nGráfico Q-Q\nA diferencia del gráfico Q-Q que vimos para las pruebas t, en el eje y de este mismo gráfico para el ANOVA (y regresión lineal) se representan los residuos estandarizados. La interpretación es la misma: idealmente los puntos deberían ir a lo largo de la diagonal. Cuando no es así, evidencia una violación del supuesto de la normalidad."
+  },
+  {
+    "objectID": "index.html#diagnósticos-del-anova-5",
+    "href": "index.html#diagnósticos-del-anova-5",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\n\n\n\n\n\n\n\nRaíz cuadrada de los residuos estandarizados vs. Valores ajustados\nSimilar al primer diagnóstico, en el caso del ANOVA, nos da una idea de posibles departuras de la homogeneidad de las varianzas. La línea roja idealmente debería ser completamente recta."
+  },
+  {
+    "objectID": "index.html#diagnósticos-del-anova-6",
+    "href": "index.html#diagnósticos-del-anova-6",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos del ANOVA",
+    "text": "Diagnósticos del ANOVA\n\n\n\n\n\n\n\n\nResiduos vs. Apalancamiento\nAquellos puntos que estén etiquetados con números son mostrados como posibles outliers bajo dos criterios:\n\nEstán por fuera de los límites de la regla del rango intercuartílico (IQR), y\nMarcados como outliers con influencia de apalancamiento mediante la prueba de Cook (distancia de Cook).\n\nEl segundo criterio es un argumento sólido para remover outliers."
+  },
+  {
+    "objectID": "index.html#transformaciones",
+    "href": "index.html#transformaciones",
+    "title": "Estadística aplicada con R",
+    "section": "Transformaciones",
+    "text": "Transformaciones\n\nlm2 &lt;- lm(log(Age.FromEmergence) ~ Pred, data = ranas)\npar(mfrow = c(2, 2))\nplot(lm2)\npar(mfrow = c(1, 1))"
+  },
+  {
+    "objectID": "index.html#transformaciones-1",
+    "href": "index.html#transformaciones-1",
+    "title": "Estadística aplicada con R",
+    "section": "Transformaciones",
+    "text": "Transformaciones"
   },
   {
     "objectID": "index.html#prueba-formal-de-normalidad",
     "href": "index.html#prueba-formal-de-normalidad",
     "title": "Estadística aplicada con R",
     "section": "Prueba formal de normalidad",
-    "text": "Prueba formal de normalidad\n\n\nComo vimos, después de aplicar la transformación logarítmica el gráfico Q-Q mejoró considerablemente.\nPara estar seguros, podemos correr un test formal sobre los residuales del modelo con la ayuda de la librería olsrr mediante su función ols_test_normality.\n\n\n\n\nlibrary(olsrr)\nols_test_normality(lm2)\n\n-----------------------------------------------\n       Test             Statistic       pvalue  \n-----------------------------------------------\nShapiro-Wilk              0.9802         0.2645 \nKolmogorov-Smirnov        0.0893         0.5625 \nCramer-von Mises          8.6738         0.0000 \nAnderson-Darling          0.5447         0.1566 \n-----------------------------------------------"
+    "text": "Prueba formal de normalidad\n\n\nComo vimos, después de aplicar la transformación logarítmica el gráfico Q-Q mejoró considerablemente.\nPara estar seguros, podemos correr un test formal sobre los residuos del modelo con la ayuda de la librería olsrr mediante su función ols_test_normality.\n\n\n\n\nlibrary(olsrr)\nols_test_normality(lm2)\n\n-----------------------------------------------\n       Test             Statistic       pvalue  \n-----------------------------------------------\nShapiro-Wilk              0.9802         0.2645 \nKolmogorov-Smirnov        0.0893         0.5625 \nCramer-von Mises          8.6738         0.0000 \nAnderson-Darling          0.5447         0.1566 \n-----------------------------------------------"
   },
   {
-    "objectID": "index.html#datos-para-esta-sección",
-    "href": "index.html#datos-para-esta-sección",
+    "objectID": "index.html#prueba-formal-de-normalidad-1",
+    "href": "index.html#prueba-formal-de-normalidad-1",
     "title": "Estadística aplicada con R",
-    "section": "Datos para esta sección",
-    "text": "Datos para esta sección\n\n\nPara esta sección del curso usaremos algunas de las tablas de datos del libro Using R for Introductory Statistics, como también de la librería datarium.\nPara ello, instalaremos las librerías de R: UsingR y datarium.\n\n\n\n\nlibrary(UsingR)\nlibrary(datarium)"
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-1",
-    "href": "index.html#antes-de-continuar-1",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\n\nEl umbral de 0.05 es una convención arbitraria creada por Fischer en los inicios de la estadística moderna.\nLastimosamente, se ha generalizado la idea de que por más mínima sea la diferencia con respecto a 0.05, esta representa la diferencia entre publicar o no (en el campo académico), entre lanzar o no un nuevo fármaco/producto al mercado (en la industria).\nEn 2014, debido a un fallo de la corte suprema de justicia de los Estados Unidos que le dio la potestad a los inversionistas de farmaceúticas a demandarlas por fallar en reportar efectos secundarios de sus productos a pesar de haber sido hallados estadísticamente no significativos, la Asociación Americana de Estadística (ASA) se vio en la necesidad de definir más exhaustivamente el concepto del valor p.\nEntre las recomendaciones de la ASA, se enfatizó el dar mayor prioridad a la estimación de otros estadísticos complementarios al valor p, tales como intervalos de confianza u otros provenientes de la estadística Bayesiana (intervalos de credibilidad, factores de Bayes).\nEsta última (estadística Bayesiana), ofrece una interpretación más natural de la estadística al basarse en métricas de incertidumbre puras y no en números arbirtrarios como el valor p.\nEn resumen, una investigación no es inútil si el valor p sobrepasa o está por debajo de 0.05 por cantidades pequeñas."
-  },
-  {
-    "objectID": "index.html#prueba-de-homogeneidad-de-las-varianzas",
-    "href": "index.html#prueba-de-homogeneidad-de-las-varianzas",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba de homogeneidad de las varianzas",
-    "text": "Prueba de homogeneidad de las varianzas\n\n\nEn el caso de comparaciones entre las medias de dos grupos, la homogeneidad de varianzas puede chequearse usando la prueba F.\nLa prueba t de una muestra no requiere chequear este supuesto.\nPara ilustrar su uso, creemos otro vector con datos simulados. En este caso, un igual número de observaciones con la misma desviación estándar pero diferente media:\n\n\n\n\nset.seed(123)\nx &lt;- rnorm(n = 30, mean = 4, sd = 1)\nvar.test(x, y)\n\n\n    F test to compare two variances\n\ndata:  x and y\nF = 1, num df = 29, denom df = 29, p-value = 1\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.4759648 2.1009958\nsample estimates:\nratio of variances \n                 1"
-  },
-  {
-    "objectID": "index.html#supuestos-en-la-práctica",
-    "href": "index.html#supuestos-en-la-práctica",
-    "title": "Estadística aplicada con R",
-    "section": "Supuestos en la práctica",
-    "text": "Supuestos en la práctica\n\n\nUsemos las pruebas con datos reales, esta vez con la tabla de datos crime de la librería Using R.\nEsta tabla de datos contiene registros de las tasas de crimen (# de reportes/100000 habitantes) en 50 estados en los Estados Unidos correspondiente a los años 1983 y 1993.\nSin enfocarnos por el momento en que prueba t específica usaremos, limitémonos a chequear la normalidad y la homogeneidad de varianzas entre las tasas de crimen registradas en 1983 y 1993.\n\n\n\n\ndata(crime)\n\n\n\nNormalidad 1983\n\nshapiro.test(crime$y1983)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1983\nW = 0.77333, p-value = 1.827e-07\n\n\n\nNormalidad 1993\n\nshapiro.test(crime$y1993)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1993\nW = 0.77348, p-value = 1.841e-07\n\n\n\n\n\n\nHomogeneidad de las varianzas\n\nvar.test(crime$y1983, crime$y1993)\n\n\n    F test to compare two variances\n\ndata:  crime$y1983 and crime$y1993\nF = 0.49163, num df = 50, denom df = 50, p-value = 0.01342\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.2806163 0.8613069\nsample estimates:\nratio of variances \n         0.4916266"
-  },
-  {
-    "objectID": "index.html#transof",
-    "href": "index.html#transof",
-    "title": "Estadística aplicada con R",
-    "section": "Transof",
-    "text": "Transof"
-  },
-  {
-    "objectID": "index.html#transformación-de-variables",
-    "href": "index.html#transformación-de-variables",
-    "title": "Estadística aplicada con R",
-    "section": "Transformación de variables",
-    "text": "Transformación de variables\n\n\nA menudo nos encontraremos con conjuntos de observaciones que no cumplen uno o ninguno de los supuestos.\nAntes de considerar pruebas no paramétricas, podemos intentar transformaciones de variables para regresar al mundo de las pruebas paramétricas. Las transformaciones más usadas son:\n\nLa raíz cuadrada (si los datos no contienen números negativos)\nElevar al cuadrado\nLogaritmo (si los datos solo incluyen números reales positivos, cero excluido)"
-  },
-  {
-    "objectID": "index.html#transformación-de-variables-1",
-    "href": "index.html#transformación-de-variables-1",
-    "title": "Estadística aplicada con R",
-    "section": "Transformación de variables",
-    "text": "Transformación de variables\n\n\nExiste un método más sofisticado para “normalizar” una muestra. La transformación de Box-Cox.\nCuando se trabaja con muestras transformadas, el objetivo es poder revertir la transformación a las unidades reales para así poder hacer conclusiones sobre las inferencias estadísticas.\nEn otras palabras, una misma transformación debe aplicarse a todos los grupos a ser comparados. NO tiene ningún sentido tratar de realizar inferencias entre grupos donde se hayan usado distintas transformaciones para normalizarlos.\nSi el número de observaciones es muy reducido, usualmente no hay transformación que funcione y se recomienda usar directamente pruebas no paramétricas."
-  },
-  {
-    "objectID": "index.html#transformación-de-variables-2",
-    "href": "index.html#transformación-de-variables-2",
-    "title": "Estadística aplicada con R",
-    "section": "Transformación de variables",
-    "text": "Transformación de variables\n\n\nRaíz cuadrada\n\nshapiro.test(sqrt(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  sqrt(crime$y1983)\nW = 0.9411, p-value = 0.01359\n\n\n\nElevar al cuadrado\n\nshapiro.test(crime$y1983^2)     \n\n\n    Shapiro-Wilk normality test\n\ndata:  crime$y1983^2\nW = 0.38921, p-value = 2.954e-13\n\n\n\n\n\n\nLogaritmo\n\nshapiro.test(log(crime$y1983))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1983)\nW = 0.98076, p-value = 0.5713\n\n\n\nChequeemos con el otro grupo\n\nshapiro.test(log(crime$y1993))     \n\n\n    Shapiro-Wilk normality test\n\ndata:  log(crime$y1993)\nW = 0.96191, p-value = 0.1006\n\n\n\n\n\nHomogeneidad de las varianzas con transformación logarítmica\n\nvar.test(log(crime$y1983), log(crime$y1993))\n\n\n    F test to compare two variances\n\ndata:  log(crime$y1983) and log(crime$y1993)\nF = 0.84048, num df = 50, denom df = 50, p-value = 0.5412\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.4797393 1.4724831\nsample estimates:\nratio of variances \n         0.8404808"
-  },
-  {
-    "objectID": "index.html#gráfico-q-q-2",
-    "href": "index.html#gráfico-q-q-2",
-    "title": "Estadística aplicada con R",
-    "section": "Gráfico Q-Q",
-    "text": "Gráfico Q-Q\n\nset.seed(123)\ny &lt;- rnorm(n = 30, mean = 0, sd = 1)  # simulamos 30 observaciones de una normal estandar\nqqnorm(y)                             # producimos el gráfico Q-Q"
-  },
-  {
-    "objectID": "index.html#prueba-t-para-muestras-emparejadas-2",
-    "href": "index.html#prueba-t-para-muestras-emparejadas-2",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba t para muestras emparejadas",
-    "text": "Prueba t para muestras emparejadas\n\nt.test(x = log(crime$y1983), y = log(crime$y1993), paired = TRUE)\n\n\n    Paired t-test\n\ndata:  log(crime$y1983) and log(crime$y1993)\nt = -10.027, df = 50, p-value = 1.469e-13\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -0.3628437 -0.2417349\nsample estimates:\nmean difference \n     -0.3022893 \n\nexp(mean(log(crime$y1983)))\n\n[1] 362.8298\n\nexp(mean(log(crime$y1993)))\n\n[1] 490.8915"
-  },
-  {
-    "objectID": "index.html#prueba-t-de-muestras-independientes-2",
-    "href": "index.html#prueba-t-de-muestras-independientes-2",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba t de muestras independientes",
-    "text": "Prueba t de muestras independientes\n\nt.test(genderweight$weight ~ genderweight$group)\n\n\n    Welch Two Sample t-test\n\ndata:  genderweight$weight by genderweight$group\nt = -20.791, df = 26.872, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group F and group M is not equal to 0\n95 percent confidence interval:\n -24.53135 -20.12353\nsample estimates:\nmean in group F mean in group M \n       63.49867        85.82612"
+    "section": "Prueba formal de normalidad",
+    "text": "Prueba formal de normalidad\n\n\nO también podemos calcular la prueba de Shapiro-Wilk con funciones base de R\n\n\n\n\nresiduos &lt;- resid(lm2)\nshapiro.test(residuos)\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuos\nW = 0.98017, p-value = 0.2645"
   },
   {
     "objectID": "index.html#homogeneidad-de-las-varianzas-en-anova",
@@ -665,18 +770,95 @@
     "text": "Homogeneidad de las varianzas en ANOVA\n\n\nLa prueba más usada para chequear la homogeneidad de varianzas de un ANOVA es la de Levene.\nPara ello utilizaremos la función leveneTest de la librería car. Podemos usar esta función directamente sobre los datos con la misma sintaxis de lm, o sobre el objeto lm2 en el que anteriormente almacenamos el resultado del modelo lineal con la transformación.\n\n\n\n\nleveneTest(lm2, center = \"mean\")\n\nLevene's Test for Homogeneity of Variance (center = \"mean\")\n      Df F value  Pr(&gt;F)  \ngroup  2  3.0464 0.05345 .\n      75                  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
   },
   {
-    "objectID": "index.html#homogeneidad-de-las-varianzas-en-anova-1",
-    "href": "index.html#homogeneidad-de-las-varianzas-en-anova-1",
+    "objectID": "index.html#anova-de-una-vía-en-r-continuación",
+    "href": "index.html#anova-de-una-vía-en-r-continuación",
     "title": "Estadística aplicada con R",
-    "section": "Homogeneidad de las varianzas en ANOVA",
-    "text": "Homogeneidad de las varianzas en ANOVA\n\n\nNuestro modelo anterior “no cumple” el supuesto de la homogeneidad de varianzas.\nUna centésima define la validez o no de los resultados. Este es precisamente uno de tantos casos en que el valor p puede hechar abajo nuestro estudio… claro, desde la perspectiva de publish or perish.\nPodríamos intentar tantas transformaciones podamos, pero en muchos casos (como este), no servirían.\nEntonces, ¿qué opciones nos quedan?\n\nIntentar publicar nuestros resultados siendo claros que existen varios factores por los cuales el supuesto no se cumple en su totalidad (tengamos en cuenta el desbalance de los datos y los outliers presentes). A final de cuentas, este valor p entra en la categoría conocida como “bordeline value” y por tanto, si argumentamos sólidamente que esta pequeña desviación no invalida los resultados, el estudio podría ser aceptado para publicación.\nRehacer el análisis con una prueba no paramétrica, específicamente Kruskal-Wallis y olvidarnos del ANOVA.\nLlevar a cabo ambas, ANOVA y Kruskal-Wallis, comparar resultados y argumentar sólidamente nuestros hallazgos."
+    "section": "ANOVA de una vía en R (continuación)",
+    "text": "ANOVA de una vía en R (continuación)\n\n\nAsí, una vez que hemos transformado para obtener normalidad en los residuos y chequeado la homogeneidad de varianzas, es tiempo de hecharle un vistazo al resultado del ANOVA:\n\n\n\n\nAnova(lm2)\n\nAnova Table (Type II tests)\n\nResponse: log(Age.FromEmergence)\n          Sum Sq Df F value    Pr(&gt;F)    \nPred       9.710  2  12.389 2.244e-05 ***\nResiduals 29.392 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nPor tanto, podemos concluir que al menos uno de los tratamientos es distinto (aceptamos la \\(H_a\\) y rechazamos la \\(H_0\\))"
   },
   {
-    "objectID": "index.html#homogeneidad-de-las-varianzas-en-anova-2",
-    "href": "index.html#homogeneidad-de-las-varianzas-en-anova-2",
+    "objectID": "index.html#qué-tan-distintos",
+    "href": "index.html#qué-tan-distintos",
     "title": "Estadística aplicada con R",
-    "section": "Homogeneidad de las varianzas en ANOVA",
-    "text": "Homogeneidad de las varianzas en ANOVA\n\n\n¿Qué NO deberíamos hacer? la respuesta corta: pues quedarnos callados y hacer como que nada ha pasado. La respuesta larga:\n\nNo sé si lo han notado, pero son pocas las publicaciones científicas en las que se reporta el chequeo de la normalidad y la homogeneidad de varianzas.\nEsto, sin lugar a duda a dado cabida a simplemente no reportar este tipo de pruebas básicas para demostrar la validez de inferencias estadísticas y cuando estas son mencionadas, muy rara vez podemos acceder a los datos para corroborar los resultados de un estudio.\nAfortunadamente, en recientes años se ha venido estableciendo una cultura de completa apertura de hacer públicos y accesibles los datos producto de una investigación para cumplir el principio básico de la ciencia que es la reproducibilidad.\nEn pocas palabras, lo que NO debemos hacer es cualquier acción que vaya en contra de la integridad científica de nuestro trabajo (ocultar información a conveniencia, remover “outliers” a diestra y siniestra y peor aún, manipular deliberadamente los datos hasta que se ajusten a lo que queremos)."
+    "section": "¿Qué tan distintos?",
+    "text": "¿Qué tan distintos?\n\n\nPreguntas naturales seguidas de estos resultados son: ¿qué tan distintos son los tratamientos entre sí?, ¿puedo acaso ordernarlos de mayor a menor?, ¿existen pares de tratamientos que son iguales?\nPodemos comenzar con una ayuda visual (ligeramente distinto a nuestro AED, usando la transformación logarítmica)\n\n\n\n\nCódigoGráfico\n\n\n\n# usamos ggpubr nuevamente\nranas$log.Age.FromEmergence &lt;- log(ranas$Age.FromEmergence)\nggboxplot(ranas,\n          x = \"Pred\",\n          y = \"log.Age.FromEmergence\",\n          add = \"jitter\",\n          color = \"Pred\")"
+  },
+  {
+    "objectID": "index.html#comparaciones-múltiples",
+    "href": "index.html#comparaciones-múltiples",
+    "title": "Estadística aplicada con R",
+    "section": "Comparaciones múltiples",
+    "text": "Comparaciones múltiples\n\n\nLos métodos de comparaciones múltiples y gráficos de interacción nos ayudan a responder estas preguntas.\nEn el caso de los gráficos de interacción para ANOVA de una vía, no tiene mucho sentido llevarlos a cabo ya que son más útiles para ANOVA de múltiples vías, así que los dejaremos para después.\nLas comparaciones múltiples más usadas son:\n\nHSD Tukey (Honestly significant difference): lleva a cabo todos los pares de comparaciones posibles entre los niveles de un factor.\nPrueba de Dunnett: Compara los niveles únicamente con respecto al nivel control dentro del factor.\n\nSon conocidas también como pruebas post-hoc.\nEn R, una manera de realizar comparaciones múltiples es mediante las librerías emmeans y multcomp (esta última depende de multcompView, así que no olvides instalarla también)."
+  },
+  {
+    "objectID": "index.html#hsd-tukey",
+    "href": "index.html#hsd-tukey",
+    "title": "Estadística aplicada con R",
+    "section": "HSD Tukey",
+    "text": "HSD Tukey\n\nCalculamos las medias marginales a partir del modelo\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)"
+  },
+  {
+    "objectID": "index.html#hsd-tukey-1",
+    "href": "index.html#hsd-tukey-1",
+    "title": "Estadística aplicada con R",
+    "section": "HSD Tukey",
+    "text": "HSD Tukey\nCalculamos las medias marginales a partir del modelo\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)\n\n Pred response   SE df lower.CL upper.CL\n C        34.2 3.79 75     27.4     42.6\n L        15.8 1.75 75     12.7     19.7\n NL       26.2 4.38 75     18.8     36.5\n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \n\n\n\n\nAhora podemos calcular las comparaciones por pares de HSD Tukey\n\n\ntukey_comp &lt;- contrast(ph1, specs = \"Pred\", method = \"tukey\")\ntukey_comp\n\n contrast ratio    SE df null t.ratio p.value\n C / L    2.165 0.339 75    1   4.936  &lt;.0001\n C / NL   1.307 0.262 75    1   1.335  0.3806\n L / NL   0.604 0.121 75    1  -2.516  0.0368\n\nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale"
+  },
+  {
+    "objectID": "index.html#prueba-de-dunnett",
+    "href": "index.html#prueba-de-dunnett",
+    "title": "Estadística aplicada con R",
+    "section": "Prueba de Dunnett",
+    "text": "Prueba de Dunnett\n\n\nPara Dunnett, es importante el establecer el grupo control\n\n\ndunnett_comp &lt;- contrast(ph1, specs = \"Pred\", method = \"dunnett\", ref = \"C\")\ndunnett_comp\n\n contrast ratio     SE df null t.ratio p.value\n L / C    0.462 0.0723 75    1  -4.936  &lt;.0001\n NL / C   0.765 0.1535 75    1  -1.335  0.3177\n\nP value adjustment: dunnettx method for 2 tests \nTests are performed on the log scale \n\n\n\n\n\nFinalmente, otra tabla de resumen de las comparaciones múltiples es la de agrupar las medias aritméticas marginales con números (o letras) de acuerdo a si estas son estadísticamente distintas o no entre si. Para ello podemos usar la librería multcomp:\n\n\n# multcomp necesita una librería extra llamada multcompView\n# No olvides instalar multcompView antes de correr este código\nlibrary(multcomp)\nmedias_marginales &lt;- cld(ph1)\nmedias_marginales\n\n Pred response   SE df lower.CL upper.CL .group\n L        15.8 1.75 75     12.7     19.7  1    \n NL       26.2 4.38 75     18.8     36.5   2   \n C        34.2 3.79 75     27.4     42.6   2   \n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale \nsignificance level used: alpha = 0.05 \nNOTE: If two or more means share the same grouping symbol,\n      then we cannot show them to be different.\n      But we also did not show them to be the same."
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-3",
+    "href": "index.html#antes-de-continuar-3",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nEn este punto, antes de continuar hagamos uso nuevamente de la librería flextable para exportar nuestras tablas a Word.\n\n\n\n\nlibrary(flextable)\ntabla_tukey &lt;- colformat_double(flextable(as.data.frame(tukey_comp)), digits = 3, j = c(2, 3, 6, 7))\ntabla_dunnett &lt;- colformat_double(flextable(as.data.frame(dunnett_comp)), digits = 3, j = c(2, 3, 6, 7))\ntabla_marginal &lt;- colformat_double(flextable(medias_marginales), digits = 3, j = c(2, 3, 5, 6))\n\n\n\n\n\n\ncontrastratioSEdfnullt.ratiop.valueC / L2.1650.3397514.9360.000C / NL1.3070.2627511.3350.381L / NL0.6040.121751-2.5160.037\n\n\n\ncontrastratioSEdfnullt.ratiop.valueL / C0.4620.072751-4.9360.000NL / C0.7650.153751-1.3350.318\n\n\n\nPredresponseSEdflower.CLupper.CL.groupL15.7991.7487512.67319.695 1 NL26.1724.3797518.75436.525  2C34.2083.7867527.44042.645  2"
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-4",
+    "href": "index.html#antes-de-continuar-4",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nLa tabla del ANOVA requiere un poquito más de preparación y para ello nos ayudaremos de la librería rstatix para agregar los asteriscos de significancia.\n\n\nlibrary(rstatix)\ntabla_anova &lt;- as.data.frame(Anova(lm2))\ntabla_anova &lt;- cbind(parametro = row.names(tabla_anova), tabla_anova)\ntabla_anova &lt;- add_significance(tabla_anova, \n                 p.col = \"Pr(&gt;F)\", \n                 output.col = \" \",\n                 cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                 symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\ntabla_anova &lt;- colformat_double(flextable(tabla_anova), digits = 3, j = c(2, 4, 5))\ntabla_anova &lt;- add_footer_lines(tabla_anova, \"Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'\")"
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-5",
+    "href": "index.html#antes-de-continuar-5",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\nLa tabla del ANOVA requiere un poquito más de preparación y para ello nos ayudaremos de la librería rstatix para agregar los códigos de significancia.\n\n\nlibrary(rstatix)\ntabla_anova &lt;- as.data.frame(Anova(lm2))\ntabla_anova &lt;- cbind(parametro = row.names(tabla_anova), tabla_anova)\ntabla_anova &lt;- add_significance(tabla_anova, \n                 p.col = \"Pr(&gt;F)\", \n                 output.col = \" \",\n                 cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                 symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\ntabla_anova &lt;- colformat_double(flextable(tabla_anova), digits = 3, j = c(2, 4, 5))\ntabla_anova &lt;- add_footer_lines(tabla_anova, \"Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'\")\ntabla_anova\n\n\nparametroSum SqDfF valuePr(&gt;F) Pred9.710212.3890.000***Residuals29.39275Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'"
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-6",
+    "href": "index.html#antes-de-continuar-6",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\nsave_as_docx(\"Tabla Anova\" = tabla_anova, \"Tabla Tukey\" = tabla_tukey, \"Tabla Dunnett\" = tabla_dunnett,\n             \"Tabla Medias Marginales Esperadas\" = tabla_marginal,\n             path = \"C:/Users/mmore/Documents/cursos_uce_2023/modulos/uce2023-modulo4/anova.docx\")"
+  },
+  {
+    "objectID": "index.html#gráficos-de-comparaciones-múltiples",
+    "href": "index.html#gráficos-de-comparaciones-múltiples",
+    "title": "Estadística aplicada con R",
+    "section": "Gráficos de comparaciones múltiples",
+    "text": "Gráficos de comparaciones múltiples\n\n\nHay personas que prefieren tener representaciones visuales de las comparaciones múltiples.\nRealizar este tipo de gráficos sin embargo solía demandar buena experiencia ya sea en gráficos base o ggplot2.\nAfortunadamente, rstatix nos brinda la posibilidad de llevarlos a cabo de una manera relativamente sencilla.\nLa idea es generar un gráfico con las medias marginales observadas de la variable de interés y posicionar sobre este los resultados de las comparaciones múltiples con sus códigos de significancia (o valores p).\nLas desventajas de esta visualización son:\n\nTienen mayor sentido realizarlas con HSD Tukey\nCuando el número de pares de comparaciones es muy grande, el gráfico se vuelve más difícil de interpretar que las tablas.\nrstatix no tiene manera de directamente volver a retransformar variables a sus unidades originales.\n\nOtro gráfico de cierta popularidad es el de los grupos de Tukey de las medias marginales (gráficos de barras con los números/letras sobre cada categoría). Para esto utilizaremos además la librería stringr"
+  },
+  {
+    "objectID": "index.html#gráficos-de-comparaciones-múltiples-1",
+    "href": "index.html#gráficos-de-comparaciones-múltiples-1",
+    "title": "Estadística aplicada con R",
+    "section": "Gráficos de comparaciones múltiples",
+    "text": "Gráficos de comparaciones múltiples\n\nCódigoGráfico\n\n\n\nranas$Pred &lt;- factor(ranas$Pred, levels = c(\"C\", \"NL\", \"L\"))\nbxplot &lt;- ggboxplot(ranas, x = \"Pred\", \n                    y = \"Age.FromEmergence\", \n                    color = \"Pred\")\nhsdvals &lt;- emmeans_test(log.Age.FromEmergence ~ Pred, \n                        data = ranas, \n                        p.adjust.method = \"mvt\")\nhsdvals &lt;- add_significance(hsdvals, \n                            p.col = \"p.adj\", \n                            output.col = \"p.adj.signif\",\n                            cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                            symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\nhsdvals &lt;- hsdvals %&gt;% add_xy_position(x = \"Pred\")\nbxplot + stat_pvalue_manual(hsdvals, y.position = c(120, 130, 140))"
+  },
+  {
+    "objectID": "index.html#gráficos-de-comparaciones-múltiples-2",
+    "href": "index.html#gráficos-de-comparaciones-múltiples-2",
+    "title": "Estadística aplicada con R",
+    "section": "Gráficos de comparaciones múltiples",
+    "text": "Gráficos de comparaciones múltiples\n\nCódigoGráfico\n\n\n\nlibrary(stringr)\ngruposvals &lt;- as.data.frame(cld(ph1))\ngruposvals$Pred &lt;- factor(gruposvals$Pred, levels = c(\"C\", \"NL\", \"L\"))\nggplot(gruposvals,\n       aes(x = Pred, \n           y = response, \n           fill = Pred)) +\n  geom_bar(stat = \"identity\", \n           show.legend = F, \n           color = \"black\")+\n  geom_errorbar(aes(ymin = response - SE, \n                    ymax = response + SE), \n                width=0.2)+\n  geom_text(aes(label=str_trim(.group), \n                y = response+SE, vjust=-0.5))"
   },
   {
     "objectID": "index.html#anova-de-un-diseño-desbalanceado",
@@ -686,116 +868,11 @@
     "text": "ANOVA de un diseño desbalanceado\n\n\nRecordemos que 18 tanques con predadores no letales fueron descartados debido al brote de una enfermedad.\nEl diseño original de Touchon era balanceado. Al perderse unidades experimentales, el diseño se le puede denominar como desbalanceado. En otras palabras, el desbalance es la pérdida de observaciones.\nLa mayoría de métodos estadísticos requieren ser corregidos ante observaciones perdidas para poder tener la certeza de que los estimados que obtenemos no sean sesgados.\nSin adentrarnos en mayor detalle, uno de los componentes de la tabla de ANOVA es la suma de cuadrados. Existen tres tipos de suma de cuadrados: I, II y III.\nEn breve, las sumas II y III se aconseja sean usadas cuando existen interacciones en el ANOVA.\nEn R, la función aov calcula la suma de cuadrados tipo I. Este tipo de suma no es conveniente ante la presencia de desbalance de los datos.\nEn cambio, la función Anova de la librería car, usa por default el tipo II que es precisamente el recomendado usar ante la presencia de desbalance.\nEn resumen, sí. Hemos utilizado hasta el momento la corrección adecuada para estos datos."
   },
   {
-    "objectID": "index.html#anova-de-una-vía-en-r-continuación",
-    "href": "index.html#anova-de-una-vía-en-r-continuación",
+    "objectID": "index.html#ejercicio-4.9",
+    "href": "index.html#ejercicio-4.9",
     "title": "Estadística aplicada con R",
-    "section": "ANOVA de una vía en R (continuación)",
-    "text": "ANOVA de una vía en R (continuación)\n\n\nAsí, una vez que hemos transformado para obtener normalidad en los residuales y chequeado la homogeneidad de varianzas, es tiempo de hecharle un vistazo al resultado del ANOVA:\n\n\n\n\nAnova(lm2)\n\nAnova Table (Type II tests)\n\nResponse: log(Age.FromEmergence)\n          Sum Sq Df F value    Pr(&gt;F)    \nPred       9.710  2  12.389 2.244e-05 ***\nResiduals 29.392 75                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nPor tanto, podemos concluir que al menos uno de los tratamientos es distinto (aceptamos la \\(H_a\\) y rechazamos la \\(H_0\\))"
-  },
-  {
-    "objectID": "index.html#qué-tan-distintos",
-    "href": "index.html#qué-tan-distintos",
-    "title": "Estadística aplicada con R",
-    "section": "¿Qué tan distintos?",
-    "text": "¿Qué tan distintos?\n\n\nPreguntas naturales seguidas de estos resultados son: ¿qué tan distintos son los tratamientos entre sí?, ¿puedo acaso ordernarlos de mayor a menor?, ¿existen pares de tratamientos que son iguales?\nPodemos comenzar con una ayuda visual (que pudo bien haber sido parte de nuestro AED)\n\n\n\n\nCódigoGráfico\n\n\n\nlibrary(ggplot2)\nqplot(Pred, Age.FromEmergence,\n      colour = Pred,\n      geom = c(\"boxplot\", \"jitter\"),\n      data = ranas)"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples",
-    "href": "index.html#comparaciones-múltiples",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\n\nLos métodos de comparaciones múltiples nos ayudan a responder estas preguntas.\nLos más usados son:\n\nHSD Tukey (Honestly significant difference): lleva a cabo todos los pares de comparaciones posibles entre los niveles de un factor.\nPrueba de Dunnett: Compara los niveles únicamente con respecto al nivel control dentro del factor.\n\nSon conocidos como pruebas o comparaciones post-hoc.\nEn R, la manera más sencilla de llevar a cabo comparaciones múltiples es mediante las librerías emmeans y multcomp."
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-con-emmeans",
-    "href": "index.html#comparaciones-múltiples-con-emmeans",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples con emmeans",
-    "text": "Comparaciones múltiples con emmeans\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\")\nsummary(ph1)"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-con-emmeans-1",
-    "href": "index.html#comparaciones-múltiples-con-emmeans-1",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples con emmeans",
-    "text": "Comparaciones múltiples con emmeans\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\")\nsummary(ph1)\n\n Pred emmean    SE df lower.CL upper.CL\n C      3.53 0.111 75     3.31     3.75\n L      2.76 0.111 75     2.54     2.98\n NL     3.26 0.167 75     2.93     3.60\n\nResults are given on the log (not the response) scale. \nConfidence level used: 0.95"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-con-emmeans-2",
-    "href": "index.html#comparaciones-múltiples-con-emmeans-2",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples con emmeans",
-    "text": "Comparaciones múltiples con emmeans\n\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-con-emmeans-3",
-    "href": "index.html#comparaciones-múltiples-con-emmeans-3",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples con emmeans",
-    "text": "Comparaciones múltiples con emmeans\n\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)\n\n Pred response   SE df lower.CL upper.CL\n C        34.2 3.79 75     27.4     42.6\n L        15.8 1.75 75     12.7     19.7\n NL       26.2 4.38 75     18.8     36.5\n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \n\n\n\n\ncld(ph1)\n\nError in cld(ph1): could not find function \"cld\""
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-1",
-    "href": "index.html#comparaciones-múltiples-1",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\")\nsummary(ph1)"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-2",
-    "href": "index.html#comparaciones-múltiples-2",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\nlibrary(emmeans)\nph1 &lt;- emmeans(lm2, specs = \"Pred\")\nsummary(ph1)\n\n Pred emmean    SE df lower.CL upper.CL\n C      3.53 0.111 75     3.31     3.75\n L      2.76 0.111 75     2.54     2.98\n NL     3.26 0.167 75     2.93     3.60\n\nResults are given on the log (not the response) scale. \nConfidence level used: 0.95"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-3",
-    "href": "index.html#comparaciones-múltiples-3",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-4",
-    "href": "index.html#comparaciones-múltiples-4",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\nph1 &lt;- emmeans(lm2, specs = \"Pred\", type = \"response\")\nsummary(ph1)\n\n Pred response   SE df lower.CL upper.CL\n C        34.2 3.79 75     27.4     42.6\n L        15.8 1.75 75     12.7     19.7\n NL       26.2 4.38 75     18.8     36.5\n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \n\n\n\n\nY terminamos con multcomp\n\n\n# multcomp necesita una librería extra llamada multcompView\n# No olvides instalar multcompView antes de correr este código\nlibrary(multcomp)\ncld(ph1)\n\n Pred response   SE df lower.CL upper.CL .group\n L        15.8 1.75 75     12.7     19.7  1    \n NL       26.2 4.38 75     18.8     36.5   2   \n C        34.2 3.79 75     27.4     42.6   2   \n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale \nsignificance level used: alpha = 0.05 \nNOTE: If two or more means share the same grouping symbol,\n      then we cannot show them to be different.\n      But we also did not show them to be the same."
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-2",
-    "href": "index.html#antes-de-continuar-2",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\n\nEn su lugar, en escenarios en que el valor p está alejado por una décima o varias centésimas de 0.05, los resultados deberían interpretarse como indeterminados para generalizar sobre la población objeto de estudio y específicos a las condiciones experimentales (análisis estadísticos, instrumentos de medición, etc) bajo las cuales fueron tomadas y modeladas las mediciones.\nEn el contexto de los modelos estadísticos que veremos más adelante, esto ha derivado en un “temor” del investigador cuando los resultados no pasan los chequeos de los supuestos sobre los que estos modelos se cimentan. Sobre todo cuando el valor p dista de 0.05 por ínfimas cantidades.\nEsto puede llevar a malas prácticas científicas tales como: no reportar el resultado de los chequeos, blindar los datos, escoger “outliers” y removerlos y en el peor de los casos, manipular los datos para tratar de acomodar nuestros datos a estos chequeos.\nTodo lo que he mencionado, no solamente constituyen casos de mala conducta científica, sino lo que hoy en día se le conoce como p hacking (que se puede resumir a torturar los datos hasta que nos confiesen una verdad agradable a nuestros propósitos)."
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-3",
-    "href": "index.html#antes-de-continuar-3",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\n\nEn este punto, antes de continuar hagamos uso nuevamente de la librería flextable para exportar nuestras tablas a Word.\n\n\n\n\nlibrary(flextable)\ntabla_anova &lt;- flextable(Anova(lm2))\ntabla_tukey &lt;- flextable(cld(ph1))\n\n\n\n\n\n\nSum SqDfF valuePr(&gt;F)9.710023212.388710.0000224433329.39175075\n\n\n\nPredresponseSEdflower.CLupper.CL.groupL15.798731.7483537512.6730119.69537 1 NL26.172384.3788627518.7540336.52512  2C34.207773.7855757527.4399142.64488  2"
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-4",
-    "href": "index.html#antes-de-continuar-4",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\nEn este punto, antes de continuar hagamos uso nuevamente de la librería flextable para exportar nuestras tablas a Word.\n\n\nlibrary(flextable)\ntabla_anova &lt;- colformat_double(flextable(Anova(lm2)), digits = 3)\ntabla_tukey &lt;- colformat_double(flextable(cld(ph1)), digits = 3)\n\n\n\n\n\nSum SqDfF valuePr(&gt;F)9.7102.00012.3890.00029.39275.000\n\n\n\nPredresponseSEdflower.CLupper.CL.groupL15.7991.74875.00012.67319.695 1 NL26.1724.37975.00018.75436.525  2C34.2083.78675.00027.44042.645  2"
-  },
-  {
-    "objectID": "index.html#ejercicio-4.8",
-    "href": "index.html#ejercicio-4.8",
-    "title": "Estadística aplicada con R",
-    "section": "Ejercicio 4.8",
-    "text": "Ejercicio 4.8\n\nLleva a cabo un ANOVA con todos sus pasos para la variable Resorb.days de los datos de Touchon"
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-5",
-    "href": "index.html#antes-de-continuar-5",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\nlibrary(flextable)\ntabla_anova &lt;- colformat_double(flextable(Anova(lm2)), digits = 3)\ntabla_tukey &lt;- colformat_double(flextable(cld(ph1)), digits = 3)\n\nsave_as_docx(\"Tabla Anova\" = tabla_anova, \"Tabla Anova\" = tabla_tukey,\n             path = \"C:/Users/mmore/Documents/cursos_uce_2023/modulos/uce2023-modulo4/anova.docx\")"
+    "section": "Ejercicio 4.9",
+    "text": "Ejercicio 4.9\n\nLleva a cabo un ANOVA con todos sus pasos para la variable Resorb.days de los datos de Touchon"
   },
   {
     "objectID": "index.html#prueba-de-kruskal-wallis",
@@ -805,6 +882,34 @@
     "text": "Prueba de Kruskal-Wallis\n\n\nLa prueba de Kruskal-Wallis es la alternativa no paramétrica al ANOVA de una vía.\nPuede extenderse al ANOVA de múltiples vías reorganizando el diseño experimental.\nSimilar a las pruebas de Wilcoxon, se basa en encontrar diferencias de las medianas en lugar de las medias y su poder ese menor.\nPara ilustrar este ejemplo, tomemos la variable Age.DPO del estudio de Touchon y veamos si existen diferencias con respecto al tratamiento de predador Pred. Age.DPO sin transformaciones no cumple con los supuestos del ANOVA.\n\n\n\n\nkruskal.test(Age.DPO ~ Pred, data = ranas)\n\n\n    Kruskal-Wallis rank sum test\n\ndata:  Age.DPO by Pred\nKruskal-Wallis chi-squared = 22.255, df = 2, p-value = 1.47e-05"
   },
   {
+    "objectID": "index.html#comparaciones-múltiples-con-kruskal-wallis",
+    "href": "index.html#comparaciones-múltiples-con-kruskal-wallis",
+    "title": "Estadística aplicada con R",
+    "section": "Comparaciones múltiples con Kruskal-Wallis",
+    "text": "Comparaciones múltiples con Kruskal-Wallis\n\n\nCon KW también podemos hacer comparaciones múltiples.\nEn R base contamos con la función pairwise.wilcox.test que lleva a cabo comparaciones por pares mediante el método de Wilcoxon.\n\n\n\n\npairwise.wilcox.test(ranas$Age.DPO, ranas$Pred, p.adjust.method = \"BH\")\n\n\n    Pairwise comparisons using Wilcoxon rank sum exact test \n\ndata:  ranas$Age.DPO and ranas$Pred \n\n   C       NL   \nNL 0.303   -    \nL  9.8e-06 0.019\n\nP value adjustment method: BH"
+  },
+  {
+    "objectID": "index.html#ejercicio-4.10",
+    "href": "index.html#ejercicio-4.10",
+    "title": "Estadística aplicada con R",
+    "section": "Ejercicio 4.10",
+    "text": "Ejercicio 4.10\n\nEncuentra si existen diferencias en la longitud nariz-cloaca al emerger (SVL.initial) con respecto a los predadores Pred en los datos de Touchon. ¿Qué método es factible usar?, ¿ANOVA de una vía o Kruskal-Wallis?"
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-7",
+    "href": "index.html#antes-de-continuar-7",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nCon respecto a los DDE que vimos en el módulo 2, el ANOVA de una vía corresponde directamente al análisis que llevaríamos a cabo para un DCA.\nPara extender el modelo a un DBCA de una vía basta el incorporar otro efecto principal en el modelo:\n\n\n\n\nlm3 &lt;- lm(log(Age.FromEmergence) ~ Pred + as.factor(Block), data = ranas)\nAnova(lm3)\n\nAnova Table (Type II tests)\n\nResponse: log(Age.FromEmergence)\n                  Sum Sq Df F value    Pr(&gt;F)    \nPred              9.8369  2 13.9265 8.526e-06 ***\nas.factor(Block)  5.3760  7  2.1746   0.04728 *  \nResiduals        24.0158 68                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nLa interpretación de este tipo de ANOVA se enfoca en el valor p de los tratamientos.\nNo tiene mucho sentido el interpretar el valor p del factor de bloque ya que está ahí para controlar fuentes de variación.\nDe manera similar, cuando extendamos el ANOVA a más factores, el análisis del DBCA factorial se consigue añadiendo un efecto principal para el bloque."
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-8",
+    "href": "index.html#antes-de-continuar-8",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nPara las pruebas de comparaciones múltiples, seguimos el mismo procedimiento que describimos anteriormente ignorando el efecto del bloque.\n\n\n\n\nph_dbca &lt;- emmeans(lm3, specs = \"Pred\", type = \"response\")\ncontrast(ph_dbca, specs = \"Pred\", method = \"tukey\")\n\n contrast ratio    SE df null t.ratio p.value\n C / NL    1.24 0.255 68    1   1.036  0.5572\n C / L     2.17 0.322 68    1   5.200  &lt;.0001\n NL / L    1.75 0.360 68    1   2.720  0.0223\n\nResults are averaged over the levels of: Block \nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale"
+  },
+  {
     "objectID": "index.html#anova-de-múltiples-vías",
     "href": "index.html#anova-de-múltiples-vías",
     "title": "Estadística aplicada con R",
@@ -812,53 +917,74 @@
     "text": "ANOVA de múltiples vías\n\n\nEl ANOVA puede extenderse para analizar dos o más factores a la vez. Su nombre entonces varía dependiendo de cuántos factores analicemos, así: ANOVA de dos vías (2 factores), ANOVA de tres vías (3 factores) …\nEn la práctica es recomendable diseñar experimentos hasta máximo 3 factores:\n\nA más factores, más costosa la investigación\nA más factores, sus interacciones son más difíciles de interpretar\nEs posible inclusive que tengamos resultados sin sentido (interacciones innecesarias)\n\n¿Qué son las interacciones?\n\nUna interacción se refiere cuando los niveles de un factor podrían depender de los niveles de otro.\nPor ejemplo, con los datos de las ranas, podríamos imaginar que en la ausencia de predadores, tener recursos altos o bajos podría influenciar el tiempo que tomaron los renacuajos en culminar la metamorfosis. Es decir, si hay predadores presentes, podría darse el caso de que las presas se escondan y coman menos influenciando así ese tiempo.\nAsí, podríamos saber si el effecto de los recursos son influenciados ante la presencia de predadores"
   },
   {
-    "objectID": "index.html#prueba-formal-de-normalidad-1",
-    "href": "index.html#prueba-formal-de-normalidad-1",
-    "title": "Estadística aplicada con R",
-    "section": "Prueba formal de normalidad",
-    "text": "Prueba formal de normalidad\n\n\nO también podemos calcular la prueba de Shapiro-Wilk con funciones base de R\n\n\n\n\nresiduales &lt;- resid(lm2)\nshapiro.test(residuales)\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuales\nW = 0.98017, p-value = 0.2645"
-  },
-  {
-    "objectID": "index.html#comparaciones-múltiples-con-kruskal-wallis",
-    "href": "index.html#comparaciones-múltiples-con-kruskal-wallis",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples con Kruskal-Wallis",
-    "text": "Comparaciones múltiples con Kruskal-Wallis\n\n\nCon KW también podemos llevar a cabo comparaciones múltiples.\nEn R base contamos con la función pairwise.wilcox.test que lleva a cabo comparaciones por pares mediante el método de Wilcoxon.\n\n\n\n\npairwise.wilcox.test(ranas$Age.DPO, ranas$Pred, p.adjust.method = \"BH\")\n\n\n    Pairwise comparisons using Wilcoxon rank sum test with continuity correction \n\ndata:  ranas$Age.DPO and ranas$Pred \n\n   C       L    \nL  9.8e-06 -    \nNL 0.303   0.019\n\nP value adjustment method: BH"
-  },
-  {
-    "objectID": "index.html#ejercicio-4.9",
-    "href": "index.html#ejercicio-4.9",
-    "title": "Estadística aplicada con R",
-    "section": "Ejercicio 4.9",
-    "text": "Ejercicio 4.9\n\nEncuentra si existen diferencias en la longitud nariz-cloaca al emerger (SVL.initial) con respecto a los predadores Pred en los datos de Touchon. ¿Qué método es factible usar?, ¿ANOVA de una vía o Kruskal-Wallis?"
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-6",
-    "href": "index.html#antes-de-continuar-6",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\n\nCon respecto a los DDE que vimos en el módulo 2, el ANOVA de una vía corresponde directamente al análisis que llevaríamos a cabo para un DCA.\nPara extender el modelo a un DBCA de una vía basta el incorporar otro efecto principal en el modelo:\n\n\n\n\nlm3 &lt;- lm(log(Age.FromEmergence) ~ Pred + as.factor(Block), data = ranas)\nAnova(lm3)\n\nAnova Table (Type II tests)\n\nResponse: log(Age.FromEmergence)\n                  Sum Sq Df F value    Pr(&gt;F)    \nPred              9.8369  2 13.9265 8.526e-06 ***\nas.factor(Block)  5.3760  7  2.1746   0.04728 *  \nResiduals        24.0158 68                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nLa interpretación de este tipo de ANOVA se enfoca en el valor p de los tratamientos.\nNo tiene mucho sentido el interpretar el valor p del factor de bloque ya que está ahí para controlar fuentes de variación.\nDe manera similar, cuando extendamos el ANOVA a más factores, el análisis del DBCA factorial se consigue añadiendo un efecto principal para el bloque."
-  },
-  {
     "objectID": "index.html#anova-de-múltiples-vías-en-r",
     "href": "index.html#anova-de-múltiples-vías-en-r",
     "title": "Estadística aplicada con R",
     "section": "ANOVA de múltiples vías en R",
-    "text": "ANOVA de múltiples vías en R\n\n\nVamos a usar nuevamente los datos de Touchon, la variable de respuesta es la edad de metamorfosis Age.DPO y los factores la presencia de predadores Pred y los recursos Res.\nPara llevar a cabo un ANOVA de múltiples vías en R podemos usar la siguiente sintaxis: Factor1*Factor2\nPara ahorrarnos tiempo, supóngamos que ya corrimos un primer ANOVA, y encontramos que usando el logaritmo de Age.DPO podemos normalizar los residuales. Pero nos encontramos con esto:\n\n\n\n\nlm4 &lt;- lm(log(Age.DPO) ~ Pred*Res, data = ranas)\nleveneTest(lm4, center = \"mean\")\n\nLevene's Test for Homogeneity of Variance (center = \"mean\")\n      Df F value    Pr(&gt;F)    \ngroup  5  6.0253 0.0001033 ***\n      72                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n¡La homogeneidad de las varianzas no se cumple! 😱\nEste es un escenario común y que quizá nos haga realmente considerar usar Kruskal-Wallis.\nSin embargo, hay una opción! La función Anova de la librería car ofrece el argumento white.adjust que permite obtener un ANOVA corregido para heterodasticidad por el método de White-Huber."
+    "text": "ANOVA de múltiples vías en R\n\n\nVamos a usar nuevamente los datos de Touchon, la variable de respuesta es la edad de metamorfosis Age.DPO y los factores la presencia de predadores Pred y los recursos Res.\nPara un ANOVA de múltiples vías en R podemos usar la siguiente sintaxis: Factor1*Factor2\nPara ahorrarnos tiempo, supóngamos que ya corrimos un primer ANOVA, y encontramos que usando el logaritmo de Age.DPO podemos normalizar los residuos. Pero nos encontramos con esto:\n\n\n\n\nlm4 &lt;- lm(log(Age.DPO) ~ Pred*Res, data = ranas)\nleveneTest(lm4, center = \"mean\")\n\nLevene's Test for Homogeneity of Variance (center = \"mean\")\n      Df F value    Pr(&gt;F)    \ngroup  5  6.0253 0.0001033 ***\n      72                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n¡La homogeneidad de las varianzas no se cumple! 😱\n¡Ninguna otra transformación funciona!"
   },
   {
     "objectID": "index.html#anova-de-múltiples-vías-en-r-1",
     "href": "index.html#anova-de-múltiples-vías-en-r-1",
     "title": "Estadística aplicada con R",
     "section": "ANOVA de múltiples vías en R",
-    "text": "ANOVA de múltiples vías en R\n\nAnova(lm4, white.adjust = T)\n\nAnalysis of Deviance Table (Type II tests)\n\nResponse: log(Age.DPO)\n          Df       F    Pr(&gt;F)    \nPred       2 19.3707 1.857e-07 ***\nRes        1 28.4555 1.059e-06 ***\nPred:Res   2  3.7678   0.02778 *  \nResiduals 72                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nComo vemos, existen dos efectos principales (predador y recursos) y su interacción (predador \\(\\times\\) recursos).\nAquí encontramos que la interacción es significativa. Esto lo podemos interpretar así: “existe evidencia estadística significativa para concluir que la edad de metamorfosis de los renacuajos depende de una interacción entre la alimentación y la presencia de predadores”.\nY ¿por qué solo interpretamos la interacción?:\n\nCuando la interacción y los efectos principales son significativos, basta con interpretar la primera.\nCuando la interacción es significativa y uno de los efectos principales no lo es, hay que ir en más detalle del por qué.\n\nPero no sabemos en que dirección sucede esta afectacción (¿reduce o incrementa el tiempo de metaformosis?).\nPara responder estas pregunta, nos ayudaremos de las comparaciones múltiples.\nPero antes, le daremos un vistazo a otra herramienta comúnmente usada: los gráficos de interacción."
+    "text": "ANOVA de múltiples vías en R"
+  },
+  {
+    "objectID": "index.html#anova-de-múltiples-vías-en-r-2",
+    "href": "index.html#anova-de-múltiples-vías-en-r-2",
+    "title": "Estadística aplicada con R",
+    "section": "ANOVA de múltiples vías en R",
+    "text": "ANOVA de múltiples vías en R\n\n\nA parte de reir, en este tipo de situaciones (que son bastante comunes), tenemos dos alternativas:\n\nRealizar pruebas no paramétricas, o\nCalcular ANOVAs con correcciones para heterodasticidad.\n\nPero como acuñó el Ec. y estadístico Milton Friedman: “No existe tal cosa como un almuerzo gratis”, usar la segunda opción no es tan fácil como hemos venido viendo.\nEn R, tenemos estos caminos (de peor a mejor opción):\n\nRealizar el ANOVA usando la corrección de White-Huber disponible en la librería car, pero al costo de conducir comparaciones múltiples posiblemente sesgadas (siguiendo la lógica de realizarlas con emmeans).\nUtilizar rstatix para un ANOVA con la corrección de Welch, seguido de comparaciones múltiples con la corrección de Games-Howell y poder todavía realizar sus gráficos al costo de romper la secuencia de aprendizaje que hemos venido llevando para el ANOVA.\nUtilizar las librerías nlme para reparametrizar el modelo en forma de un modelo lineal generalizado, y posteriormente usar car y emmeans para el ANOVA y las comparaciones múltiples, respectivamente. Pero al costo de no poder graficarlas con rstatix sino desde 0.\n\nA continuación entonces iremos en este orden de las opciones: 2, 3 y 1 (la última para ejemplificar cuál sería el camino suponiendo que la homocedasticidad se hubiese cumplido)."
+  },
+  {
+    "objectID": "index.html#anova-de-múltiples-vías-en-r.-opc.-2",
+    "href": "index.html#anova-de-múltiples-vías-en-r.-opc.-2",
+    "title": "Estadística aplicada con R",
+    "section": "ANOVA de múltiples vías en R. Opc. 2",
+    "text": "ANOVA de múltiples vías en R. Opc. 2\n\n\nEl inconveniente de usar la corrección de Welch es que esta se puede aplicar solo a ANOVAs de una vía.\nEntonces, de manera similar a lo hicimos para poder analizar por Kruskall-Wallis un diseño factorial, tenemos que crear una variable dummy combinando los dos factores para correr un ANOVA de una vía.\nDebemos tener en cuenta que al realizar esto, reducimos poder de la prueba estadística.\n\n\n\n\nranas$log.Age.DPO &lt;- log(ranas$Age.DPO)\nranas$tratamiento &lt;- paste(ranas$Pred, ranas$Res, sep = \"-\")\nanova_op2 &lt;- ranas %&gt;%\n  welch_anova_test(log.Age.DPO ~ tratamiento)"
+  },
+  {
+    "objectID": "index.html#anova-de-múltiples-vías-en-r.-opc.-2-1",
+    "href": "index.html#anova-de-múltiples-vías-en-r.-opc.-2-1",
+    "title": "Estadística aplicada con R",
+    "section": "ANOVA de múltiples vías en R. Opc. 2",
+    "text": "ANOVA de múltiples vías en R. Opc. 2\n\nEl inconveniente de usar la corrección de Welch es que esta se puede aplicar solo a ANOVAs de una vía.\nEntonces, de manera similar a lo hicimos para poder analizar por Kruskall-Wallis un diseño factorial, tenemos que crear una variable dummy combinando los dos factores para correr un ANOVA de una vía.\nDebemos tener en cuenta que al realizar esto, reducimos poder de la prueba estadística.\n\n\nranas$log.Age.DPO &lt;- log(ranas$Age.DPO)\nranas$tratamiento &lt;- paste(ranas$Pred, ranas$Res, sep = \"-\")\nranas$tratamiento &lt;- factor(ranas$tratamiento, levels = c(\"C-Lo\", \"NL-Lo\", \"C-Hi\", \"L-Lo\", \"NL-Hi\", \"L-Hi\"))\nanova_op2 &lt;- ranas %&gt;%\n  welch_anova_test(log.Age.DPO ~ tratamiento)\nanova_op2\n\n# A tibble: 1 × 7\n  .y.             n statistic   DFn   DFd           p method     \n* &lt;chr&gt;       &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;      \n1 log.Age.DPO    78      17.2     5  24.0 0.000000305 Welch ANOVA\n\n\n\n\nAhora podemos realizar las comparaciones de HSD Tukey (con corrección de Games-Howell)\n\n\ngames_comp &lt;- ranas %&gt;% games_howell_test(log.Age.DPO ~ tratamiento)\ngames_comp &lt;- add_significance(games_comp, \n                                p.col = \"p.adj\", \n                                output.col = \"p.adj.signif\",\n                                cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                                symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\ngames_comp\n\n# A tibble: 15 × 8\n   .y.         group1 group2 estimate conf.low conf.high      p.adj p.adj.signif\n   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;       \n 1 log.Age.DPO C-Lo   NL-Lo  -0.155     -0.772    0.462  0.936      ns          \n 2 log.Age.DPO C-Lo   C-Hi   -0.440     -0.700   -0.180  0.000261   ***         \n 3 log.Age.DPO C-Lo   L-Lo   -0.485     -0.754   -0.217  0.0000932  ***         \n 4 log.Age.DPO C-Lo   NL-Hi  -0.493     -0.821   -0.166  0.002      **          \n 5 log.Age.DPO C-Lo   L-Hi   -0.643     -0.877   -0.408  0.00000114 ***         \n 6 log.Age.DPO NL-Lo  C-Hi   -0.285     -0.902    0.331  0.545      ns          \n 7 log.Age.DPO NL-Lo  L-Lo   -0.331     -0.947    0.286  0.419      ns          \n 8 log.Age.DPO NL-Lo  NL-Hi  -0.339     -0.961    0.284  0.433      ns          \n 9 log.Age.DPO NL-Lo  L-Hi   -0.488     -1.11     0.133  0.129      ns          \n10 log.Age.DPO C-Hi   L-Lo   -0.0452    -0.258    0.168  0.986      ns          \n11 log.Age.DPO C-Hi   NL-Hi  -0.0531    -0.351    0.244  0.988      ns          \n12 log.Age.DPO C-Hi   L-Hi   -0.202     -0.362   -0.0425 0.008      **          \n13 log.Age.DPO L-Lo   NL-Hi  -0.00797   -0.310    0.294  1          ns          \n14 log.Age.DPO L-Lo   L-Hi   -0.157     -0.334    0.0196 0.099      .           \n15 log.Age.DPO NL-Hi  L-Hi   -0.149     -0.440    0.142  0.448      ns          \n\n\n\n\n\nFinalizamos con el gráfico de estas\n\n\ngames_comp &lt;- games_comp %&gt;% \n  add_xy_position(x = \"tratamiento\", step.increase = 1)\nggboxplot(ranas,\n          x = \"tratamiento\",\n          y = \"log.Age.DPO\") + \n  stat_pvalue_manual(games_comp, \n                     hide.ns = T,\n                     y.position = c(5.1,5.5,5.9,6.3,6.7,7.1))"
+  },
+  {
+    "objectID": "index.html#anova-de-múltiples-vías-en-r.-opc.-3",
+    "href": "index.html#anova-de-múltiples-vías-en-r.-opc.-3",
+    "title": "Estadística aplicada con R",
+    "section": "ANOVA de múltiples vías en R. Opc. 3",
+    "text": "ANOVA de múltiples vías en R. Opc. 3\n\n\nLa tercera opción involucra el reparametrizar el modelo para poder analizarlo como un modelo lineal generalizado.\nEn breve, una de las ventajas de los modelos lineales generalizados es que pueden asumir varianzas distintas a través de modelar directamente la heterodasticidad.\nPara su implementación usaremos la librería nlme\n\n\n\n\nlibrary(nlme)\nanova_op3 &lt;- gls(log(Age.DPO) ~ Pred*Res,\n                 data = ranas,\n                 weights = varIdent(form = ~1|Pred*Res)) \n\n\n\n\nMediante la librería car podemos obtener la tabla del ANOVA (o especificamente llamada Analisis de Desviación)\n\n\nAnova(anova_op3)\n\nAnalysis of Deviance Table (Type II tests)\n\nResponse: log(Age.DPO)\n         Df   Chisq Pr(&gt;Chisq)    \nPred      2 41.5704  9.400e-10 ***\nRes       1 30.6580  3.078e-08 ***\nPred:Res  2  8.0607    0.01777 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nAhora, usando emmeans podemos calcular el HSD de Tukey directamente sin necesidad de correcciones. Una consideración importante es que, cuando tenemos dos factores debemos hacer las comparaciones de cada factor a la vez a lo largo de los niveles del otro.\n\n\n\n\ntukey_comp_pred &lt;- emmeans(anova_op3, specs = \"Pred\", by = \"Res\", method = \"tukey\") # medias marginales esperadas\ncontrast(tukey_comp_pred, specs = \"Pred\", by = \"Res\", method = \"tukey\")\n\nRes = Hi:\n contrast estimate     SE    df t.ratio p.value\n C - NL     0.0531 0.0873 14.09   0.608  0.8179\n C - L      0.2022 0.0509 20.74   3.971  0.0020\n NL - L     0.1491 0.0765  9.54   1.949  0.1779\n\nRes = Lo:\n contrast estimate     SE    df t.ratio p.value\n C - NL     0.1548 0.1717  8.55   0.901  0.6536\n C - L      0.4854 0.0879 27.66   5.526  &lt;.0001\n NL - L     0.3306 0.1650  7.37   2.004  0.1783\n\nDegrees-of-freedom method: satterthwaite \nResults are given on the log (not the response) scale. \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\n\n\ntukey_comp_res &lt;- emmeans(anova_op3, specs = \"Res\", by = \"Pred\", method = \"tukey\") # medias marginales esperadas\ncontrast(tukey_comp_res, specs = \"Res\", by = \"Pred\", method = \"tukey\")\n\nPred = C:\n contrast estimate     SE    df t.ratio p.value\n Hi - Lo    -0.440 0.0847 26.13  -5.199  &lt;.0001\n\nPred = NL:\n contrast estimate     SE    df t.ratio p.value\n Hi - Lo    -0.339 0.1730  8.64  -1.957  0.0834\n\nPred = L:\n contrast estimate     SE    df t.ratio p.value\n Hi - Lo    -0.157 0.0560 19.63  -2.803  0.0111\n\nDegrees-of-freedom method: satterthwaite \nResults are given on the log (not the response) scale. \n\n\n\nPara graficar estas comparaciones mediante esta opción es necesario el empezar de cero con ggplot2. La razón es que rstatix no tiene las capacidades de lidiar con interacciones provenientes de emmeans (no es compatible con la sintaxis de los comandos contrast de arriba) por lo que dejaremos esta opción hasta aquí."
+  },
+  {
+    "objectID": "index.html#anova-de-múltiples-vías-en-r.-opc.-1",
+    "href": "index.html#anova-de-múltiples-vías-en-r.-opc.-1",
+    "title": "Estadística aplicada con R",
+    "section": "ANOVA de múltiples vías en R. Opc. 1",
+    "text": "ANOVA de múltiples vías en R. Opc. 1\n\n\nFinalmente, asumamos que no tuvimos el problema de heterodasticidad y pudimos haber seguido el curso normal para realizar las comparaciones múltiples usando solamente car, emmeans y multcomp.\nEste es el transcurso normal de tópicos en el aprendizaje del ANOVA de múltiples vías:\n\n\n\n\nTabla del ANOVA con car (mencionamos que car es capaz de llevar a cabo una corrección de heterodasticidad, esta se consigue agregando el argumento white.adjust = T dentro de la función Anova)\n\n\nAnova(lm4)\n\nAnova Table (Type II tests)\n\nResponse: log(Age.DPO)\n          Sum Sq Df F value    Pr(&gt;F)    \nPred      1.9446  2 18.7561 2.775e-07 ***\nRes       1.8241  1 35.1871 9.576e-08 ***\nPred:Res  0.3254  2  3.1384   0.04934 *  \nResiduals 3.7324 72                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\nAl igual que en la opción 3, calculamos las comparaciones múltiples viendo a cada factor a la vez a lo largo de los niveles del otro.\n\n\ntukey_comp_pred1 &lt;- emmeans(lm4, specs = \"Pred\", by = \"Res\", type = \"response\")\ncontrast(tukey_comp_pred1, specs = \"Pred\", method = \"tukey\")\n\nRes = Hi:\n contrast ratio     SE df null t.ratio p.value\n C / NL    1.05 0.1088 72    1   0.515  0.8644\n C / L     1.22 0.0985 72    1   2.512  0.0374\n NL / L    1.16 0.1198 72    1   1.445  0.3234\n\nRes = Lo:\n contrast ratio     SE df null t.ratio p.value\n C / NL    1.17 0.1205 72    1   1.500  0.2968\n C / L     1.62 0.1308 72    1   6.030  &lt;.0001\n NL / L    1.39 0.1436 72    1   3.204  0.0057\n\nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale \n\n\n\n\n\ntukey_comp_res1 &lt;- emmeans(lm4, specs = \"Res\", by = \"Pred\", type = \"response\")\ncontrast(tukey_comp_res1, specs = \"Pred\", method = \"tukey\", adjust = \"holm\")\n\nPred = C:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.644 0.0518 72    1  -5.470  &lt;.0001\n\nPred = NL:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.713 0.0867 72    1  -2.782  0.0069\n\nPred = L:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.855 0.0688 72    1  -1.951  0.0549\n\nTests are performed on the log scale"
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-9",
+    "href": "index.html#antes-de-continuar-9",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nMuchas personas gustan de las tablas de grupos de Tukey para las medias marginales esperadas en diseños experimentales factoriales al estilo que usamos para poder conducir la opción 2 anteriormente descrita.\nEsta práctica es innecesaria si el investigador es capaz de hacer buenas inferencias basándose en las comparaciones por factor a lo largo de los niveles del otro.\nNo tienen ningún problema operacional ya que a la final es una reparametrización válida del modelo.\nSin embargo, cuando el modelo sobre el cual son aplicadas es incorrecto, son más susceptibles de reflejar valores p que concluyen con inferencias falaces.\nEn el largo ejemplo de las opciones a mano para lidiar con heterodasticidad, podemos con seguridad afirmar que del peor al mejor modelo su orden sería: Opción 1 &lt; Opción 2 &lt; Opción 3.\nPara ilustrar esto, con la variable dummy que creamos en la opción 2, calculemos los grupos Tukey de las medias marginales esperadas en las opciones 1 y 3 para su comparación."
+  },
+  {
+    "objectID": "index.html#antes-de-continuar-10",
+    "href": "index.html#antes-de-continuar-10",
+    "title": "Estadística aplicada con R",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\n\n\nGrupos Tukey de las medias marginales esperadas en la opción 1\n\n\nlm_op1 &lt;- lm(log(Age.DPO) ~ tratamiento, data = ranas)\nemm_op1 &lt;- emmeans(lm_op1, specs = \"tratamiento\", type = \"response\")\nt_grupos_op1 &lt;- contrast(emm_op1, specs = \"tratamiento\", method = \"tukey\")\nt_grupos_op1 &lt;- add_significance(as.data.frame(t_grupos_op1), \n                                p.col = \"p.value\", \n                                output.col = \"p.adj.signif.op1\",\n                                cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                                symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\n\n\n\n\nGrupos Tukey de las medias marginales esperadas en la opción 3\n\n\nlm_op3 &lt;- gls(log(Age.DPO) ~ tratamiento,\n                 data = ranas,\n                 weights = varIdent(form = ~1|tratamiento)) \nemm_op3 &lt;- emmeans(lm_op3, specs = \"tratamiento\", type = \"response\")\nt_grupos_op3 &lt;- contrast(emm_op3, specs = \"tratamiento\", method = \"tukey\")\nt_grupos_op3 &lt;- add_significance(as.data.frame(t_grupos_op3), \n                                p.col = \"p.value\", \n                                output.col = \"p.adj.signif.op3\",\n                                cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                                symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\n\n\n\n\nUn poco de carpintería\n\n\ncolnames(games_comp)[c(7,8)] &lt;- c(\"p.value.op2\", \"p.adj.signif.op2\")\ncolnames(t_grupos_op3)[7] &lt;- \"p.value.op3\"\ncolnames(t_grupos_op1)[7] &lt;- \"p.value.op1\"\n\ncomp_table &lt;- cbind(t_grupos_op3[,1],\n                    t_grupos_op1[,c(7, 8)],\n                    games_comp[,c(7, 8)],\n                    t_grupos_op3[,c(7, 8)])\n\ncomp_table &lt;- flextable(comp_table)\nfinal_comp_table &lt;- colformat_double(comp_table, j = c(2, 4, 6), digits = 3)\nfinal_comp_table\n\n\nt_grupos_op3[, 1]p.value.op1p.adj.signif.op1p.value.op2p.adj.signif.op2p.value.op3p.adj.signif.op3(C-Lo) / (NL-Lo)0.665ns0.936ns0.936ns(C-Lo) / (C-Hi)0.000***0.000***0.000***(C-Lo) / (L-Lo)0.000***0.000***0.000***(C-Lo) / (NL-Hi)0.000***0.002**0.001**(C-Lo) / (L-Hi)0.000***0.000***0.000***(NL-Lo) / (C-Hi)0.075.0.545ns0.545ns(NL-Lo) / (L-Lo)0.024*0.419ns0.419ns(NL-Lo) / (NL-Hi)0.072.0.433ns0.433ns(NL-Lo) / (L-Hi)0.000***0.129ns0.129ns(C-Hi) / (L-Lo)0.993ns0.986ns0.987ns(C-Hi) / (NL-Hi)0.995ns0.988ns0.988ns(C-Hi) / (L-Hi)0.134ns0.008**0.008**(L-Lo) / (NL-Hi)1.000ns1.000ns1.000ns(L-Lo) / (L-Hi)0.380ns0.099.0.101ns(NL-Hi) / (L-Hi)0.699ns0.448ns0.435ns"
   },
   {
     "objectID": "index.html#gráficos-de-interacción",
     "href": "index.html#gráficos-de-interacción",
     "title": "Estadística aplicada con R",
     "section": "Gráficos de interacción",
-    "text": "Gráficos de interacción\n\n\nEs una forma de representar las predicciones lineales de un modelo con respecto a los niveles de sus factores.\nEs recomendable usarlos con factores de hasta 3 niveles y en ANOVAS de dos factores.\nExisten diversas formas de realizarlos en R:\n\nLibrería base de R\nConstruirlos desde cero con ggplot2\nUsar librerías accesorias de ggplot2. Para este caso, usaremos esta opción con la librería interactions"
+    "text": "Gráficos de interacción\n\n\nEs una forma de representar las predicciones lineales de un modelo con respecto a los niveles de sus factores.\nEs recomendable usarlos con factores de hasta 3 niveles y en ANOVAS de dos factores así como también con las medias marginales esperadas.\nExisten diversas formas de realizarlos en R:\n\nLibrería base de R (solo puede hacerlo con medias marginales observadas… al menos hasta donde tengo conocimiento)\nConstruirlos desde cero con ggplot2 (para las opciones 2 y 3).\nUsar librerías accesorias de ggplot2 como interactions. (Esta alternativa solo es válida para la primera opción que presentamos)"
   },
   {
     "objectID": "index.html#gráficos-de-interacción-en-r",
@@ -868,46 +994,88 @@
     "text": "Gráficos de interacción en R\n\n\n\nlibrary(interactions)\ngraf_inter1 &lt;- cat_plot(\n  lm4,\n  pred = Pred,\n  modx = Res,\n  geom = \"line\",\n  data = ranas\n)\ngraf_inter1\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(interactions)\ngraf_inter2 &lt;- cat_plot(\n  lm4,\n  pred = Res,\n  modx = Pred,\n  geom = \"line\",\n  data = ranas\n)\ngraf_inter2"
   },
   {
-    "objectID": "index.html#comparaciones-múltiples-5",
-    "href": "index.html#comparaciones-múltiples-5",
+    "objectID": "index.html#ejercicios-4.11",
+    "href": "index.html#ejercicios-4.11",
     "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\n\nLas comparaciones múltiples en ANOVAS de múltiples vías son ligeramente más complejos.\nLa forma de llevarlas a cabo es ver a cada uno de los factores a la vez a lo largo de los niveles del otro.\nEn emmeans esto se hace indicando en el argumento specs el factor del que queremos ver las diferencias y con el argumento by el factor sobre el cual veremos a lo largo las differencias del primero.\n\n\n\n\nph2 &lt;- emmeans(lm4, specs = \"Pred\", by = \"Res\", type = \"response\")\npairs(ph2)\n\nRes = Hi:\n contrast ratio     SE df null t.ratio p.value\n C / L    1.224 0.0985 72    1   2.512  0.0374\n C / NL   1.055 0.1088 72    1   0.515  0.8644\n L / NL   0.861 0.0889 72    1  -1.445  0.3234\n\nRes = Lo:\n contrast ratio     SE df null t.ratio p.value\n C / L    1.625 0.1308 72    1   6.030  &lt;.0001\n C / NL   1.167 0.1205 72    1   1.500  0.2968\n L / NL   0.718 0.0741 72    1  -3.204  0.0057\n\nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale \n\n\n\n\n\nph3 &lt;- emmeans(lm4, specs = \"Res\", by = \"Pred\", type = \"response\")\npairs(ph3)\n\nPred = C:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.644 0.0518 72    1  -5.470  &lt;.0001\n\nPred = L:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.855 0.0688 72    1  -1.951  0.0549\n\nPred = NL:\n contrast ratio     SE df null t.ratio p.value\n Hi / Lo  0.713 0.0867 72    1  -2.782  0.0069\n\nTests are performed on the log scale"
+    "section": "Ejercicios 4.11",
+    "text": "Ejercicios 4.11\n\nLleva a cabo un ANOVA de dos vías para las variables Resorb.days y los factores Pred y Res. La pregunta a investigar es saber si existe una interacción entre la presencia de predadores a distintos niveles de recursos que afecte el tiempo de reabsorción de la cola en los renacuajos de ranas arbóreas de ojos rojos.\nA pesar de que el modelo para Resorb.day que acabas de hacer cumple con los supuestos del ANOVA, solo por aprendizaje, conduce una prueba de Kruskal-Wallis usando los mismos factores.\n¿Cómo implementarías un DBCA factorial con estos datos?"
   },
   {
-    "objectID": "index.html#comparaciones-múltiples-6",
-    "href": "index.html#comparaciones-múltiples-6",
-    "title": "Estadística aplicada con R",
-    "section": "Comparaciones múltiples",
-    "text": "Comparaciones múltiples\n\n\nEsta forma de llevar a cabo las comparaciones es fácil de implementar con dos factores.\nPero, sabemos que nos gustan las tablas con números indicando los grupos!\nPara llevar a cabo esto, tenemos que emplear un “truco”:\n\nRe-estructurar el diseño para que tenga la forma de un ANOVA de una vía. Esta es de hecho la forma en que también conseguimos el llevar a cabo pruebas de Kruskal-Wallis sobre diseños originalmente factoriales.\nCorrer un nuevo modelo sobre este diseño\nSeguir el proceso de comparaciones múltiples que ya vimos para el ANOVA de una vía.\n\n\n\n\n\n# creamos una variable dummy que combine los niveles de los factores\nranas$tratamiento &lt;- paste(ranas$Pred, ranas$Res, sep = \"-\")\n\n# corremos el modelo nuevamente con esta variable como predictor\nlm5 &lt;- lm(log(Age.DPO) ~ tratamiento, data = ranas)\n\n# usamos emmeans para calcular las comparaciones HSD Tukey\nph3 &lt;- emmeans(lm5, specs = \"tratamiento\", type = \"response\")\n\n# creamos la tabla con nuestras amados números indicando el grupo\ncld(ph3)\n\n\n\n\n\n tratamiento response   SE df lower.CL upper.CL .group\n L-Hi            47.1 2.68 72     42.0     52.7  1    \n NL-Hi           54.7 4.70 72     46.0     64.9  12   \n L-Lo            55.1 3.14 72     49.2     61.7  1    \n C-Hi            57.6 3.28 72     51.5     64.6  12   \n NL-Lo           76.7 6.60 72     64.6     91.0   23  \n C-Lo            89.5 5.10 72     79.9    100.3    3  \n\nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \nP value adjustment: tukey method for comparing a family of 6 estimates \nTests are performed on the log scale \nsignificance level used: alpha = 0.05 \nNOTE: If two or more means share the same grouping symbol,\n      then we cannot show them to be different.\n      But we also did not show them to be the same."
-  },
-  {
-    "objectID": "index.html#antes-de-continuar-7",
-    "href": "index.html#antes-de-continuar-7",
-    "title": "Estadística aplicada con R",
-    "section": "Antes de continuar",
-    "text": "Antes de continuar\n\n\nPara llevar a cabo las pruebas de comparaciones múltiples, seguimos el mismo procedimiento que describimos anteriormente ignorando el efecto del bloque.\n\n\n\n\nph_dbca &lt;- emmeans(lm3, specs = \"Pred\", type = \"response\")\ncld(ph_dbca)\n\n Pred response   SE df lower.CL upper.CL .group\n L        15.8 1.66 68     12.8     19.5  1    \n NL       27.6 4.89 68     19.4     39.3   2   \n C        34.2 3.59 68     27.7     42.2   2   \n\nResults are averaged over the levels of: Block \nConfidence level used: 0.95 \nIntervals are back-transformed from the log scale \nP value adjustment: tukey method for comparing a family of 3 estimates \nTests are performed on the log scale \nsignificance level used: alpha = 0.05 \nNOTE: If two or more means share the same grouping symbol,\n      then we cannot show them to be different.\n      But we also did not show them to be the same."
-  },
-  {
-    "objectID": "index.html#ejercicios-4.10",
-    "href": "index.html#ejercicios-4.10",
-    "title": "Estadística aplicada con R",
-    "section": "Ejercicios 4.10",
-    "text": "Ejercicios 4.10\n\nLleva a cabo un ANOVA de dos vías para las variables Resorb.days y los factores Pred y Res. La pregunta a investigar es saber si existe una interacción entre la presencia de predadores a distintos niveles de recursos que afecte el tiempo de reabsorción de la cola en los renacuajos de ranas arbóreas de ojos rojos.\nA pesar de que el modelo para Resorb.day que acabas de hacer cumple con los supuestos del ANOVA, solo por aprendizaje, conduce una prueba de Kruskal-Wallis usando los mismos factores.\n¿Cómo implementarías un DBCA factorial con estos datos?"
-  },
-  {
-    "objectID": "index.html#introducción-1",
-    "href": "index.html#introducción-1",
+    "objectID": "index.html#introducción-2",
+    "href": "index.html#introducción-2",
     "title": "Estadística aplicada con R",
     "section": "Introducción",
-    "text": "Introducción\n\n\nOtro modelo estadístico ampliamente usado es la regresión lineal.\nSe diferencia del ANOVA al considerar un predictor continuo (no un factor categórico).\nLos supuestos de la regresión lineal son:\n\nExistencia de una relación lineal entre las variables continuas objeto de la regresión\nNormalidad de los residuales\nQue no exista multicolinearidad (en el caso de regresión múltiple)\nQue no exista auto correlación (que las observaciones no dependan una de otra dentro de una misma variable)\nHomogeneidad de la varianza de los residuales\n\nContrario al ANOVA, no existen correcciones o métodos alternativos cuando las transformaciones fallan.\nPor esto, lo que se recomienda hacer es mencionar todos los detalles de la conducción del modelo. Cosa que rara vez pasa.\nEn regresión lineal es quizá en el método que más se abusa del remover outliers."
+    "text": "Introducción\n\n\nOtro modelo estadístico ampliamente usado es la regresión lineal.\nSe diferencia del ANOVA al considerar un predictor continuo (no un factor categórico).\nLos supuestos de la regresión lineal son:\n\nExistencia de una relación lineal entre las variables continuas objeto de la regresión\nNormalidad de los residuos\nQue no exista multicolinearidad (en el caso de regresión múltiple)\nQue no exista auto correlación (que las observaciones no dependan una de otra dentro de una misma variable)\nHomogeneidad de la varianza de los residuos\n\nContrario al ANOVA, no existen correcciones o métodos alternativos cuando las transformaciones fallan.\nPor esto, lo que se recomienda hacer es mencionar todos los detalles de la conducción del modelo. Cosa que rara vez pasa.\nEn regresión lineal es quizá en el método que más se abusa del remover outliers."
   },
   {
     "objectID": "index.html#regresión-lineal-en-r",
     "href": "index.html#regresión-lineal-en-r",
     "title": "Estadística aplicada con R",
     "section": "Regresión lineal en R",
-    "text": "Regresión lineal en R\n\n\nUsando los datos de Touchon, podríamos preguntarnos si el tamaño de las ranas al final de la metamorfosis SVL.final está influenciado por la edad en finalizar la metamorfosis Age.DPO.\nPara minimizar el incumplimiento de los supuestos de la regresión lineal, hagamos de cuenta que con anterioridad encontramos que usando el logaritmo en ambas normaliza al menos los residuales.\nEsta regresión lineal sería de la siguiente forma:\n\n\n\n\nlm6 &lt;- lm(log(SVL.final) ~ log(Age.DPO), data = ranas)\nsummary(lm6)\n\n\n\n\n\n\nCall:\nlm(formula = log(SVL.final) ~ log(Age.DPO), data = ranas)\n\nResiduals:\n      Min        1Q    Median        3Q       Max \n-0.182298 -0.049070  0.000516  0.038342  0.159057 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   3.44001    0.09211  37.345  &lt; 2e-16 ***\nlog(Age.DPO) -0.11624    0.02232  -5.208 1.58e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.06244 on 76 degrees of freedom\nMultiple R-squared:  0.263, Adjusted R-squared:  0.2533 \nF-statistic: 27.12 on 1 and 76 DF,  p-value: 1.581e-06\n\n\n\n\n\nAhora démole un vistazo a los diagnósticos:\n\n\n\n\n\n\n\n\nResiduales vs. Valores Ajustados: Sirve para chequear la relación lineal entre las variables.\nGráfico Q-Q: Sirve para chequear la normalidad de los residuales.\nEscala Localización: Sirve para chequear la homocedasticidad (homogeneidad de las variables).\nResiduales y apalancamiento: Sirve para identificar outliers"
+    "text": "Regresión lineal en R\n\n\nUsando los datos de Touchon, podríamos preguntarnos si el tamaño de las ranas al final de la metamorfosis SVL.final está influenciado por la edad en finalizar la metamorfosis Age.DPO.\nEsta regresión lineal sería de la siguiente forma:\n\n\n\n\nlm6 &lt;- lm(SVL.final ~ Age.DPO, data = ranas)\nsummary(lm6)\n\n\nCall:\nlm(formula = SVL.final ~ Age.DPO, data = ranas)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.1414 -0.9521 -0.1297  0.6842  3.4349 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 21.285436   0.416763  51.073  &lt; 2e-16 ***\nAge.DPO     -0.029437   0.006052  -4.864 6.08e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.262 on 76 degrees of freedom\nMultiple R-squared:  0.2374,    Adjusted R-squared:  0.2273 \nF-statistic: 23.65 on 1 and 76 DF,  p-value: 6.081e-06\n\n\n\n\n\nPero antes de cualquier inferencia, vamos a darle un vistazo a los diagnósticos de la regresión lineal"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\npar(mfrow = c(2, 2))\nplot(lm6)\npar(mfrow = c(1, 1))"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-1",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-1",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-2",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-2",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\n\n\n\n\n\n\n\nResiduos vs. Valores ajustados\nEn el ANOVA vimos como este plot sugería departuras de la homocedasticidad. En el caso de la regresión lineal, los residuos al no estar agrupados en categorías presentan mayor información sobre este supuesto. Adicionalmente, curvaturas en la línea roja evidencian también departuras de la linearidad. Esto quiere decir que la relación entre las variables no es completamente lineal. A veces esto puede corregirse con transformaciones."
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-3",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-3",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\n\nEs ideal. (b) Es indicativo de no linearidad. (c) Evidencia de heterodasticidad. (d) Evidencia de una tendencia temporal"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-4",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-4",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\n\n\n\n\n\n\n\nGráfico Q-Q\nMisma explicación que antes"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-5",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-5",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\n\n\n\n\n\n\n\nRaíz cuadrada de los residuos estandarizados vs. Valores ajustados\nMisma explicación que antes"
+  },
+  {
+    "objectID": "index.html#diagnósticos-de-la-regresión-lineal-6",
+    "href": "index.html#diagnósticos-de-la-regresión-lineal-6",
+    "title": "Estadística aplicada con R",
+    "section": "Diagnósticos de la regresión lineal",
+    "text": "Diagnósticos de la regresión lineal\n\n\n\n\n\n\n\n\nResiduos vs. Apalancamiento\nAquellos puntos que estén etiquetados con números son mostrados como posibles outliers bajo dos criterios:\n\nEstán por fuera de los límites de la regla del rango intercuartílico (IQR), y\nMarcados como outliers con influencia de apalancamiento mediante la prueba de Cook (distancia de Cook).\n\nEl segundo criterio es un argumento sólido para remover outliers."
+  },
+  {
+    "objectID": "index.html#pruebas-formales-de-los-supuestos",
+    "href": "index.html#pruebas-formales-de-los-supuestos",
+    "title": "Estadística aplicada con R",
+    "section": "Pruebas formales de los supuestos",
+    "text": "Pruebas formales de los supuestos\n\n\nComo vimos, los supuestos de la regresión lineal son más que para el ANOVA.\nExisten varias pruebas formales para chequear cada uno de sus supuestos, sin embargo rara vez son empleadas.\nLa razón yace en que si los aplicáramos todo el tiempo, no haríamos regresiones lineales ni el 10% de las veces.\nSi tienes curiosidad en estas pruebas puedes visitar este enlace.\nDe alguna manera podemos decir que de hecho, los estadísticos somos más laxos con la regresión lineal, sin embargo esto es bajo el supuesto no estadístico de que estas departuras de los supuestos fueran debidamente documentadas y plasmadas en los trabajos científicos, lo cual lamentablemente no pasa muy a menudo.\nExisten por supuesto métodos que no dependen de todos estos supuestos (por ejemplo: regresiones lineales Bayesianas, modelos lineales generalizados) pero no son parte de este curso."
+  },
+  {
+    "objectID": "index.html#transformación-de-datos",
+    "href": "index.html#transformación-de-datos",
+    "title": "Estadística aplicada con R",
+    "section": "Transformación de datos",
+    "text": "Transformación de datos\n\n\nAl igual que en el ANOVA, podemos recurrir a transformaciones de datos que nos permitan aliviar varios de los supuestos no cumplidos de la regresión lineal.\nEn el presente caso, esto lo logramos al utilizar el logaritmo natural de las dos variables del modelo\n\n\n\n\nlm6 &lt;- lm(log(SVL.final) ~ log(Age.DPO), data = ranas)\npar(mfrow = c(2, 2))\nplot(lm6)\n\n\n\npar(mfrow = c(1, 1))\nsummary(lm6)\n\n\nCall:\nlm(formula = log(SVL.final) ~ log(Age.DPO), data = ranas)\n\nResiduals:\n      Min        1Q    Median        3Q       Max \n-0.182298 -0.049070  0.000516  0.038342  0.159057 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   3.44001    0.09211  37.345  &lt; 2e-16 ***\nlog(Age.DPO) -0.11624    0.02232  -5.208 1.58e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.06244 on 76 degrees of freedom\nMultiple R-squared:  0.263, Adjusted R-squared:  0.2533 \nF-statistic: 27.12 on 1 and 76 DF,  p-value: 1.581e-06"
   },
   {
     "objectID": "index.html#interpretación-de-la-regresión-lineal",
@@ -915,13 +1083,6 @@
     "title": "Estadística aplicada con R",
     "section": "Interpretación de la regresión lineal",
     "text": "Interpretación de la regresión lineal\n\n\\[\ny = mx + b\n\\]\n\n\n\n\n\nCall:\nlm(formula = log(SVL.final) ~ log(Age.DPO), data = ranas)\n\nResiduals:\n      Min        1Q    Median        3Q       Max \n-0.182298 -0.049070  0.000516  0.038342  0.159057 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   3.44001    0.09211  37.345  &lt; 2e-16 ***\nlog(Age.DPO) -0.11624    0.02232  -5.208 1.58e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.06244 on 76 degrees of freedom\nMultiple R-squared:  0.263, Adjusted R-squared:  0.2533 \nF-statistic: 27.12 on 1 and 76 DF,  p-value: 1.581e-06\n\n\n\n\n\nPor cada incremento en una unidad del logaritmo de Age.DPO, tenemos una unidad en descenso del logaritmo de SVL.final\n\n\n\n\nggplot(ranas, aes(x = log(Age.DPO), y = log(SVL.final))) +\n  geom_point()+\n  geom_smooth(method = \"lm\")"
-  },
-  {
-    "objectID": "index.html#el-problema-con-el-coeficiente-de-determinación-r2",
-    "href": "index.html#el-problema-con-el-coeficiente-de-determinación-r2",
-    "title": "Estadística aplicada con R",
-    "section": "El problema con el coeficiente de determinación \\(R^2\\)",
-    "text": "El problema con el coeficiente de determinación \\(R^2\\)"
   },
   {
     "objectID": "index.html#el-mágico-r2",
