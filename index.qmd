@@ -2808,7 +2808,7 @@ graf_inter2
 
 :::
 
-## Regresión lineal en R
+## Regresión lineal en R {.smaller}
 
 ::: incremental
 
@@ -2939,11 +2939,11 @@ El segundo criterio es un argumento sólido para remover outliers.
 
 -   De alguna manera podemos decir que de hecho, los estadísticos somos más laxos con la regresión lineal, sin embargo esto es bajo el supuesto no estadístico de que estas departuras de los supuestos fueran debidamente documentadas y plasmadas en los trabajos científicos, lo cual lamentablemente no pasa muy a menudo.
 
--   Existen por supuesto métodos que no dependen de todos estos supuestos (por ejemplo: regresiones lineales Bayesianas, modelos lineales generalizados) pero no son parte de este curso.
+-   Existen por supuesto métodos que no dependen de todos estos supuestos (por ejemplo: regresiones lineales Bayesianas, modelos lineales generalizados correctamente parametrizados) pero no son parte de este curso.
 
 :::
 
-## Transformación de datos {.scrollable}
+## Transformación de datos {.scrollable .smaller}
 
 ::: incremental
 
@@ -2987,6 +2987,34 @@ summary(lm6)
 ggplot(ranas, aes(x = log(Age.DPO), y = log(SVL.final))) +
   geom_point()+
   geom_smooth(method = "lm")
+```
+
+## Interpretación de la regresión lineal {.smaller .scrollable visibility="uncounted"}
+
+::: incremental
+
+-   Sin embargo una interpretación en la escala logarítmica no es completamente entendible, al menos para alguien ajeno al análisis que realizamos.
+
+-   Podríamos hacer la retransformación de las variables a sus unidades originales y generar un gráfico de las predicciones. A la final se reduce a matemática básica.
+
+-   Afortunadamente la librería `ggeffects` nos salva de ese dilema!
+
+:::
+
+. . .
+
+```{r echo=T, eval=T, error=T}
+library(ggeffects)
+predicciones <- ggpredict(lm6)
+predicciones
+```
+
+. . .
+
+-   Y finalmente el gráfico de predicciones
+
+```{r echo=T, eval=T, error=T, fig.align='center', fig.height=4, fig.width=5}
+plot(predicciones)
 ```
 
 # ¡Antes de terminar!

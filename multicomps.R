@@ -41,3 +41,12 @@ ranas %>% games_howell_test(log.Age.DPO~Pred*Res)
 emmeans_test(log.Age.DPO~Pred, data = ranas, p.adjust.method = "tukey")
 
 ranas %>% welch_anova_test()
+
+tetas <- contrast(tukey_comp_dummy, specs = "tratamiento", method = "tukey")
+tetas <- add_significance(as.data.frame(tetas),
+                           p.col="p.value",
+                           output.col = "p.adj.signif",
+                           cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                           symbols = c("***", "**", "*", ".", "ns"))
+tetas %>% add_xy_position("tratamiento")
+ranas %>% tukey_hsd(log.Age.DPO~Pred*Res)
